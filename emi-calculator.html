@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>EMI Calculator · Free Online Loan EMI Calculator | All Currencies</title>
+    <meta name="description" content="Free responsive EMI calculator with 150+ currencies including USD, EUR, GBP, INR, BDT, JPY. Calculate home, car, personal loan EMI with amortization schedule.">
+    <meta name="keywords" content="emi calculator, loan calculator, home loan emi, car loan emi, personal loan emi, mortgage calculator, emi formula, amortization schedule, loan interest calculator, currency emi">
+    <meta name="author" content="EMICalculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.example.com/emi-calculator">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="EMI Calculator · Free Online Loan EMI Calculator | All Currencies">
+    <meta property="og:description" content="Calculate EMI for home, car, personal loans in 150+ currencies with amortization schedule.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com/emi-calculator">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- Performance -->
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+    
+    <style>
+        /* =====================================================
+           RESET & BASE
+           ===================================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            color: #0f172a;
+            line-height: 1.6;
+            padding: 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* =====================================================
+           ADSENSE PLACEHOLDERS
+           ===================================================== */
+        .ad-slot {
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 14px;
+            padding: 0.75rem;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            width: 100%;
+            margin: 1.25rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .ad-slot::before {
+            content: 'AD';
+            position: absolute;
+            top: 6px;
+            left: 8px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: 0.05em;
+        }
+        .ad-slot:hover {
+            border-color: #94a3b8;
+            background: #eef2f6;
+        }
+        .ad-slot ins {
+            display: block;
+            width: 100%;
+        }
+        .ad-slot--top {
+            margin-top: 0.25rem;
+            min-height: 90px;
+        }
+        
+        /* =====================================================
+           HEADER
+           ===================================================== */
+        .header {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #0f172a 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            color: #475569;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            max-width: 720px;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .header-badge {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 0.3rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+        
+        /* =====================================================
+           TOOL CARD
+           ===================================================== */
+        .tool-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* =====================================================
+           CURRENCY BAR
+           ===================================================== */
+        .currency-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.85rem;
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #c7d2fe;
+            border-radius: 16px;
+            padding: 0.85rem 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .currency-bar-label {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #3730a3;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-shrink: 0;
+        }
+        .currency-bar-label svg {
+            width: 16px;
+            height: 16px;
+            stroke: #3730a3;
+            fill: none;
+            stroke-width: 2.5;
+        }
+        .currency-search-container {
+            position: relative;
+            flex: 1 1 240px;
+            min-width: 200px;
+        }
+        .currency-search-input {
+            width: 100%;
+            padding: 0.7rem 2.5rem 0.7rem 1rem;
+            border: 2px solid #c7d2fe;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.2s;
+            background: #ffffff;
+            color: #0f172a;
+            cursor: pointer;
+        }
+        .currency-search-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+        .currency-search-input::placeholder {
+            color: #94a3b8;
+            font-weight: 500;
+        }
+        .currency-search-container .select-chevron {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #6366f1;
+            transition: transform 0.2s;
+        }
+        .currency-search-container.open .select-chevron {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        .currency-dropdown {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border: 2px solid #6366f1;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.25);
+            max-height: 320px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+            animation: dropdownIn 0.15s ease;
+        }
+        .currency-search-container.open .currency-dropdown {
+            display: block;
+        }
+        @keyframes dropdownIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .currency-dropdown::-webkit-scrollbar {
+            width: 8px;
+        }
+        .currency-dropdown::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        .currency-dropdown::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .currency-option {
+            padding: 0.65rem 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            transition: background 0.15s;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .currency-option:last-child { border-bottom: none; }
+        .currency-option:hover { background: #f5f3ff; }
+        .currency-option.selected { background: #e0e7ff; }
+        .currency-option-code {
+            font-weight: 800;
+            font-size: 0.88rem;
+            color: #0f172a;
+            min-width: 48px;
+        }
+        .currency-option-name {
+            flex: 1;
+            font-size: 0.83rem;
+            color: #475569;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .currency-option-symbol {
+            font-weight: 700;
+            color: #6366f1;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .currency-empty {
+            padding: 1rem;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+        
+        /* =====================================================
+           LOAN TYPE TABS
+           ===================================================== */
+        .loan-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.75rem;
+            background: #f1f5f9;
+            padding: 0.4rem;
+            border-radius: 60px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .loan-tabs::-webkit-scrollbar { height: 4px; }
+        .loan-tabs::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .loan-tab {
+            flex: 1;
+            min-width: 90px;
+            padding: 0.7rem 1rem;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #64748b;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+        }
+        .loan-tab:hover { background: #ffffff; color: #1e293b; }
+        .loan-tab.active {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #ffffff;
+            box-shadow: 0 6px 16px -4px rgba(99, 102, 241, 0.45);
+        }
+        .loan-tab svg { width: 16px; height: 16px; flex-shrink: 0; }
+        
+        /* =====================================================
+           MAIN GRID
+           ===================================================== */
+        .emi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+        }
+        
+        /* =====================================================
+           INPUTS PANEL
+           ===================================================== */
+        .inputs-panel { display: flex; flex-direction: column; gap: 1.5rem; }
+        .input-block { display: flex; flex-direction: column; gap: 0.65rem; }
+        .input-block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .input-block-header label {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #334155;
+        }
+        .input-value-display {
+            background: #eef2ff;
+            color: #4338ca;
+            padding: 0.25rem 0.85rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            min-width: 90px;
+            text-align: center;
+        }
+        .input-with-slider { display: flex; flex-direction: column; gap: 0.5rem; }
+        input[type="number"].number-input {
+            padding: 0.7rem 0.9rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            width: 100%;
+            transition: all 0.2s;
+            background: #ffffff;
+            color: #0f172a;
+        }
+        input[type="number"].number-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+        }
+        input[type="number"].number-input::-webkit-outer-spin-button,
+        input[type="number"].number-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"].number-input { -moz-appearance: textfield; appearance: textfield; }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 10px;
+            background: #e2e8f0;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #6366f1;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.35);
+            border: 3px solid #ffffff;
+            transition: transform 0.15s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+        input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #6366f1;
+            cursor: pointer;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.35);
+        }
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+        
+        /* =====================================================
+           RESULTS PANEL
+           ===================================================== */
+        .results-panel { display: flex; flex-direction: column; gap: 1.25rem; }
+        
+        .emi-hero {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 20px;
+            padding: 1.75rem 1.5rem;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px -12px rgba(99, 102, 241, 0.5);
+        }
+        .emi-hero::before {
+            content: '';
+            position: absolute;
+            top: -40px; right: -40px;
+            width: 140px; height: 140px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+        .emi-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px; left: -30px;
+            width: 120px; height: 120px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+        }
+        .emi-hero-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.85;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        .emi-hero-value {
+            font-size: clamp(1.8rem, 5vw, 2.75rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            position: relative;
+            word-break: break-word;
+        }
+        .emi-hero-sub {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            position: relative;
+        }
+        
+        .breakdown-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.85rem;
+        }
+        .breakdown-card {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 1rem 0.85rem;
+            transition: all 0.2s;
+        }
+        .breakdown-card:hover { border-color: #c7d2fe; background: #f5f3ff; }
+        .breakdown-card-icon { font-size: 1.2rem; margin-bottom: 0.35rem; }
+        .breakdown-card-value {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #1e293b;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+        .breakdown-card-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+        .breakdown-card.total {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-color: #fcd34d;
+        }
+        .breakdown-card.total .breakdown-card-value { color: #92400e; }
+        .breakdown-card.interest {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-color: #fca5a5;
+        }
+        .breakdown-card.interest .breakdown-card-value { color: #991b1b; }
+        .breakdown-card.principal {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-color: #93c5fd;
+        }
+        .breakdown-card.principal .breakdown-card-value { color: #1e40af; }
+        
+        /* =====================================================
+           CHART
+           ===================================================== */
+        .chart-section {
+            margin-top: 1.75rem;
+            padding-top: 1.75rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .chart-section h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .donut-chart-wrap {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            flex-shrink: 0;
+        }
+        .donut-chart {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        .donut-chart circle {
+            fill: none;
+            stroke-width: 28;
+            transition: stroke-dasharray 0.6s ease;
+        }
+        .donut-bg { stroke: #f1f5f9; }
+        .donut-principal { stroke: #6366f1; }
+        .donut-interest { stroke: #ec4899; }
+        .donut-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            max-width: 130px;
+        }
+        .donut-center-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .donut-center-value {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+        
+        .chart-legend { display: flex; flex-direction: column; gap: 0.85rem; min-width: 200px; }
+        .legend-item { display: flex; align-items: center; gap: 0.65rem; font-size: 0.9rem; font-weight: 600; }
+        .legend-color { width: 16px; height: 16px; border-radius: 5px; flex-shrink: 0; }
+        .legend-color.principal { background: #6366f1; }
+        .legend-color.interest { background: #ec4899; }
+        .legend-text { display: flex; flex-direction: column; flex: 1; }
+        .legend-text .legend-label { font-size: 0.78rem; color: #64748b; font-weight: 600; }
+        .legend-text .legend-value { font-size: 0.95rem; color: #0f172a; font-weight: 800; }
+        
+        /* =====================================================
+           AMORTIZATION SCHEDULE
+           ===================================================== */
+        .schedule-section {
+            margin-top: 1.75rem;
+            padding-top: 1.75rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .schedule-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .schedule-header h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .toggle-schedule-btn {
+            background: #ffffff;
+            color: #6366f1;
+            border: 2px solid #c7d2fe;
+            padding: 0.5rem 1.1rem;
+            border-radius: 40px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .toggle-schedule-btn:hover {
+            background: #6366f1;
+            color: #ffffff;
+            border-color: #6366f1;
+        }
+        
+        .schedule-table-wrap {
+            overflow-x: auto;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .schedule-table-wrap.hidden { display: none; }
+        table.schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 560px;
+        }
+        table.schedule-table thead {
+            background: #f1f5f9;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+        table.schedule-table th {
+            padding: 0.75rem 0.85rem;
+            text-align: left;
+            font-weight: 800;
+            color: #334155;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        table.schedule-table th:last-child,
+        table.schedule-table td:last-child { text-align: right; }
+        table.schedule-table td {
+            padding: 0.7rem 0.85rem;
+            border-bottom: 1px solid #f1f5f9;
+            color: #475569;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        table.schedule-table td:first-child { color: #6366f1; font-weight: 800; }
+        table.schedule-table td.interest-cell { color: #dc2626; }
+        table.schedule-table td.principal-cell { color: #4338ca; }
+        table.schedule-table td.balance-cell { font-weight: 800; color: #0f172a; }
+        table.schedule-table tbody tr:hover { background: #f8fafc; }
+        
+        .schedule-note {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            margin-top: 0.65rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        /* =====================================================
+           MESSAGES
+           ===================================================== */
+        .hidden { display: none !important; }
+        
+        /* =====================================================
+           CONTENT SECTIONS (SEO)
+           ===================================================== */
+        .content-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+        }
+        .content-section h2 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
+        }
+        .step { display: flex; gap: 0.85rem; align-items: flex-start; }
+        .step-num {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #ffffff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px -4px rgba(99, 102, 241, 0.5);
+        }
+        .step p { font-size: 0.93rem; color: #475569; }
+        .step strong { color: #0f172a; display: block; margin-bottom: 0.2rem; font-size: 0.98rem; }
+        
+        /* =====================================================
+           FAQ
+           ===================================================== */
+        .faq-item { border-bottom: 1px solid #e2e8f0; padding: 0.95rem 0; }
+        .faq-item:first-of-type { padding-top: 0; }
+        .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .faq-item summary {
+            font-weight: 700;
+            cursor: pointer;
+            color: #1e293b;
+            font-size: 0.98rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.15rem 0;
+            transition: color 0.2s;
+        }
+        .faq-item summary:hover { color: #6366f1; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: #6366f1;
+            font-weight: 700;
+            transition: transform 0.25s ease;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .faq-item[open] summary::after { content: '−'; transform: rotate(180deg); }
+        .faq-item p { margin-top: 0.6rem; font-size: 0.92rem; color: #475569; line-height: 1.6; }
+        
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            padding: 2rem 1rem 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .footer p + p { margin-top: 0.3rem; font-size: 0.8rem; color: #94a3b8; }
+        
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+        @media (max-width: 900px) {
+            .emi-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            body { padding: 0.75rem; }
+            .header { padding: 1.5rem 1.25rem; }
+            .tool-card { padding: 1.5rem 1.15rem; }
+            .content-section { padding: 1.5rem 1.25rem; }
+            .emi-hero { padding: 1.5rem 1.25rem; }
+            .chart-container { gap: 1.5rem; }
+            .donut-chart-wrap { width: 180px; height: 180px; }
+            .currency-bar { padding: 0.75rem 0.9rem; }
+        }
+        @media (max-width: 520px) {
+            .header-badge { font-size: 0.72rem; padding: 0.25rem 0.7rem; }
+            .breakdown-grid { grid-template-columns: 1fr; }
+            .breakdown-card { padding: 0.85rem 0.75rem; }
+            .breakdown-card-value { font-size: 1.05rem; }
+            .loan-tab { font-size: 0.78rem; padding: 0.6rem 0.7rem; min-width: 72px; }
+            .loan-tab svg { display: none; }
+            .donut-chart-wrap { width: 160px; height: 160px; }
+            .donut-chart circle { stroke-width: 24; }
+            .chart-legend { min-width: 100%; }
+            .emi-hero-value { font-size: 1.6rem; }
+            .schedule-table { font-size: 0.78rem; }
+            .schedule-table th, .schedule-table td { padding: 0.6rem 0.6rem; }
+            .currency-bar-label span { display: none; }
+        }
+        
+        /* =====================================================
+           ACCESSIBILITY
+           ===================================================== */
+        :focus-visible { outline: 3px solid #6366f1; outline-offset: 2px; border-radius: 4px; }
+        .loan-tab:focus-visible, .toggle-schedule-btn:focus-visible { outline: 3px solid #0f172a; outline-offset: 2px; }
+        
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ==================== HEADER ==================== -->
+        <header class="header">
+            <h1>EMI Calculator</h1>
+            <p>Calculate your monthly EMI for <strong>home, car, personal, education, and business loans</strong> in <strong>150+ currencies</strong>. Get instant results with a full amortization schedule and interactive chart.</p>
+            <div class="badge-row">
+                <span class="header-badge">✓ 150+ Currencies</span>
+                <span class="header-badge">✓ Amortization Schedule</span>
+                <span class="header-badge">✓ Visual Chart</span>
+                <span class="header-badge">✓ 100% Free</span>
+            </div>
+        </header>
+
+        <!-- ==================== ADSENSE TOP ==================== -->
+        <div class="ad-slot ad-slot--top" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (Top Leaderboard)</span>
+        </div>
+
+        <!-- ==================== MAIN TOOL ==================== -->
+        <main class="tool-card">
+            <!-- Currency Bar -->
+            <div class="currency-bar">
+                <div class="currency-bar-label">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h6M9 15h6"/></svg>
+                    <span>Currency</span>
+                </div>
+                <div class="currency-search-container" id="currencySelectContainer">
+                    <input type="text" class="currency-search-input" id="currencySearchInput"
+                           placeholder="Search currency (e.g. USD, Taka, Rupee...)"
+                           autocomplete="off" aria-label="Select currency"
+                           aria-haspopup="listbox" aria-expanded="false">
+                    <svg class="select-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    <div class="currency-dropdown" id="currencyDropdown" role="listbox"></div>
+                </div>
+            </div>
+
+            <!-- Loan Type Tabs -->
+            <div class="loan-tabs" role="tablist" aria-label="Loan type">
+                <button class="loan-tab active" data-loan="home" role="tab" aria-selected="true" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Home
+                </button>
+                <button class="loan-tab" data-loan="car" role="tab" aria-selected="false" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM21 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/><path d="M3 9l1.5-5h15L21 9v6H3V9z"/></svg>
+                    Car
+                </button>
+                <button class="loan-tab" data-loan="personal" role="tab" aria-selected="false" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"/></svg>
+                    Personal
+                </button>
+                <button class="loan-tab" data-loan="education" role="tab" aria-selected="false" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    Education
+                </button>
+                <button class="loan-tab" data-loan="business" role="tab" aria-selected="false" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    Business
+                </button>
+            </div>
+
+            <!-- EMI Grid -->
+            <div class="emi-grid">
+                <!-- INPUTS PANEL -->
+                <div class="inputs-panel">
+                    <div class="input-block">
+                        <div class="input-block-header">
+                            <label for="loanAmountInput">💰 Loan Amount</label>
+                            <span class="input-value-display" id="loanAmountDisplay">$250,000</span>
+                        </div>
+                        <div class="input-with-slider">
+                            <input type="number" id="loanAmountInput" class="number-input" value="250000" min="1000" step="1000" aria-label="Loan amount">
+                            <input type="range" id="loanAmountSlider" min="1000" max="5000000" step="1000" value="250000" aria-label="Loan amount slider">
+                            <div class="range-labels">
+                                <span id="loanMinLabel">$1K</span>
+                                <span id="loanMaxLabel">$5M</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-block">
+                        <div class="input-block-header">
+                            <label for="interestRateInput">📊 Interest Rate (Annual)</label>
+                            <span class="input-value-display" id="interestRateDisplay">6.5%</span>
+                        </div>
+                        <div class="input-with-slider">
+                            <input type="number" id="interestRateInput" class="number-input" value="6.5" min="0.1" max="30" step="0.1" aria-label="Annual interest rate">
+                            <input type="range" id="interestRateSlider" min="0.1" max="30" step="0.1" value="6.5" aria-label="Interest rate slider">
+                            <div class="range-labels">
+                                <span>0.1%</span>
+                                <span>30%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-block">
+                        <div class="input-block-header">
+                            <label for="tenureInput">📅 Loan Tenure</label>
+                            <span class="input-value-display" id="tenureDisplay">20 Years</span>
+                        </div>
+                        <div class="input-with-slider">
+                            <input type="number" id="tenureInput" class="number-input" value="20" min="1" max="40" step="1" aria-label="Loan tenure in years">
+                            <input type="range" id="tenureSlider" min="1" max="40" step="1" value="20" aria-label="Tenure slider">
+                            <div class="range-labels">
+                                <span>1 Year</span>
+                                <span>40 Years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- RESULTS PANEL -->
+                <div class="results-panel">
+                    <div class="emi-hero">
+                        <div class="emi-hero-label">Monthly EMI</div>
+                        <div class="emi-hero-value" id="emiValue">$1,862.68</div>
+                        <div class="emi-hero-sub" id="emiSub">for 20 years at 6.5% annual interest</div>
+                    </div>
+                    
+                    <div class="breakdown-grid">
+                        <div class="breakdown-card principal">
+                            <div class="breakdown-card-icon">🏦</div>
+                            <div class="breakdown-card-value" id="principalValue">$250,000</div>
+                            <div class="breakdown-card-label">Principal Amount</div>
+                        </div>
+                        <div class="breakdown-card interest">
+                            <div class="breakdown-card-icon">📈</div>
+                            <div class="breakdown-card-value" id="interestValue">$196,644</div>
+                            <div class="breakdown-card-label">Total Interest</div>
+                        </div>
+                        <div class="breakdown-card total" style="grid-column: 1 / -1;">
+                            <div class="breakdown-card-icon">💵</div>
+                            <div class="breakdown-card-value" id="totalPaymentValue">$446,644</div>
+                            <div class="breakdown-card-label">Total Payment (Principal + Interest)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chart Section -->
+            <div class="chart-section">
+                <h3>📊 Payment Breakdown</h3>
+                <div class="chart-container">
+                    <div class="donut-chart-wrap">
+                        <svg class="donut-chart" viewBox="0 0 100 100" aria-hidden="true">
+                            <circle class="donut-bg" cx="50" cy="50" r="38"></circle>
+                            <circle class="donut-interest" id="donutInterest" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0"></circle>
+                            <circle class="donut-principal" id="donutPrincipal" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0"></circle>
+                        </svg>
+                        <div class="donut-center">
+                            <div class="donut-center-label">Total</div>
+                            <div class="donut-center-value" id="donutTotal">$0</div>
+                        </div>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-color principal"></div>
+                            <div class="legend-text">
+                                <span class="legend-label">Principal</span>
+                                <span class="legend-value" id="legendPrincipal">$0</span>
+                            </div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color interest"></div>
+                            <div class="legend-text">
+                                <span class="legend-label">Interest</span>
+                                <span class="legend-value" id="legendInterest">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Amortization Schedule -->
+            <div class="schedule-section">
+                <div class="schedule-header">
+                    <h3>📋 Amortization Schedule</h3>
+                    <button class="toggle-schedule-btn" id="toggleScheduleBtn" type="button">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        <span id="toggleScheduleText">Show Schedule</span>
+                    </button>
+                </div>
+                <div class="schedule-table-wrap hidden" id="scheduleWrap">
+                    <table class="schedule-table" id="scheduleTable">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Principal</th>
+                                <th>Interest</th>
+                                <th>Total Paid</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduleBody"></tbody>
+                    </table>
+                </div>
+                <div class="schedule-note" id="scheduleNote">Click "Show Schedule" to view the full month-by-month breakdown.</div>
+            </div>
+        </main>
+
+        <!-- ==================== ADSENSE MIDDLE ==================== -->
+        <div class="ad-slot" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="0987654321"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (In-Content)</span>
+        </div>
+
+        <!-- ==================== HOW TO ==================== -->
+        <section class="content-section">
+            <h2>How to Use the EMI Calculator</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <strong>Choose your currency</strong>
+                        <p>Search and select from 150+ world currencies including USD, EUR, GBP, INR, BDT, JPY, and more.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <strong>Pick loan type & adjust values</strong>
+                        <p>Choose Home, Car, Personal, Education, or Business loan. Use sliders or type exact values.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <strong>View EMI & amortization schedule</strong>
+                        <p>See your monthly EMI instantly, then click "Show Schedule" for a full month-by-month payment breakdown.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FAQ ==================== -->
+        <section class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            <details class="faq-item" open>
+                <summary>What is EMI and how is it calculated?</summary>
+                <p>EMI stands for Equated Monthly Installment — the fixed amount you pay to your lender every month. It's calculated using the formula: <strong>EMI = [P × R × (1+R)^N] / [(1+R)^N − 1]</strong>, where P is the principal loan amount, R is the monthly interest rate (annual rate ÷ 12 ÷ 100), and N is the total number of monthly installments.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Which currencies are supported?</summary>
+                <p>The calculator supports <strong>150+ world currencies</strong> including USD (US Dollar), EUR (Euro), GBP (British Pound), INR (Indian Rupee), BDT (Bangladeshi Taka), JPY (Japanese Yen), CNY (Chinese Yuan), PKR (Pakistani Rupee), RUB (Russian Ruble), BRL (Brazilian Real), ZAR (South African Rand), AUD (Australian Dollar), CAD (Canadian Dollar), and many more. Simply type in the currency search box to find and select your currency.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Does the currency affect the EMI calculation?</summary>
+                <p>No — the EMI calculation is the same regardless of currency. The currency selector simply changes the symbol displayed next to all monetary values, so you can work in your local currency without manual conversion.</p>
+            </details>
+            <details class="faq-item">
+                <summary>What is an amortization schedule?</summary>
+                <p>An amortization schedule is a table showing each monthly payment's breakdown between principal and interest, along with the remaining balance. In early months, most of your EMI goes toward interest; later, more goes toward principal.</p>
+            </details>
+            <details class="faq-item">
+                <summary>How can I reduce my total interest?</summary>
+                <p>You can reduce total interest by: (1) choosing a shorter tenure, (2) making prepayments toward the principal, (3) negotiating a lower interest rate, or (4) making a larger down payment.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is this EMI calculator free?</summary>
+                <p>Yes — completely free with no limits, no watermarks, and no sign-up required. All calculations happen locally in your browser.</p>
+            </details>
+        </section>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer class="footer">
+            <p>© 2025 EMI Calculator. All calculations happen locally in your browser — no data is uploaded or tracked.</p>
+            <p>Supports 150+ world currencies · Built with vanilla HTML, CSS, and JavaScript.</p>
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            /* =====================================================
+               COMPLETE CURRENCY DATA (150+ currencies)
+               ===================================================== */
+            const CURRENCIES = [
+                { code: 'USD', name: 'US Dollar', symbol: '$' },
+                { code: 'EUR', name: 'Euro', symbol: '€' },
+                { code: 'GBP', name: 'British Pound', symbol: '£' },
+                { code: 'JPY', name: 'Japanese Yen', symbol: '¥' },
+                { code: 'CNY', name: 'Chinese Yuan', symbol: '¥' },
+                { code: 'INR', name: 'Indian Rupee', symbol: '₹' },
+                { code: 'BDT', name: 'Bangladeshi Taka', symbol: '৳' },
+                { code: 'PKR', name: 'Pakistani Rupee', symbol: '₨' },
+                { code: 'LKR', name: 'Sri Lankan Rupee', symbol: 'Rs' },
+                { code: 'NPR', name: 'Nepalese Rupee', symbol: 'Rs' },
+                { code: 'AUD', name: 'Australian Dollar', symbol: 'A$' },
+                { code: 'CAD', name: 'Canadian Dollar', symbol: 'C$' },
+                { code: 'CHF', name: 'Swiss Franc', symbol: 'Fr' },
+                { code: 'HKD', name: 'Hong Kong Dollar', symbol: 'HK$' },
+                { code: 'SGD', name: 'Singapore Dollar', symbol: 'S$' },
+                { code: 'NZD', name: 'New Zealand Dollar', symbol: 'NZ$' },
+                { code: 'KRW', name: 'South Korean Won', symbol: '₩' },
+                { code: 'THB', name: 'Thai Baht', symbol: '฿' },
+                { code: 'MYR', name: 'Malaysian Ringgit', symbol: 'RM' },
+                { code: 'IDR', name: 'Indonesian Rupiah', symbol: 'Rp' },
+                { code: 'PHP', name: 'Philippine Peso', symbol: '₱' },
+                { code: 'VND', name: 'Vietnamese Dong', symbol: '₫' },
+                { code: 'AED', name: 'UAE Dirham', symbol: 'د.إ' },
+                { code: 'SAR', name: 'Saudi Riyal', symbol: '﷼' },
+                { code: 'QAR', name: 'Qatari Riyal', symbol: '﷼' },
+                { code: 'KWD', name: 'Kuwaiti Dinar', symbol: 'د.ك' },
+                { code: 'BHD', name: 'Bahraini Dinar', symbol: '.د.ب' },
+                { code: 'OMR', name: 'Omani Rial', symbol: '﷼' },
+                { code: 'JOD', name: 'Jordanian Dinar', symbol: 'د.ا' },
+                { code: 'EGP', name: 'Egyptian Pound', symbol: '£' },
+                { code: 'TRY', name: 'Turkish Lira', symbol: '₺' },
+                { code: 'ILS', name: 'Israeli Shekel', symbol: '₪' },
+                { code: 'IRR', name: 'Iranian Rial', symbol: '﷼' },
+                { code: 'IQD', name: 'Iraqi Dinar', symbol: 'ع.د' },
+                { code: 'RUB', name: 'Russian Ruble', symbol: '₽' },
+                { code: 'UAH', name: 'Ukrainian Hryvnia', symbol: '₴' },
+                { code: 'PLN', name: 'Polish Zloty', symbol: 'zł' },
+                { code: 'CZK', name: 'Czech Koruna', symbol: 'Kč' },
+                { code: 'HUF', name: 'Hungarian Forint', symbol: 'Ft' },
+                { code: 'RON', name: 'Romanian Leu', symbol: 'lei' },
+                { code: 'BGN', name: 'Bulgarian Lev', symbol: 'лв' },
+                { code: 'HRK', name: 'Croatian Kuna', symbol: 'kn' },
+                { code: 'RSD', name: 'Serbian Dinar', symbol: 'дин' },
+                { code: 'SEK', name: 'Swedish Krona', symbol: 'kr' },
+                { code: 'NOK', name: 'Norwegian Krone', symbol: 'kr' },
+                { code: 'DKK', name: 'Danish Krone', symbol: 'kr' },
+                { code: 'ISK', name: 'Icelandic Krona', symbol: 'kr' },
+                { code: 'BRL', name: 'Brazilian Real', symbol: 'R$' },
+                { code: 'MXN', name: 'Mexican Peso', symbol: '$' },
+                { code: 'ARS', name: 'Argentine Peso', symbol: '$' },
+                { code: 'CLP', name: 'Chilean Peso', symbol: '$' },
+                { code: 'COP', name: 'Colombian Peso', symbol: '$' },
+                { code: 'PEN', name: 'Peruvian Sol', symbol: 'S/' },
+                { code: 'UYU', name: 'Uruguayan Peso', symbol: '$U' },
+                { code: 'VES', name: 'Venezuelan Bolívar', symbol: 'Bs' },
+                { code: 'ZAR', name: 'South African Rand', symbol: 'R' },
+                { code: 'NGN', name: 'Nigerian Naira', symbol: '₦' },
+                { code: 'KES', name: 'Kenyan Shilling', symbol: 'KSh' },
+                { code: 'GHS', name: 'Ghanaian Cedi', symbol: '₵' },
+                { code: 'MAD', name: 'Moroccan Dirham', symbol: 'د.م.' },
+                { code: 'TND', name: 'Tunisian Dinar', symbol: 'د.ت' },
+                { code: 'DZD', name: 'Algerian Dinar', symbol: 'د.ج' },
+                { code: 'ETB', name: 'Ethiopian Birr', symbol: 'Br' },
+                { code: 'UGX', name: 'Ugandan Shilling', symbol: 'USh' },
+                { code: 'TZS', name: 'Tanzanian Shilling', symbol: 'TSh' },
+                { code: 'XOF', name: 'West African CFA Franc', symbol: 'CFA' },
+                { code: 'XAF', name: 'Central African CFA Franc', symbol: 'FCFA' },
+                { code: 'KZT', name: 'Kazakhstani Tenge', symbol: '₸' },
+                { code: 'UZS', name: 'Uzbekistani Som', symbol: 'so\'m' },
+                { code: 'AZN', name: 'Azerbaijani Manat', symbol: '₼' },
+                { code: 'GEL', name: 'Georgian Lari', symbol: '₾' },
+                { code: 'AMD', name: 'Armenian Dram', symbol: '֏' },
+                { code: 'MNT', name: 'Mongolian Tugrik', symbol: '₮' },
+                { code: 'KGS', name: 'Kyrgyzstani Som', symbol: 'с' },
+                { code: 'TJS', name: 'Tajikistani Somoni', symbol: 'ЅМ' },
+                { code: 'TMT', name: 'Turkmenistani Manat', symbol: 'm' },
+                { code: 'AFN', name: 'Afghan Afghani', symbol: '؋' },
+                { code: 'MMK', name: 'Myanmar Kyat', symbol: 'K' },
+                { code: 'KHR', name: 'Cambodian Riel', symbol: '៛' },
+                { code: 'LAK', name: 'Lao Kip', symbol: '₭' },
+                { code: 'BND', name: 'Brunei Dollar', symbol: 'B$' },
+                { code: 'TWD', name: 'New Taiwan Dollar', symbol: 'NT$' },
+                { code: 'MOP', name: 'Macanese Pataca', symbol: 'MOP$' },
+                { code: 'FJD', name: 'Fijian Dollar', symbol: 'FJ$' },
+                { code: 'PGK', name: 'Papua New Guinean Kina', symbol: 'K' },
+                { code: 'WST', name: 'Samoan Tala', symbol: 'T' },
+                { code: 'TOP', name: 'Tongan Paʻanga', symbol: 'T$' },
+                { code: 'VUV', name: 'Vanuatu Vatu', symbol: 'VT' },
+                { code: 'SBD', name: 'Solomon Islands Dollar', symbol: 'SI$' },
+                { code: 'XPF', name: 'CFP Franc', symbol: '₣' },
+                { code: 'BMD', name: 'Bermudian Dollar', symbol: 'BD$' },
+                { code: 'BSD', name: 'Bahamian Dollar', symbol: 'B$' },
+                { code: 'BBD', name: 'Barbadian Dollar', symbol: 'Bds$' },
+                { code: 'BZD', name: 'Belize Dollar', symbol: 'BZ$' },
+                { code: 'JMD', name: 'Jamaican Dollar', symbol: 'J$' },
+                { code: 'TTD', name: 'Trinidad and Tobago Dollar', symbol: 'TT$' },
+                { code: 'XCD', name: 'East Caribbean Dollar', symbol: 'EC$' },
+                { code: 'GYD', name: 'Guyanese Dollar', symbol: 'G$' },
+                { code: 'SRD', name: 'Surinamese Dollar', symbol: 'Sr$' },
+                { code: 'HTG', name: 'Haitian Gourde', symbol: 'G' },
+                { code: 'DOP', name: 'Dominican Peso', symbol: 'RD$' },
+                { code: 'CUP', name: 'Cuban Peso', symbol: '₱' },
+                { code: 'GTQ', name: 'Guatemalan Quetzal', symbol: 'Q' },
+                { code: 'HNL', name: 'Honduran Lempira', symbol: 'L' },
+                { code: 'NIO', name: 'Nicaraguan Córdoba', symbol: 'C$' },
+                { code: 'CRC', name: 'Costa Rican Colón', symbol: '₡' },
+                { code: 'PAB', name: 'Panamanian Balboa', symbol: 'B/.' },
+                { code: 'BWP', name: 'Botswana Pula', symbol: 'P' },
+                { code: 'NAD', name: 'Namibian Dollar', symbol: 'N$' },
+                { code: 'MZN', name: 'Mozambican Metical', symbol: 'MT' },
+                { code: 'ZMW', name: 'Zambian Kwacha', symbol: 'ZK' },
+                { code: 'MWK', name: 'Malawian Kwacha', symbol: 'MK' },
+                { code: 'AOA', name: 'Angolan Kwanza', symbol: 'Kz' },
+                { code: 'CDF', name: 'Congolese Franc', symbol: 'FC' },
+                { code: 'RWF', name: 'Rwandan Franc', symbol: 'FRw' },
+                { code: 'BIF', name: 'Burundian Franc', symbol: 'FBu' },
+                { code: 'DJF', name: 'Djiboutian Franc', symbol: 'Fdj' },
+                { code: 'SOS', name: 'Somali Shilling', symbol: 'Sh' },
+                { code: 'SDG', name: 'Sudanese Pound', symbol: 'ج.س.' },
+                { code: 'SSP', name: 'South Sudanese Pound', symbol: '£' },
+                { code: 'LYD', name: 'Libyan Dinar', symbol: 'ل.د' },
+                { code: 'MRU', name: 'Mauritanian Ouguiya', symbol: 'UM' },
+                { code: 'GMD', name: 'Gambian Dalasi', symbol: 'D' },
+                { code: 'GNF', name: 'Guinean Franc', symbol: 'FG' },
+                { code: 'SLL', name: 'Sierra Leonean Leone', symbol: 'Le' },
+                { code: 'LRD', name: 'Liberian Dollar', symbol: 'L$' },
+                { code: 'CVE', name: 'Cape Verdean Escudo', symbol: '$' },
+                { code: 'STN', name: 'São Tomé Dobra', symbol: 'Db' },
+                { code: 'MGA', name: 'Malagasy Ariary', symbol: 'Ar' },
+                { code: 'MUR', name: 'Mauritian Rupee', symbol: '₨' },
+                { code: 'SCR', name: 'Seychellois Rupee', symbol: '₨' },
+                { code: 'KMF', name: 'Comorian Franc', symbol: 'CF' },
+                { code: 'FKP', name: 'Falkland Islands Pound', symbol: '£' },
+                { code: 'GIP', name: 'Gibraltar Pound', symbol: '£' },
+                { code: 'SHP', name: 'Saint Helena Pound', symbol: '£' },
+                { code: 'ANG', name: 'Netherlands Antillean Guilder', symbol: 'ƒ' },
+                { code: 'AWG', name: 'Aruban Florin', symbol: 'ƒ' },
+                { code: 'KYD', name: 'Cayman Islands Dollar', symbol: 'CI$' },
+                { code: 'SVC', name: 'Salvadoran Colón', symbol: '₡' }
+            ];
+
+            // Deduplicate
+            const UNIQUE_CURRENCIES = (function () {
+                const seen = {};
+                const result = [];
+                CURRENCIES.forEach(c => {
+                    if (!seen[c.code]) {
+                        seen[c.code] = true;
+                        result.push(c);
+                    }
+                });
+                return result.sort((a, b) => a.code.localeCompare(b.code));
+            })();
+
+            /* =====================================================
+               LOAN TYPE PRESETS
+               ===================================================== */
+            const LOAN_PRESETS = {
+                home:      { amount: 250000, rate: 6.5,  tenure: 20, label: 'Home Loan' },
+                car:       { amount: 35000,  rate: 8.5,  tenure: 5,  label: 'Car Loan' },
+                personal:  { amount: 15000,  rate: 12.0, tenure: 3,  label: 'Personal Loan' },
+                education: { amount: 50000,  rate: 7.5,  tenure: 10, label: 'Education Loan' },
+                business:  { amount: 100000, rate: 10.5, tenure: 7,  label: 'Business Loan' }
+            };
+
+            /* =====================================================
+               STATE
+               ===================================================== */
+            let currentCurrency = { code: 'USD', name: 'US Dollar', symbol: '$' };
+            let currentLoanType = 'home';
+            let scheduleVisible = false;
+            let lastSchedule = [];
+
+            /* =====================================================
+               DOM ELEMENTS
+               ===================================================== */
+            const currencySearchInput = document.getElementById('currencySearchInput');
+            const currencyDropdown = document.getElementById('currencyDropdown');
+            const currencySelectContainer = document.getElementById('currencySelectContainer');
+
+            const loanTabs = document.querySelectorAll('.loan-tab');
+            const loanAmountInput = document.getElementById('loanAmountInput');
+            const loanAmountSlider = document.getElementById('loanAmountSlider');
+            const loanAmountDisplay = document.getElementById('loanAmountDisplay');
+            const loanMinLabel = document.getElementById('loanMinLabel');
+            const loanMaxLabel = document.getElementById('loanMaxLabel');
+            const interestRateInput = document.getElementById('interestRateInput');
+            const interestRateSlider = document.getElementById('interestRateSlider');
+            const interestRateDisplay = document.getElementById('interestRateDisplay');
+            const tenureInput = document.getElementById('tenureInput');
+            const tenureSlider = document.getElementById('tenureSlider');
+            const tenureDisplay = document.getElementById('tenureDisplay');
+
+            const emiValue = document.getElementById('emiValue');
+            const emiSub = document.getElementById('emiSub');
+            const principalValue = document.getElementById('principalValue');
+            const interestValue = document.getElementById('interestValue');
+            const totalPaymentValue = document.getElementById('totalPaymentValue');
+
+            const donutInterest = document.getElementById('donutInterest');
+            const donutPrincipal = document.getElementById('donutPrincipal');
+            const donutTotal = document.getElementById('donutTotal');
+            const legendPrincipal = document.getElementById('legendPrincipal');
+            const legendInterest = document.getElementById('legendInterest');
+
+            const toggleScheduleBtn = document.getElementById('toggleScheduleBtn');
+            const toggleScheduleText = document.getElementById('toggleScheduleText');
+            const scheduleWrap = document.getElementById('scheduleWrap');
+            const scheduleBody = document.getElementById('scheduleBody');
+            const scheduleNote = document.getElementById('scheduleNote');
+
+            /* =====================================================
+               CURRENCY HELPERS
+               ===================================================== */
+            function getCurrencyByCode(code) {
+                return UNIQUE_CURRENCIES.find(c => c.code === code) || { code: code, name: code, symbol: code };
+            }
+
+            function updateCurrencyLabels() {
+                const sym = currentCurrency.symbol;
+                // Update range labels
+                loanMinLabel.textContent = sym + '1K';
+                loanMaxLabel.textContent = sym + '5M';
+                // Update the search input display
+                currencySearchInput.value = currentCurrency.code + ' — ' + currentCurrency.name;
+                // Refresh displays
+                updateDisplays();
+                updateResults();
+            }
+
+            /* =====================================================
+               FORMATTERS
+               ===================================================== */
+            function formatCurrency(amount) {
+                const sym = currentCurrency.symbol;
+                return sym + Number(amount).toLocaleString('en-US', {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                });
+            }
+
+            function formatCurrencyPrecise(amount) {
+                const sym = currentCurrency.symbol;
+                return sym + Number(amount).toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            }
+
+            function formatCompact(amount) {
+                const sym = currentCurrency.symbol;
+                const n = Number(amount);
+                if (n >= 1000000000) return sym + (n / 1000000000).toFixed(2) + 'B';
+                if (n >= 1000000) return sym + (n / 1000000).toFixed(2) + 'M';
+                if (n >= 1000) return sym + (n / 1000).toFixed(1) + 'K';
+                return sym + n.toFixed(0);
+            }
+
+            /* =====================================================
+               CURRENCY DROPDOWN
+               ===================================================== */
+            function buildCurrencyDropdown(searchValue) {
+                const q = (searchValue || '').toLowerCase().trim();
+                let filtered = UNIQUE_CURRENCIES;
+                if (q) {
+                    filtered = UNIQUE_CURRENCIES.filter(function (c) {
+                        return c.code.toLowerCase().includes(q) ||
+                               c.name.toLowerCase().includes(q) ||
+                               c.symbol.toLowerCase().includes(q);
+                    });
+                }
+
+                currencyDropdown.innerHTML = '';
+
+                if (filtered.length === 0) {
+                    const empty = document.createElement('div');
+                    empty.className = 'currency-empty';
+                    empty.textContent = 'No currencies match "' + searchValue + '"';
+                    currencyDropdown.appendChild(empty);
+                    return;
+                }
+
+                filtered.slice(0, 200).forEach(function (c) {
+                    const option = document.createElement('div');
+                    option.className = 'currency-option';
+                    option.setAttribute('role', 'option');
+                    if (c.code === currentCurrency.code) option.classList.add('selected');
+                    option.innerHTML =
+                        '<span class="currency-option-code">' + c.code + '</span>' +
+                        '<span class="currency-option-name">' + c.name + '</span>' +
+                        '<span class="currency-option-symbol">' + c.symbol + '</span>';
+                    option.addEventListener('click', function () {
+                        selectCurrency(c.code);
+                    });
+                    currencyDropdown.appendChild(option);
+                });
+            }
+
+            function openCurrencyDropdown() {
+                currencySelectContainer.classList.add('open');
+                currencySearchInput.setAttribute('aria-expanded', 'true');
+                buildCurrencyDropdown('');
+            }
+
+            function closeCurrencyDropdown() {
+                currencySelectContainer.classList.remove('open');
+                currencySearchInput.setAttribute('aria-expanded', 'false');
+                currencySearchInput.value = currentCurrency.code + ' — ' + currentCurrency.name;
+            }
+
+            function selectCurrency(code) {
+                currentCurrency = getCurrencyByCode(code);
+                closeCurrencyDropdown();
+                updateCurrencyLabels();
+            }
+
+            /* =====================================================
+               EMI CALCULATION
+               ===================================================== */
+            function calculateEmi(principal, annualRate, years) {
+                const monthlyRate = annualRate / 12 / 100;
+                const months = years * 12;
+                if (monthlyRate === 0) {
+                    return { emi: principal / months, totalPayment: principal, totalInterest: 0, months: months };
+                }
+                const factor = Math.pow(1 + monthlyRate, months);
+                const emi = (principal * monthlyRate * factor) / (factor - 1);
+                const totalPayment = emi * months;
+                const totalInterest = totalPayment - principal;
+                return { emi: emi, totalPayment: totalPayment, totalInterest: totalInterest, months: months };
+            }
+
+            /* =====================================================
+               AMORTIZATION SCHEDULE
+               ===================================================== */
+            function buildAmortizationSchedule(principal, annualRate, years) {
+                const monthlyRate = annualRate / 12 / 100;
+                const months = years * 12;
+                const result = calculateEmi(principal, annualRate, years);
+                const emi = result.emi;
+                const schedule = [];
+                let balance = principal;
+                for (let m = 1; m <= months; m++) {
+                    const interestPortion = balance * monthlyRate;
+                    const principalPortion = emi - interestPortion;
+                    balance -= principalPortion;
+                    if (balance < 0) balance = 0;
+                    schedule.push({
+                        month: m,
+                        principal: principalPortion,
+                        interest: interestPortion,
+                        totalPaid: emi,
+                        balance: balance
+                    });
+                }
+                return schedule;
+            }
+
+            /* =====================================================
+               UPDATE DISPLAYS
+               ===================================================== */
+            function updateDisplays() {
+                loanAmountDisplay.textContent = formatCompact(parseFloat(loanAmountInput.value) || 0);
+                interestRateDisplay.textContent = (parseFloat(interestRateInput.value) || 0).toFixed(1) + '%';
+                tenureDisplay.textContent = (parseInt(tenureInput.value, 10) || 1) + ' Year' + ((parseInt(tenureInput.value, 10) || 1) !== 1 ? 's' : '');
+            }
+
+            /* =====================================================
+               UPDATE RESULTS
+               ===================================================== */
+            function updateResults() {
+                const principal = parseFloat(loanAmountInput.value) || 0;
+                const annualRate = parseFloat(interestRateInput.value) || 0;
+                const years = parseInt(tenureInput.value, 10) || 1;
+
+                if (principal <= 0 || annualRate < 0 || years <= 0) {
+                    emiValue.textContent = formatCurrencyPrecise(0);
+                    return;
+                }
+
+                const result = calculateEmi(principal, annualRate, years);
+
+                emiValue.textContent = formatCurrencyPrecise(result.emi);
+                emiSub.textContent = 'for ' + years + ' year' + (years !== 1 ? 's' : '') +
+                                     ' at ' + annualRate.toFixed(1) + '% annual interest';
+
+                principalValue.textContent = formatCurrency(principal);
+                interestValue.textContent = formatCurrency(result.totalInterest);
+                totalPaymentValue.textContent = formatCurrency(result.totalPayment);
+
+                const totalForChart = principal + result.totalInterest;
+                const principalPercent = totalForChart > 0 ? (principal / totalForChart) * 100 : 0;
+                const interestPercent = totalForChart > 0 ? (result.totalInterest / totalForChart) * 100 : 0;
+
+                const circumference = 238.76;
+                const principalArc = (principalPercent / 100) * circumference;
+                const interestArc = (interestPercent / 100) * circumference;
+
+                donutPrincipal.setAttribute('stroke-dasharray', principalArc + ' ' + circumference);
+                donutPrincipal.setAttribute('stroke-dashoffset', '0');
+                donutInterest.setAttribute('stroke-dasharray', interestArc + ' ' + circumference);
+                donutInterest.setAttribute('stroke-dashoffset', -principalArc);
+
+                donutTotal.textContent = formatCompact(totalForChart);
+                legendPrincipal.textContent = formatCurrency(principal) + ' (' + principalPercent.toFixed(1) + '%)';
+                legendInterest.textContent = formatCurrency(result.totalInterest) + ' (' + interestPercent.toFixed(1) + '%)';
+
+                lastSchedule = buildAmortizationSchedule(principal, annualRate, years);
+                if (scheduleVisible) renderSchedule();
+            }
+
+            /* =====================================================
+               RENDER SCHEDULE
+               ===================================================== */
+            function renderSchedule() {
+                if (lastSchedule.length === 0) return;
+                scheduleBody.innerHTML = '';
+                const fragment = document.createDocumentFragment();
+                lastSchedule.forEach(function (row) {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML =
+                        '<td>' + row.month + '</td>' +
+                        '<td class="principal-cell">' + formatCurrencyPrecise(row.principal) + '</td>' +
+                        '<td class="interest-cell">' + formatCurrencyPrecise(row.interest) + '</td>' +
+                        '<td>' + formatCurrencyPrecise(row.totalPaid) + '</td>' +
+                        '<td class="balance-cell">' + formatCurrencyPrecise(row.balance) + '</td>';
+                    fragment.appendChild(tr);
+                });
+                scheduleBody.appendChild(fragment);
+            }
+
+            /* =====================================================
+               TOGGLE SCHEDULE
+               ===================================================== */
+            function toggleSchedule() {
+                scheduleVisible = !scheduleVisible;
+                if (scheduleVisible) {
+                    scheduleWrap.classList.remove('hidden');
+                    toggleScheduleText.textContent = 'Hide Schedule';
+                    toggleScheduleBtn.querySelector('svg').style.transform = 'rotate(180deg)';
+                    scheduleNote.textContent = 'Showing ' + lastSchedule.length + ' monthly payments. Scroll within the table to view all.';
+                    renderSchedule();
+                } else {
+                    scheduleWrap.classList.add('hidden');
+                    toggleScheduleText.textContent = 'Show Schedule';
+                    toggleScheduleBtn.querySelector('svg').style.transform = 'rotate(0deg)';
+                    scheduleNote.textContent = 'Click "Show Schedule" to view the full month-by-month breakdown.';
+                }
+            }
+
+            /* =====================================================
+               SYNC INPUTS
+               ===================================================== */
+            function syncAmount(value) {
+                let v = parseFloat(value) || 0;
+                if (v < 1000) v = 1000;
+                if (v > 5000000) v = 5000000;
+                loanAmountInput.value = v;
+                loanAmountSlider.value = v;
+                updateDisplays();
+                updateResults();
+            }
+
+            function syncRate(value) {
+                let v = parseFloat(value) || 0;
+                if (v < 0.1) v = 0.1;
+                if (v > 30) v = 30;
+                interestRateInput.value = v;
+                interestRateSlider.value = v;
+                updateDisplays();
+                updateResults();
+            }
+
+            function syncTenure(value) {
+                let v = parseInt(value, 10) || 1;
+                if (v < 1) v = 1;
+                if (v > 40) v = 40;
+                tenureInput.value = v;
+                tenureSlider.value = v;
+                updateDisplays();
+                updateResults();
+            }
+
+            /* =====================================================
+               LOAN TYPE
+               ===================================================== */
+            function setLoanType(type) {
+                currentLoanType = type;
+                loanTabs.forEach(function (tab) {
+                    if (tab.dataset.loan === type) {
+                        tab.classList.add('active');
+                        tab.setAttribute('aria-selected', 'true');
+                    } else {
+                        tab.classList.remove('active');
+                        tab.setAttribute('aria-selected', 'false');
+                    }
+                });
+                const preset = LOAN_PRESETS[type];
+                if (preset) {
+                    loanAmountInput.value = preset.amount;
+                    loanAmountSlider.value = preset.amount;
+                    interestRateInput.value = preset.rate;
+                    interestRateSlider.value = preset.rate;
+                    tenureInput.value = preset.tenure;
+                    tenureSlider.value = preset.tenure;
+                }
+                updateDisplays();
+                updateResults();
+            }
+
+            /* =====================================================
+               EVENT LISTENERS
+               ===================================================== */
+            // Currency search
+            currencySearchInput.addEventListener('focus', function () {
+                openCurrencyDropdown();
+            });
+            currencySearchInput.addEventListener('input', function () {
+                buildCurrencyDropdown(this.value);
+                if (!currencySelectContainer.classList.contains('open')) {
+                    currencySelectContainer.classList.add('open');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.currency-search-container')) {
+                    closeCurrencyDropdown();
+                }
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeCurrencyDropdown();
+            });
+
+            // Loan tabs
+            loanTabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    setLoanType(this.dataset.loan);
+                });
+            });
+
+            // Amount
+            loanAmountInput.addEventListener('input', function () { syncAmount(this.value); });
+            loanAmountSlider.addEventListener('input', function () { syncAmount(this.value); });
+
+            // Rate
+            interestRateInput.addEventListener('input', function () { syncRate(this.value); });
+            interestRateSlider.addEventListener('input', function () { syncRate(this.value); });
+
+            // Tenure
+            tenureInput.addEventListener('input', function () { syncTenure(this.value); });
+            tenureSlider.addEventListener('input', function () { syncTenure(this.value); });
+
+            // Toggle schedule
+            toggleScheduleBtn.addEventListener('click', toggleSchedule);
+
+            /* =====================================================
+               INITIALIZATION
+               ===================================================== */
+            // Set default currency display
+            currencySearchInput.value = currentCurrency.code + ' — ' + currentCurrency.name;
+            setLoanType('home');
+
+            /* =====================================================
+               CLEANUP
+               ===================================================== */
+            window.addEventListener('beforeunload', function () {
+                lastSchedule = [];
+            });
+        })();
+    </script>
+</body>
+</html>
