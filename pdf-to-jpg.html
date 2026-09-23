@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>PDF to JPG Converter · Free Online Tool | Convert PDF Pages to Images</title>
+    <meta name="description" content="Free responsive PDF to JPG converter. Convert PDF pages into high-quality JPG images instantly in your browser. No uploads, SEO optimized with AdSense ad spaces.">
+    <meta name="keywords" content="pdf to jpg, pdf to jpeg, convert pdf to image, pdf to jpg converter, free pdf converter, pdf page to image, online pdf tool">
+    <meta name="author" content="PDF2JPG">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.example.com/pdf-to-jpg">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="PDF to JPG Converter · Free Online Tool">
+    <meta property="og:description" content="Convert PDF pages to high-quality JPG images instantly in your browser. Fast, private, and free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com/pdf-to-jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- Performance -->
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+    <link rel="preconnect" href="//cdnjs.cloudflare.com">
+    
+    <style>
+        /* =====================================================
+           RESET & BASE
+           ===================================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            color: #0f172a;
+            line-height: 1.6;
+            padding: 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* =====================================================
+           ADSENSE PLACEHOLDERS
+           ===================================================== */
+        .ad-slot {
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 14px;
+            padding: 0.75rem;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            width: 100%;
+            margin: 1.25rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .ad-slot::before {
+            content: 'AD';
+            position: absolute;
+            top: 6px;
+            left: 8px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: 0.05em;
+        }
+        .ad-slot:hover {
+            border-color: #94a3b8;
+            background: #eef2f6;
+        }
+        .ad-slot ins {
+            display: block;
+            width: 100%;
+        }
+        .ad-slot--top {
+            margin-top: 0.25rem;
+            min-height: 90px;
+        }
+        
+        /* =====================================================
+           HEADER
+           ===================================================== */
+        .header {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
+        }
+        .header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #0f172a 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            color: #475569;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            max-width: 720px;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .header-badge {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 0.3rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+        
+        /* =====================================================
+           TOOL CARD
+           ===================================================== */
+        .tool-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* =====================================================
+           UPLOAD AREA
+           ===================================================== */
+        .upload-area {
+            border: 3px dashed #cbd5e1;
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            background: #f8fafc;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            margin-bottom: 1.8rem;
+        }
+        .upload-area:hover, .upload-area.dragover {
+            border-color: #ef4444;
+            background: #fef2f2;
+            transform: translateY(-2px);
+        }
+        .upload-area input[type="file"] {
+            display: none;
+        }
+        .upload-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+        }
+        .upload-label svg {
+            width: 56px;
+            height: 56px;
+            stroke: #ef4444;
+            stroke-width: 1.6;
+            fill: none;
+            transition: transform 0.25s ease;
+        }
+        .upload-area:hover .upload-label svg {
+            transform: translateY(-4px);
+        }
+        .upload-label span {
+            font-size: 1.2rem;
+        }
+        .upload-hint {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 0.4rem;
+            font-weight: 400;
+        }
+        
+        /* =====================================================
+           INFO STRIP
+           ===================================================== */
+        .info-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.8rem;
+            justify-content: center;
+        }
+        .info-chip {
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+        }
+        .info-chip svg {
+            width: 16px;
+            height: 16px;
+            stroke: #ef4444;
+            fill: none;
+            stroke-width: 2.2;
+        }
+        
+        /* =====================================================
+           CONTROLS
+           ===================================================== */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .control-group > label {
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            color: #1e293b;
+        }
+        .control-group > label span:last-child {
+            background: #fee2e2;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #991b1b;
+        }
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 10px;
+            background: #e2e8f0;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #ef4444;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.35);
+            border: 3px solid #ffffff;
+            transition: transform 0.15s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #ef4444;
+            cursor: pointer;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.35);
+        }
+        
+        .preset-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .preset-btn {
+            background: #f1f5f9;
+            border: 2px solid #e2e8f0;
+            padding: 0.55rem 1.2rem;
+            border-radius: 40px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #1e293b;
+        }
+        .preset-btn:hover {
+            background: #fef2f2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+        .preset-btn.active {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border-color: #ef4444;
+            color: #ffffff;
+            box-shadow: 0 4px 12px -2px rgba(239, 68, 68, 0.4);
+        }
+        
+        /* =====================================================
+           ACTION BUTTONS
+           ===================================================== */
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: #ffffff;
+            border: none;
+            padding: 0.95rem 2rem;
+            font-family: inherit;
+            font-weight: 700;
+            border-radius: 60px;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex: 1 1 auto;
+            min-width: 170px;
+            box-shadow: 0 8px 20px -6px rgba(239, 68, 68, 0.45);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(239, 68, 68, 0.5);
+        }
+        .btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+        .btn-secondary {
+            background: #ffffff;
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+            box-shadow: none;
+        }
+        .btn-secondary:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+            box-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.1);
+        }
+        .btn:disabled {
+            opacity: 0.45;
+            pointer-events: none;
+            box-shadow: none;
+        }
+        
+        /* =====================================================
+           PDF INFO BAR
+           ===================================================== */
+        .pdf-info-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 1.5rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .pdf-info-bar.hidden {
+            display: none;
+        }
+        .pdf-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #334155;
+            font-weight: 600;
+        }
+        .pdf-info-item svg {
+            width: 18px;
+            height: 18px;
+            stroke: #ef4444;
+            fill: none;
+            stroke-width: 2.2;
+        }
+        .pdf-info-item strong {
+            color: #0f172a;
+        }
+        
+        /* =====================================================
+           RESULTS GRID
+           ===================================================== */
+        .results-section {
+            margin-top: 2rem;
+        }
+        .results-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .results-header h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .results-count {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 0.2rem 0.75rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .download-all-btn {
+            background: #ffffff;
+            color: #ef4444;
+            border: 2px solid #ef4444;
+            padding: 0.55rem 1.2rem;
+            border-radius: 40px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .download-all-btn:hover {
+            background: #ef4444;
+            color: #ffffff;
+        }
+        .download-all-btn:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+        .result-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .result-card:hover {
+            border-color: #ef4444;
+            box-shadow: 0 10px 24px -10px rgba(239, 68, 68, 0.25);
+            transform: translateY(-3px);
+        }
+        .result-card-image {
+            background: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 160px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            padding: 0.4rem;
+            background-image:
+                linear-gradient(45deg, #f1f5f9 25%, transparent 25%),
+                linear-gradient(-45deg, #f1f5f9 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #f1f5f9 75%),
+                linear-gradient(-45deg, transparent 75%, #f1f5f9 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+        }
+        .result-card-image img {
+            max-width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+            display: block;
+            border-radius: 4px;
+        }
+        .result-card-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .result-page-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #475569;
+            background: #ffffff;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+        }
+        .result-download-btn {
+            background: #ef4444;
+            color: #ffffff;
+            border: none;
+            padding: 0.4rem 0.9rem;
+            border-radius: 30px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .result-download-btn:hover {
+            background: #dc2626;
+        }
+        
+        /* =====================================================
+           MESSAGES
+           ===================================================== */
+        .hidden {
+            display: none !important;
+        }
+        .error-msg, .success-msg, .loading-msg {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .error-msg {
+            color: #991b1b;
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+        }
+        .success-msg {
+            color: #065f46;
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+        }
+        .loading-msg {
+            color: #1e40af;
+            background: #dbeafe;
+            border: 1px solid #bfdbfe;
+        }
+        
+        /* =====================================================
+           PROGRESS BAR
+           ===================================================== */
+        .progress-container {
+            background: #e2e8f0;
+            border-radius: 40px;
+            height: 10px;
+            overflow: hidden;
+            margin-top: 0.75rem;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ef4444, #f59e0b);
+            border-radius: 40px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        
+        /* =====================================================
+           SPINNER
+           ===================================================== */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2.5px solid rgba(30, 64, 175, 0.25);
+            border-top-color: #1e40af;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* =====================================================
+           CONTENT SECTIONS (SEO)
+           ===================================================== */
+        .content-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+        }
+        .content-section h2 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
+        }
+        .step {
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+        }
+        .step-num {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: #ffffff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px -4px rgba(239, 68, 68, 0.5);
+        }
+        .step p {
+            font-size: 0.93rem;
+            color: #475569;
+        }
+        .step strong {
+            color: #0f172a;
+            display: block;
+            margin-bottom: 0.2rem;
+            font-size: 0.98rem;
+        }
+        
+        /* =====================================================
+           FAQ
+           ===================================================== */
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0.95rem 0;
+        }
+        .faq-item:first-of-type {
+            padding-top: 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .faq-item summary {
+            font-weight: 700;
+            cursor: pointer;
+            color: #1e293b;
+            font-size: 0.98rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.15rem 0;
+            transition: color 0.2s;
+        }
+        .faq-item summary:hover {
+            color: #dc2626;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: #ef4444;
+            font-weight: 700;
+            transition: transform 0.25s ease;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .faq-item[open] summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+        .faq-item p {
+            margin-top: 0.6rem;
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            padding: 2rem 1rem 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .footer p + p {
+            margin-top: 0.3rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+        
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+        @media (max-width: 768px) {
+            body { padding: 0.75rem; }
+            .header { padding: 1.5rem 1.25rem; }
+            .tool-card { padding: 1.5rem 1.15rem; }
+            .btn { padding: 0.85rem 1.4rem; font-size: 0.92rem; }
+            .upload-area { padding: 1.75rem 1.1rem; }
+            .content-section { padding: 1.5rem 1.25rem; }
+            .results-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+        }
+        @media (max-width: 520px) {
+            .action-buttons { flex-direction: column; }
+            .btn { width: 100%; }
+            .preset-btn { padding: 0.5rem 0.9rem; font-size: 0.82rem; }
+            .header-badge { font-size: 0.72rem; padding: 0.25rem 0.7rem; }
+            .results-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .result-card { padding: 0.75rem; }
+            .result-card-image { min-height: 120px; }
+        }
+        
+        /* =====================================================
+           ACCESSIBILITY
+           ===================================================== */
+        :focus-visible {
+            outline: 3px solid #ef4444;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        .btn:focus-visible, .preset-btn:focus-visible, .result-download-btn:focus-visible {
+            outline: 3px solid #0f172a;
+            outline-offset: 2px;
+        }
+        
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ==================== HEADER ==================== -->
+        <header class="header">
+            <h1>PDF to JPG Converter</h1>
+            <p>Convert every page of your PDF into a high-quality JPG image — instantly in your browser. Fast, private, and completely free.</p>
+            <div class="badge-row">
+                <span class="header-badge">✓ No Uploads</span>
+                <span class="header-badge">✓ 100% Private</span>
+                <span class="header-badge">✓ Free Forever</span>
+                <span class="header-badge">✓ All Pages</span>
+            </div>
+        </header>
+
+        <!-- ==================== ADSENSE TOP ==================== -->
+        <div class="ad-slot ad-slot--top" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (Top Leaderboard)</span>
+        </div>
+
+        <!-- ==================== MAIN TOOL ==================== -->
+        <main class="tool-card">
+            <!-- Upload -->
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="application/pdf,.pdf" aria-label="Upload PDF file">
+                <label for="fileInput" class="upload-label">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="12" y1="18" x2="12" y2="12"/>
+                        <polyline points="9 15 12 12 15 15"/>
+                    </svg>
+                    <span>Click or drag & drop a PDF file</span>
+                    <div class="upload-hint">Only PDF files · Max 50MB</div>
+                </label>
+            </div>
+            <div id="errorMsg" class="error-msg hidden" role="alert"></div>
+            <div id="successMsg" class="success-msg hidden" role="status">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Conversion complete!</span>
+            </div>
+            <div id="loadingMsg" class="loading-msg hidden" role="status">
+                <span class="spinner"></span>
+                <span id="loadingText">Loading PDF...</span>
+            </div>
+            <div id="progressContainer" class="progress-container hidden">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+
+            <!-- PDF Info Bar -->
+            <div class="pdf-info-bar hidden" id="pdfInfoBar">
+                <div class="pdf-info-item">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <span>File: <strong id="pdfFileName">—</strong></span>
+                </div>
+                <div class="pdf-info-item">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 4v16"/></svg>
+                    <span>Pages: <strong id="pdfPageCount">—</strong></span>
+                </div>
+                <div class="pdf-info-item">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Size: <strong id="pdfFileSize">—</strong></span>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls" id="controlsSection">
+                <div class="control-group">
+                    <label>
+                        <span>🎨 JPG Quality Level</span>
+                        <span id="qualityValue">92%</span>
+                    </label>
+                    <input type="range" id="qualitySlider" min="10" max="100" value="92" step="1" aria-label="JPG quality level">
+                </div>
+                <div class="control-group">
+                    <label>⚡ Quick Quality Presets</label>
+                    <div class="preset-buttons" id="presetContainer">
+                        <button class="preset-btn" data-quality="50" type="button">Low (50%)</button>
+                        <button class="preset-btn" data-quality="70" type="button">Medium (70%)</button>
+                        <button class="preset-btn active" data-quality="92" type="button">High (92%)</button>
+                        <button class="preset-btn" data-quality="100" type="button">Maximum (100%)</button>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>
+                        <span>🔍 Render Scale</span>
+                        <span id="scaleValue">2.0x</span>
+                    </label>
+                    <input type="range" id="scaleSlider" min="1" max="4" value="2" step="0.5" aria-label="Render scale">
+                    <div style="font-size:0.82rem; color:#64748b; margin-top:0.25rem;">Higher scale = sharper images but larger files.</div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="action-buttons">
+                <button class="btn" id="convertBtn" disabled type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Convert to JPG
+                </button>
+                <button class="btn btn-secondary" id="resetBtn" disabled type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    Reset
+                </button>
+            </div>
+
+            <!-- Results -->
+            <div class="results-section hidden" id="resultsSection">
+                <div class="results-header">
+                    <h3>🖼️ Converted Pages <span class="results-count" id="resultsCount">0</span></h3>
+                    <button class="download-all-btn" id="downloadAllBtn" type="button">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download All
+                    </button>
+                </div>
+                <div class="results-grid" id="resultsGrid"></div>
+            </div>
+        </main>
+
+        <!-- ==================== ADSENSE MIDDLE ==================== -->
+        <div class="ad-slot" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="0987654321"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (In-Content)</span>
+        </div>
+
+        <!-- ==================== HOW TO ==================== -->
+        <section class="content-section">
+            <h2>How to Convert PDF to JPG</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <strong>Upload your PDF file</strong>
+                        <p>Click the upload area or drag & drop a PDF (max 50MB). Everything stays in your browser.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <strong>Adjust quality & scale</strong>
+                        <p>Choose your JPG quality and render scale. Higher scale means sharper images but larger files.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <strong>Convert & download</strong>
+                        <p>Click "Convert to JPG". Each PDF page becomes a separate JPG. Download individually or all at once.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FAQ ==================== -->
+        <section class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            <details class="faq-item" open>
+                <summary>How does the PDF to JPG converter work?</summary>
+                <p>The tool uses PDF.js (a Mozilla library) to render each page of your PDF onto an HTML canvas. The canvas is then converted into a JPG image using the browser's built-in image encoder. Everything happens locally on your device.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is my PDF file safe?</summary>
+                <p>Absolutely. Your PDF never leaves your device. All rendering and conversion happens in your browser using JavaScript. No file is uploaded, transmitted, or stored on any server.</p>
+            </details>
+            <details class="faq-item">
+                <summary>What quality and scale should I choose?</summary>
+                <p>For most uses, quality 92% and scale 2.0x produce excellent results. Increase the scale to 3x or 4x for very high-resolution images, but note that file sizes will grow significantly.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can I convert multi-page PDFs?</summary>
+                <p>Yes. Every page of your PDF is converted into a separate JPG image. You can download them individually or use the "Download All" button to save every page at once.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is there a file size limit?</summary>
+                <p>The tool supports PDF files up to 50MB. Very large PDFs or those with hundreds of pages may take longer to process depending on your device's performance.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Why are my converted images large?</summary>
+                <p>JPG file size depends on image dimensions, quality, and content complexity. Try lowering the quality slider or reducing the render scale to produce smaller JPG files.</p>
+            </details>
+        </section>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer class="footer">
+            <p>© 2025 PDF to JPG Converter. All processing happens locally in your browser — no uploads, no tracking.</p>
+            <p>Powered by PDF.js · Built with vanilla HTML, CSS, and JavaScript.</p>
+        </footer>
+    </div>
+
+    <!-- PDF.js library from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script>
+        (function () {
+            'use strict';
+
+            /* =====================================================
+               UTILITY HELPERS
+               ===================================================== */
+            const $ = (sel) => document.querySelector(sel);
+
+            function formatBytes(bytes) {
+                if (!bytes || bytes === 0) return '0 B';
+                const k = 1024;
+                const sizes = ['B', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            function sanitizeFileName(name) {
+                return (name || 'page').replace(/[^a-z0-9_\-\.]/gi, '_').substring(0, 60);
+            }
+
+            /* =====================================================
+               PDF.js WORKER SETUP
+               ===================================================== */
+            if (typeof pdfjsLib !== 'undefined') {
+                pdfjsLib.GlobalWorkerOptions.workerSrc =
+                    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            } else {
+                console.warn('PDF.js failed to load. Please check your internet connection.');
+            }
+
+            /* =====================================================
+               DOM ELEMENTS
+               ===================================================== */
+            const fileInput = $('#fileInput');
+            const uploadArea = $('#uploadArea');
+            const qualitySlider = $('#qualitySlider');
+            const qualityValue = $('#qualityValue');
+            const presetContainer = $('#presetContainer');
+            const presetBtns = presetContainer.querySelectorAll('.preset-btn');
+            const scaleSlider = $('#scaleSlider');
+            const scaleValue = $('#scaleValue');
+            const convertBtn = $('#convertBtn');
+            const resetBtn = $('#resetBtn');
+            const downloadAllBtn = $('#downloadAllBtn');
+            const errorMsg = $('#errorMsg');
+            const successMsg = $('#successMsg');
+            const loadingMsg = $('#loadingMsg');
+            const loadingText = $('#loadingText');
+            const progressContainer = $('#progressContainer');
+            const progressBar = $('#progressBar');
+            const pdfInfoBar = $('#pdfInfoBar');
+            const pdfFileName = $('#pdfFileName');
+            const pdfPageCount = $('#pdfPageCount');
+            const pdfFileSize = $('#pdfFileSize');
+            const resultsSection = $('#resultsSection');
+            const resultsGrid = $('#resultsGrid');
+            const resultsCount = $('#resultsCount');
+
+            /* =====================================================
+               STATE
+               ===================================================== */
+            let currentPdf = null;
+            let currentPdfName = '';
+            let currentPdfSize = 0;
+            let totalPages = 0;
+            let convertedImages = []; // { pageNum, blob, url, fileName }
+
+            /* =====================================================
+               MESSAGE HELPERS
+               ===================================================== */
+            function showError(message) {
+                errorMsg.textContent = message;
+                errorMsg.classList.remove('hidden');
+                successMsg.classList.add('hidden');
+                loadingMsg.classList.add('hidden');
+                clearTimeout(errorMsg._timer);
+                errorMsg._timer = setTimeout(() => errorMsg.classList.add('hidden'), 7000);
+            }
+
+            function showSuccess(message) {
+                if (message) {
+                    successMsg.querySelector('span').textContent = message;
+                }
+                successMsg.classList.remove('hidden');
+                errorMsg.classList.add('hidden');
+                clearTimeout(successMsg._timer);
+                successMsg._timer = setTimeout(() => successMsg.classList.add('hidden'), 5000);
+            }
+
+            function showLoading(text) {
+                loadingText.textContent = text || 'Processing...';
+                loadingMsg.classList.remove('hidden');
+                errorMsg.classList.add('hidden');
+                successMsg.classList.add('hidden');
+            }
+
+            function hideLoading() {
+                loadingMsg.classList.add('hidden');
+            }
+
+            function clearMessages() {
+                errorMsg.classList.add('hidden');
+                successMsg.classList.add('hidden');
+                loadingMsg.classList.add('hidden');
+            }
+
+            function updateProgress(percent) {
+                progressContainer.classList.remove('hidden');
+                progressBar.style.width = Math.min(100, Math.max(0, percent)) + '%';
+                if (percent >= 100) {
+                    setTimeout(() => progressContainer.classList.add('hidden'), 700);
+                }
+            }
+
+            /* =====================================================
+               QUALITY CONTROLS
+               ===================================================== */
+            function updatePresetActiveState(quality) {
+                let matched = false;
+                presetBtns.forEach(btn => {
+                    const btnQuality = parseInt(btn.dataset.quality, 10);
+                    if (btnQuality === quality) {
+                        btn.classList.add('active');
+                        matched = true;
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                if (!matched) {
+                    presetBtns.forEach(btn => btn.classList.remove('active'));
+                }
+            }
+
+            function updateQualityDisplay(value) {
+                qualityValue.textContent = value + '%';
+                updatePresetActiveState(value);
+            }
+
+            qualitySlider.addEventListener('input', function () {
+                updateQualityDisplay(parseInt(this.value, 10));
+            });
+
+            presetBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const quality = parseInt(this.dataset.quality, 10);
+                    qualitySlider.value = quality;
+                    updateQualityDisplay(quality);
+                });
+            });
+
+            /* =====================================================
+               SCALE CONTROL
+               ===================================================== */
+            scaleSlider.addEventListener('input', function () {
+                scaleValue.textContent = parseFloat(this.value).toFixed(1) + 'x';
+            });
+
+            /* =====================================================
+               DRAG & DROP + FILE INPUT
+               ===================================================== */
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+            uploadArea.addEventListener('dragenter', () => uploadArea.classList.add('dragover'));
+            uploadArea.addEventListener('dragover', () => uploadArea.classList.add('dragover'));
+            uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+            uploadArea.addEventListener('drop', e => {
+                uploadArea.classList.remove('dragover');
+                if (e.dataTransfer.files.length) {
+                    handleFile(e.dataTransfer.files[0]);
+                }
+            });
+
+            fileInput.addEventListener('change', e => {
+                if (e.target.files.length) {
+                    handleFile(e.target.files[0]);
+                }
+            });
+
+            uploadArea.addEventListener('click', e => {
+                if (e.target.tagName === 'INPUT') return;
+                if (e.target.closest('label')) return;
+                fileInput.click();
+            });
+
+            /* =====================================================
+               FILE HANDLING
+               ===================================================== */
+            function handleFile(file) {
+                clearMessages();
+                resetResults();
+
+                // Validate type
+                const isPdf = file.type === 'application/pdf' ||
+                              file.name.toLowerCase().endsWith('.pdf');
+                if (!isPdf) {
+                    showError('Please select a PDF file. Other formats are not supported.');
+                    return;
+                }
+                if (file.size > 50 * 1024 * 1024) {
+                    showError('File too large. Maximum size is 50MB.');
+                    return;
+                }
+
+                currentPdfName = file.name;
+                currentPdfSize = file.size;
+
+                pdfFileName.textContent = file.name.length > 30
+                    ? file.name.substring(0, 27) + '...'
+                    : file.name;
+                pdfFileSize.textContent = formatBytes(file.size);
+                pdfInfoBar.classList.remove('hidden');
+
+                showLoading('Loading PDF...');
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const typedArray = new Uint8Array(e.target.result);
+                    loadPdf(typedArray);
+                };
+                reader.onerror = function () {
+                    hideLoading();
+                    showError('Error reading file. Please try again.');
+                };
+                reader.readAsArrayBuffer(file);
+            }
+
+            function loadPdf(data) {
+                if (typeof pdfjsLib === 'undefined') {
+                    hideLoading();
+                    showError('PDF.js library failed to load. Please refresh the page and try again.');
+                    return;
+                }
+
+                pdfjsLib.getDocument({ data: data })
+                    .promise
+                    .then(function (pdf) {
+                        currentPdf = pdf;
+                        totalPages = pdf.numPages;
+                        pdfPageCount.textContent = totalPages;
+                        hideLoading();
+                        convertBtn.disabled = false;
+                        resetBtn.disabled = false;
+                        showSuccess('PDF loaded successfully! ' + totalPages + ' page(s) found. Click "Convert to JPG".');
+                    })
+                    .catch(function (err) {
+                        hideLoading();
+                        console.error('PDF load error:', err);
+                        showError('Failed to load PDF. The file may be corrupted or password-protected.');
+                    });
+            }
+
+            /* =====================================================
+               CONVERSION
+               ===================================================== */
+            function convertToJpg() {
+                if (!currentPdf) {
+                    showError('Please upload a PDF file first.');
+                    return;
+                }
+
+                clearMessages();
+                resetResults();
+
+                const quality = parseInt(qualitySlider.value, 10) / 100;
+                const scale = parseFloat(scaleSlider.value);
+
+                convertBtn.disabled = true;
+                resetBtn.disabled = true;
+                downloadAllBtn.disabled = true;
+                showLoading('Converting page 1 of ' + totalPages + '...');
+                updateProgress(0);
+
+                let pageNum = 1;
+                const baseName = sanitizeFileName(
+                    currentPdfName.replace(/\.pdf$/i, '') || 'pdf'
+                );
+
+                function processNextPage() {
+                    if (pageNum > totalPages) {
+                        // All done
+                        hideLoading();
+                        updateProgress(100);
+                        convertBtn.disabled = false;
+                        resetBtn.disabled = false;
+                        downloadAllBtn.disabled = convertedImages.length === 0;
+                        showSuccess('Conversion complete! ' + convertedImages.length + ' JPG image(s) ready.');
+                        return;
+                    }
+
+                    loadingText.textContent = 'Converting page ' + pageNum + ' of ' + totalPages + '...';
+
+                    currentPdf.getPage(pageNum).then(function (page) {
+                        const viewport = page.getViewport({ scale: scale });
+
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        canvas.width = viewport.width;
+                        canvas.height = viewport.height;
+
+                        // White background (JPG has no transparency)
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                        const renderContext = {
+                            canvasContext: ctx,
+                            viewport: viewport
+                        };
+
+                        page.render(renderContext).promise.then(function () {
+                            canvas.toBlob(function (blob) {
+                                if (!blob) {
+                                    console.warn('Page ' + pageNum + ' produced no blob.');
+                                    pageNum++;
+                                    processNextPage();
+                                    return;
+                                }
+
+                                const url = URL.createObjectURL(blob);
+                                const fileName = baseName + '_page_' + pageNum + '.jpg';
+
+                                const imageData = {
+                                    pageNum: pageNum,
+                                    blob: blob,
+                                    url: url,
+                                    fileName: fileName,
+                                    width: canvas.width,
+                                    height: canvas.height
+                                };
+                                convertedImages.push(imageData);
+                                addResultCard(imageData);
+
+                                // Update progress
+                                const progress = (pageNum / totalPages) * 100;
+                                updateProgress(progress);
+
+                                pageNum++;
+                                // Small delay to allow UI to breathe
+                                setTimeout(processNextPage, 30);
+                            }, 'image/jpeg', quality);
+                        }).catch(function (err) {
+                            console.error('Render error on page ' + pageNum + ':', err);
+                            // Skip the page and continue
+                            pageNum++;
+                            processNextPage();
+                        });
+                    }).catch(function (err) {
+                        console.error('Error getting page ' + pageNum + ':', err);
+                        pageNum++;
+                        processNextPage();
+                    });
+                }
+
+                processNextPage();
+            }
+
+            /* =====================================================
+               RESULT CARDS
+               ===================================================== */
+            function addResultCard(imageData) {
+                resultsSection.classList.remove('hidden');
+                resultsCount.textContent = convertedImages.length;
+
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                card.dataset.page = imageData.pageNum;
+
+                const imageWrap = document.createElement('div');
+                imageWrap.className = 'result-card-image';
+
+                const img = document.createElement('img');
+                img.src = imageData.url;
+                img.alt = 'PDF page ' + imageData.pageNum + ' converted to JPG';
+                img.loading = 'lazy';
+                imageWrap.appendChild(img);
+
+                const info = document.createElement('div');
+                info.className = 'result-card-info';
+
+                const label = document.createElement('span');
+                label.className = 'result-page-label';
+                label.textContent = 'Page ' + imageData.pageNum;
+
+                const dlBtn = document.createElement('button');
+                dlBtn.type = 'button';
+                dlBtn.className = 'result-download-btn';
+                dlBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> JPG';
+                dlBtn.addEventListener('click', function () {
+                    downloadSingle(imageData);
+                });
+
+                info.appendChild(label);
+                info.appendChild(dlBtn);
+
+                card.appendChild(imageWrap);
+                card.appendChild(info);
+                resultsGrid.appendChild(card);
+            }
+
+            function downloadSingle(imageData) {
+                const link = document.createElement('a');
+                link.href = imageData.url;
+                link.download = imageData.fileName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+
+            function downloadAll() {
+                if (convertedImages.length === 0) {
+                    showError('No converted images available.');
+                    return;
+                }
+                // Trigger download for each image with slight delay
+                convertedImages.forEach(function (img, index) {
+                    setTimeout(function () {
+                        downloadSingle(img);
+                    }, index * 250);
+                });
+                showSuccess('Downloading ' + convertedImages.length + ' image(s)...');
+            }
+
+            /* =====================================================
+               RESET
+               ===================================================== */
+            function resetResults() {
+                // Revoke object URLs
+                convertedImages.forEach(function (img) {
+                    if (img.url) URL.revokeObjectURL(img.url);
+                });
+                convertedImages = [];
+                resultsGrid.innerHTML = '';
+                resultsSection.classList.add('hidden');
+                resultsCount.textContent = '0';
+                downloadAllBtn.disabled = true;
+                updateProgress(0);
+                progressContainer.classList.add('hidden');
+            }
+
+            function resetAll() {
+                resetResults();
+                if (currentPdf) {
+                    try { currentPdf.destroy(); } catch (e) { /* ignore */ }
+                    currentPdf = null;
+                }
+                currentPdfName = '';
+                currentPdfSize = 0;
+                totalPages = 0;
+
+                fileInput.value = '';
+                convertBtn.disabled = true;
+                resetBtn.disabled = true;
+                downloadAllBtn.disabled = true;
+
+                pdfInfoBar.classList.add('hidden');
+                pdfFileName.textContent = '—';
+                pdfPageCount.textContent = '—';
+                pdfFileSize.textContent = '—';
+
+                qualitySlider.value = 92;
+                updateQualityDisplay(92);
+                scaleSlider.value = 2;
+                scaleValue.textContent = '2.0x';
+
+                clearMessages();
+            }
+
+            /* =====================================================
+               EVENT LISTENERS
+               ===================================================== */
+            convertBtn.addEventListener('click', convertToJpg);
+            resetBtn.addEventListener('click', resetAll);
+            downloadAllBtn.addEventListener('click', downloadAll);
+
+            /* =====================================================
+               INITIALIZATION
+               ===================================================== */
+            convertBtn.disabled = true;
+            resetBtn.disabled = true;
+            downloadAllBtn.disabled = true;
+            updateQualityDisplay(92);
+
+            /* =====================================================
+               CLEANUP
+               ===================================================== */
+            window.addEventListener('beforeunload', function () {
+                convertedImages.forEach(function (img) {
+                    if (img.url) URL.revokeObjectURL(img.url);
+                });
+                if (currentPdf) {
+                    try { currentPdf.destroy(); } catch (e) { /* ignore */ }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
