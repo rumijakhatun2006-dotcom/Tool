@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>SmartResize · Free Online Image Resizer | Resize JPG, PNG, WebP Instantly</title>
+    <meta name="description" content="Free responsive image resizer. Select size level (percentage or preset dimensions) and resize JPG, PNG, WebP instantly in your browser. SEO friendly, with AdSense ad spaces.">
+    <meta name="keywords" content="image resizer, online image resize, resize jpg, resize png, resize webp, scale image, free image tool, image dimension changer">
+    <meta name="author" content="SmartResize">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.example.com/image-resizer">
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="SmartResize · Free Online Image Resizer">
+    <meta property="og:description" content="Resize JPG, PNG, WebP with percentage or custom dimensions. Fast, secure, works in your browser.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com/image-resizer">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Performance & SEO -->
+    <meta name="theme-color" content="#1e293b">
+    <style>
+        /* ---------- RESET & GLOBAL ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f1f5f9;
+            color: #0f172a;
+            line-height: 1.5;
+            padding: 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        /* ---------- ADSENSE PLACEHOLDERS ---------- */
+        .ad-slot {
+            background: #e2e8f0;
+            border: 2px dashed #94a3b8;
+            border-radius: 12px;
+            padding: 0.75rem;
+            text-align: center;
+            color: #475569;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 90px;
+            width: 100%;
+            transition: background 0.2s;
+            margin: 1.25rem 0;
+        }
+        .ad-slot ins {
+            display: block;
+            width: 100%;
+        }
+        .ad-slot--top {
+            margin-top: 0.25rem;
+        }
+        /* ---------- HEADER ---------- */
+        .header {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.5rem 1.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
+            margin-bottom: 1.5rem;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0f172a, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+        }
+        .header p {
+            color: #475569;
+            font-size: 1.1rem;
+        }
+        /* ---------- TOOL CARD ---------- */
+        .tool-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .upload-area {
+            border: 3px dashed #cbd5e1;
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            background: #f8fafc;
+            transition: border 0.2s, background 0.2s;
+            cursor: pointer;
+            margin-bottom: 1.8rem;
+        }
+        .upload-area:hover, .upload-area.dragover {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        .upload-area input[type="file"] {
+            display: none;
+        }
+        .upload-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 500;
+            color: #1e293b;
+        }
+        .upload-label svg {
+            width: 48px;
+            height: 48px;
+            stroke: #10b981;
+            stroke-width: 1.7;
+            fill: none;
+        }
+        .upload-label span {
+            font-size: 1.2rem;
+        }
+        .upload-hint {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 0.5rem;
+        }
+        /* ---------- CONTROLS ---------- */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+            margin-bottom: 2rem;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .control-group label {
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.05rem;
+        }
+        .control-group label span:last-child {
+            background: #e2e8f0;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1e293b;
+        }
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 10px;
+            background: #e2e8f0;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(16,185,129,0.3);
+            border: 3px solid white;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            border: 3px solid white;
+        }
+        .preset-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .preset-btn {
+            background: #f1f5f9;
+            border: 2px solid #e2e8f0;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #1e293b;
+        }
+        .preset-btn:hover {
+            background: #ecfdf5;
+            border-color: #10b981;
+        }
+        .preset-btn.active {
+            background: #10b981;
+            border-color: #10b981;
+            color: white;
+        }
+        .custom-size-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: flex-end;
+        }
+        .size-input {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            flex: 1 1 120px;
+        }
+        .size-input label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+        }
+        .size-input input[type="number"] {
+            padding: 0.6rem 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            width: 100%;
+            transition: border 0.2s;
+        }
+        .size-input input[type="number"]:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #334155;
+            margin-top: 0.25rem;
+        }
+        .checkbox-row input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #10b981;
+            cursor: pointer;
+        }
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-weight: 600;
+            border-radius: 60px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            flex: 1 1 auto;
+            min-width: 160px;
+            box-shadow: 0 8px 16px -4px rgba(16,185,129,0.3);
+        }
+        .btn:hover {
+            background: #059669;
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        .btn-secondary {
+            background: #ffffff;
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+            box-shadow: none;
+        }
+        .btn-secondary:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        /* ---------- PREVIEW & RESULT ---------- */
+        .preview-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .preview-card {
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 1.2rem;
+            border: 1px solid #e2e8f0;
+        }
+        .preview-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .image-container {
+            background: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 240px;
+            object-fit: contain;
+            display: block;
+        }
+        .file-info {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: #475569;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .badge {
+            background: #e2e8f0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+        }
+        .badge--green {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .error-msg {
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+        .info-note {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 0.3rem;
+        }
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 768px) {
+            body { padding: 0.75rem; }
+            .header { padding: 1.2rem; }
+            .header h1 { font-size: 1.7rem; }
+            .tool-card { padding: 1.5rem 1rem; }
+            .preview-section { grid-template-columns: 1fr; gap: 1rem; }
+            .btn { padding: 0.8rem 1.2rem; font-size: 0.95rem; }
+            .upload-area { padding: 1.5rem 1rem; }
+        }
+        @media (max-width: 480px) {
+            .header h1 { font-size: 1.4rem; }
+            .header p { font-size: 0.95rem; }
+            .control-group label { font-size: 0.95rem; }
+            .action-buttons { flex-direction: column; }
+            .btn { width: 100%; }
+            .preset-buttons { justify-content: center; }
+        }
+        /* ---------- FOOTER ---------- */
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            padding: 1.5rem 0 0.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1>🖼️ SmartResize</h1>
+            <p>Free responsive image resizer — choose a size level & resize instantly</p>
+        </header>
+
+        <!-- ADSENSE TOP LEADERBOARD (Replace with your Ad Unit ID) -->
+        <div class="ad-slot ad-slot--top" aria-label="Advertisement">
+            <!-- 
+                Google AdSense Ad Code – insert your Ad Unit ID below.
+                Example: <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="1234567890" ...></ins>
+                Then uncomment the script below.
+            -->
+            <span>📢 Ad space — insert Google AdSense unit ID here (top leaderboard)</span>
+            <!-- 
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            -->
+        </div>
+
+        <!-- MAIN TOOL -->
+        <main class="tool-card">
+            <!-- UPLOAD -->
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif,image/bmp" aria-label="Upload image">
+                <label for="fileInput" class="upload-label">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    <span>Click or drag & drop an image</span>
+                    <div class="upload-hint">JPG, PNG, WebP, GIF, BMP · max 20MB</div>
+                </label>
+            </div>
+            <div id="errorMsg" class="error-msg hidden"></div>
+
+            <!-- CONTROLS -->
+            <div class="controls">
+                <!-- Size level slider -->
+                <div class="control-group">
+                    <label>
+                        <span>📏 Size level</span>
+                        <span id="sizeValue">100%</span>
+                    </label>
+                    <input type="range" id="sizeSlider" min="10" max="200" value="100" step="5">
+                    <div class="info-note">Drag to scale from 10% to 200% of original dimensions.</div>
+                </div>
+
+                <!-- Preset buttons -->
+                <div class="control-group">
+                    <label>⚡ Quick presets</label>
+                    <div class="preset-buttons" id="presetContainer">
+                        <button class="preset-btn" data-scale="25">25%</button>
+                        <button class="preset-btn" data-scale="50">50%</button>
+                        <button class="preset-btn active" data-scale="75">75%</button>
+                        <button class="preset-btn" data-scale="100">100%</button>
+                        <button class="preset-btn" data-scale="150">150%</button>
+                        <button class="preset-btn" data-scale="200">200%</button>
+                    </div>
+                </div>
+
+                <!-- Custom dimensions -->
+                <div class="control-group">
+                    <label>🔧 Custom dimensions (optional)</label>
+                    <div class="custom-size-row">
+                        <div class="size-input">
+                            <label for="customWidth">Width (px)</label>
+                            <input type="number" id="customWidth" placeholder="auto" min="1" max="10000" step="1">
+                        </div>
+                        <div class="size-input">
+                            <label for="customHeight">Height (px)</label>
+                            <input type="number" id="customHeight" placeholder="auto" min="1" max="10000" step="1">
+                        </div>
+                    </div>
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="maintainAspect" checked>
+                        <label for="maintainAspect">Maintain aspect ratio</label>
+                    </div>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="action-buttons">
+                    <button class="btn" id="resizeBtn" disabled>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                        Resize image
+                    </button>
+                    <button class="btn btn-secondary" id="resetBtn" disabled>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                        Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- PREVIEWS -->
+            <div class="preview-section" id="previewSection">
+                <div class="preview-card">
+                    <h3>📷 Original</h3>
+                    <div class="image-container" id="originalPreview">
+                        <span style="color:#94a3b8;">No image</span>
+                    </div>
+                    <div class="file-info">
+                        <span id="originalSize">—</span>
+                        <span class="badge" id="originalDimensions">—</span>
+                    </div>
+                </div>
+                <div class="preview-card">
+                    <h3>✨ Resized</h3>
+                    <div class="image-container" id="resizedPreview">
+                        <span style="color:#94a3b8;">Awaiting resize</span>
+                    </div>
+                    <div class="file-info">
+                        <span id="resizedSize">—</span>
+                        <span class="badge badge--green" id="resizedDimensions">—</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ADSENSE MIDDLE / SIDEBAR (Replace with your Ad Unit ID) -->
+        <div class="ad-slot" aria-label="Advertisement">
+            <span>📢 Ad space — insert Google AdSense unit ID here (in-content)</span>
+            <!-- 
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="0987654321"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            -->
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>© 2025 SmartResize — All processing happens in your browser. No uploads to any server.</p>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            // DOM elements
+            const fileInput = document.getElementById('fileInput');
+            const uploadArea = document.getElementById('uploadArea');
+            const sizeSlider = document.getElementById('sizeSlider');
+            const sizeValue = document.getElementById('sizeValue');
+            const presetContainer = document.getElementById('presetContainer');
+            const presetBtns = presetContainer.querySelectorAll('.preset-btn');
+            const customWidth = document.getElementById('customWidth');
+            const customHeight = document.getElementById('customHeight');
+            const maintainAspect = document.getElementById('maintainAspect');
+            const resizeBtn = document.getElementById('resizeBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const originalPreview = document.getElementById('originalPreview');
+            const resizedPreview = document.getElementById('resizedPreview');
+            const originalSize = document.getElementById('originalSize');
+            const resizedSize = document.getElementById('resizedSize');
+            const originalDimensions = document.getElementById('originalDimensions');
+            const resizedDimensions = document.getElementById('resizedDimensions');
+            const errorMsg = document.getElementById('errorMsg');
+
+            // State
+            let originalFile = null;
+            let originalImage = null; // Image object
+            let resizedBlob = null;
+            let resizedDataUrl = null;
+            let originalWidth = 0;
+            let originalHeight = 0;
+
+            // Helper: format bytes
+            function formatBytes(bytes) {
+                if (bytes === 0) return '0 B';
+                const k = 1024;
+                const sizes = ['B', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            // Show error
+            function showError(msg) {
+                errorMsg.textContent = msg;
+                errorMsg.classList.remove('hidden');
+                setTimeout(() => {
+                    errorMsg.classList.add('hidden');
+                }, 5000);
+            }
+
+            function clearError() {
+                errorMsg.classList.add('hidden');
+            }
+
+            // Update slider display
+            sizeSlider.addEventListener('input', function() {
+                const val = this.value;
+                sizeValue.textContent = val + '%';
+                // Update preset active state
+                let matched = false;
+                presetBtns.forEach(btn => {
+                    if (parseInt(btn.dataset.scale, 10) === parseInt(val, 10)) {
+                        btn.classList.add('active');
+                        matched = true;
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                if (!matched) {
+                    presetBtns.forEach(btn => btn.classList.remove('active'));
+                }
+                // Clear custom inputs when slider is used
+                customWidth.value = '';
+                customHeight.value = '';
+            });
+
+            // Preset buttons
+            presetBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const scale = parseInt(this.dataset.scale, 10);
+                    sizeSlider.value = scale;
+                    sizeValue.textContent = scale + '%';
+                    presetBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    // Clear custom inputs
+                    customWidth.value = '';
+                    customHeight.value = '';
+                });
+            });
+
+            // Clear preset active when custom inputs are used
+            customWidth.addEventListener('input', function() {
+                presetBtns.forEach(btn => btn.classList.remove('active'));
+            });
+            customHeight.addEventListener('input', function() {
+                presetBtns.forEach(btn => btn.classList.remove('active'));
+            });
+
+            // Maintain aspect ratio behavior
+            maintainAspect.addEventListener('change', function() {
+                if (this.checked && originalImage) {
+                    // If width is set, compute height
+                    if (customWidth.value) {
+                        const w = parseInt(customWidth.value, 10);
+                        if (!isNaN(w) && w > 0) {
+                            const h = Math.round(w / (originalWidth / originalHeight));
+                            customHeight.value = h;
+                        }
+                    } else if (customHeight.value) {
+                        const h = parseInt(customHeight.value, 10);
+                        if (!isNaN(h) && h > 0) {
+                            const w = Math.round(h * (originalWidth / originalHeight));
+                            customWidth.value = w;
+                        }
+                    }
+                }
+            });
+
+            // Custom width input with aspect ratio
+            customWidth.addEventListener('input', function() {
+                if (maintainAspect.checked && originalImage) {
+                    const w = parseInt(this.value, 10);
+                    if (!isNaN(w) && w > 0) {
+                        const h = Math.round(w / (originalWidth / originalHeight));
+                        customHeight.value = h;
+                    } else {
+                        customHeight.value = '';
+                    }
+                }
+            });
+
+            // Custom height input with aspect ratio
+            customHeight.addEventListener('input', function() {
+                if (maintainAspect.checked && originalImage) {
+                    const h = parseInt(this.value, 10);
+                    if (!isNaN(h) && h > 0) {
+                        const w = Math.round(h * (originalWidth / originalHeight));
+                        customWidth.value = w;
+                    } else {
+                        customWidth.value = '';
+                    }
+                }
+            });
+
+            // Drag & drop handling
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+            uploadArea.addEventListener('dragenter', () => uploadArea.classList.add('dragover'));
+            uploadArea.addEventListener('dragover', () => uploadArea.classList.add('dragover'));
+            uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+            uploadArea.addEventListener('drop', (e) => {
+                uploadArea.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length) {
+                    handleFile(files[0]);
+                }
+            });
+
+            // File input change
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length) {
+                    handleFile(e.target.files[0]);
+                }
+            });
+
+            // Click on upload area triggers file input
+            uploadArea.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'LABEL' && !e.target.closest('label')) {
+                    fileInput.click();
+                }
+            });
+
+            // Handle selected file
+            function handleFile(file) {
+                clearError();
+                const validTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/bmp'];
+                if (!validTypes.includes(file.type)) {
+                    showError('Unsupported format. Please use JPG, PNG, WebP, GIF, or BMP.');
+                    return;
+                }
+                if (file.size > 20 * 1024 * 1024) {
+                    showError('File too large. Maximum size is 20MB.');
+                    return;
+                }
+
+                originalFile = file;
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        originalImage = img;
+                        originalWidth = img.width;
+                        originalHeight = img.height;
+
+                        // Display original preview
+                        originalPreview.innerHTML = '';
+                        const previewImg = document.createElement('img');
+                        previewImg.src = ev.target.result;
+                        previewImg.alt = 'Original image preview';
+                        originalPreview.appendChild(previewImg);
+
+                        // Update original info
+                        originalSize.textContent = formatBytes(file.size);
+                        originalDimensions.textContent = `${img.width} × ${img.height}`;
+
+                        // Enable buttons, reset resized side
+                        resizeBtn.disabled = false;
+                        resetBtn.disabled = false;
+                        resizedPreview.innerHTML = '<span style="color:#94a3b8;">Ready to resize</span>';
+                        resizedSize.textContent = '—';
+                        resizedDimensions.textContent = '—';
+                        resizedBlob = null;
+                        resizedDataUrl = null;
+
+                        // Reset custom inputs and slider
+                        customWidth.value = '';
+                        customHeight.value = '';
+                        sizeSlider.value = 100;
+                        sizeValue.textContent = '100%';
+                        presetBtns.forEach(btn => btn.classList.remove('active'));
+                        presetBtns.forEach(btn => {
+                            if (parseInt(btn.dataset.scale, 10) === 100) {
+                                btn.classList.add('active');
+                            }
+                        });
+                    };
+                    img.onerror = () => {
+                        showError('Failed to load image. The file may be corrupted.');
+                    };
+                    img.src = ev.target.result;
+                };
+                reader.onerror = () => {
+                    showError('Error reading file.');
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // Resize function
+            function resizeImage() {
+                if (!originalImage || !originalFile) {
+                    showError('Please select an image first.');
+                    return;
+                }
+                clearError();
+
+                let targetWidth = originalWidth;
+                let targetHeight = originalHeight;
+
+                // Check if custom dimensions are provided
+                const cw = parseInt(customWidth.value, 10);
+                const ch = parseInt(customHeight.value, 10);
+
+                if (!isNaN(cw) && cw > 0) {
+                    targetWidth = cw;
+                    if (maintainAspect.checked) {
+                        targetHeight = Math.round(cw / (originalWidth / originalHeight));
+                    } else if (!isNaN(ch) && ch > 0) {
+                        targetHeight = ch;
+                    } else {
+                        targetHeight = Math.round(cw / (originalWidth / originalHeight));
+                    }
+                } else if (!isNaN(ch) && ch > 0) {
+                    targetHeight = ch;
+                    if (maintainAspect.checked) {
+                        targetWidth = Math.round(ch * (originalWidth / originalHeight));
+                    } else {
+                        targetWidth = originalWidth;
+                    }
+                } else {
+                    // Use slider percentage
+                    const scale = parseInt(sizeSlider.value, 10) / 100;
+                    targetWidth = Math.round(originalWidth * scale);
+                    targetHeight = Math.round(originalHeight * scale);
+                }
+
+                // Ensure minimum 1px
+                targetWidth = Math.max(1, targetWidth);
+                targetHeight = Math.max(1, targetHeight);
+
+                // Cap at 10000px to avoid canvas issues
+                if (targetWidth > 10000 || targetHeight > 10000) {
+                    showError('Dimensions too large. Maximum 10000px per side.');
+                    return;
+                }
+
+                // Use canvas
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = targetWidth;
+                canvas.height = targetHeight;
+
+                // High quality resampling
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                ctx.drawImage(originalImage, 0, 0, targetWidth, targetHeight);
+
+                // Determine output type
+                let outputType = originalFile.type;
+                if (!['image/jpeg', 'image/png', 'image/webp'].includes(outputType)) {
+                    outputType = 'image/jpeg';
+                }
+
+                canvas.toBlob((blob) => {
+                    if (!blob) {
+                        showError('Resize failed. Try a different size or image.');
+                        return;
+                    }
+                    resizedBlob = blob;
+                    const url = URL.createObjectURL(blob);
+                    resizedDataUrl = url;
+
+                    // Update resized preview
+                    resizedPreview.innerHTML = '';
+                    const resImg = document.createElement('img');
+                    resImg.src = url;
+                    resImg.alt = 'Resized image preview';
+                    resizedPreview.appendChild(resImg);
+
+                    // Update resized info
+                    resizedSize.textContent = formatBytes(blob.size);
+                    resizedDimensions.textContent = `${targetWidth} × ${targetHeight}`;
+
+                    // Show size change if resized
+                    const sizeDiff = ((originalFile.size - blob.size) / originalFile.size * 100).toFixed(1);
+                    if (sizeDiff > 0 && blob.size < originalFile.size) {
+                        resizedSize.textContent += ` (↓${sizeDiff}%)`;
+                    } else if (sizeDiff < 0) {
+                        resizedSize.textContent += ` (↑${Math.abs(sizeDiff)}%)`;
+                    }
+                }, outputType, 0.92);
+            }
+
+            // Reset everything
+            function resetTool() {
+                if (resizedDataUrl) {
+                    URL.revokeObjectURL(resizedDataUrl);
+                    resizedDataUrl = null;
+                }
+                fileInput.value = '';
+                originalFile = null;
+                originalImage = null;
+                resizedBlob = null;
+                originalWidth = 0;
+                originalHeight = 0;
+
+                // Reset UI
+                originalPreview.innerHTML = '<span style="color:#94a3b8;">No image</span>';
+                resizedPreview.innerHTML = '<span style="color:#94a3b8;">Awaiting resize</span>';
+                originalSize.textContent = '—';
+                resizedSize.textContent = '—';
+                originalDimensions.textContent = '—';
+                resizedDimensions.textContent = '—';
+
+                // Disable buttons
+                resizeBtn.disabled = true;
+                resetBtn.disabled = true;
+
+                // Reset controls
+                sizeSlider.value = 100;
+                sizeValue.textContent = '100%';
+                customWidth.value = '';
+                customHeight.value = '';
+                maintainAspect.checked = true;
+
+                presetBtns.forEach(btn => btn.classList.remove('active'));
+                presetBtns.forEach(btn => {
+                    if (parseInt(btn.dataset.scale, 10) === 100) {
+                        btn.classList.add('active');
+                    }
+                });
+
+                clearError();
+            }
+
+            // Event listeners
+            resizeBtn.addEventListener('click', resizeImage);
+            resetBtn.addEventListener('click', resetTool);
+
+            // Initialize
+            resizeBtn.disabled = true;
+            resetBtn.disabled = true;
+
+            // Cleanup on page unload
+            window.addEventListener('beforeunload', () => {
+                if (resizedDataUrl) {
+                    URL.revokeObjectURL(resizedDataUrl);
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
