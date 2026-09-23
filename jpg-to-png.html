@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>JPG to PNG Converter · Free Online Tool | Convert JPEG to PNG Instantly</title>
+    <meta name="description" content="Free responsive JPG to PNG converter. Upload a JPG/JPEG image and convert it to PNG instantly in your browser. No uploads, SEO friendly, with AdSense ad spaces.">
+    <meta name="keywords" content="jpg to png, jpeg to png, convert jpg to png, online image converter, free jpg to png, image format converter">
+    <meta name="author" content="JPG2PNG">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.example.com/jpg-to-png">
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="JPG to PNG Converter · Free Online Tool">
+    <meta property="og:description" content="Convert JPG/JPEG to PNG instantly in your browser. Fast, secure, and free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com/jpg-to-png">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Performance & SEO -->
+    <meta name="theme-color" content="#0f172a">
+    <style>
+        /* ---------- RESET & GLOBAL ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f1f5f9;
+            color: #0f172a;
+            line-height: 1.5;
+            padding: 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        /* ---------- ADSENSE PLACEHOLDERS ---------- */
+        .ad-slot {
+            background: #e2e8f0;
+            border: 2px dashed #94a3b8;
+            border-radius: 12px;
+            padding: 0.75rem;
+            text-align: center;
+            color: #475569;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 90px;
+            width: 100%;
+            transition: background 0.2s;
+            margin: 1.25rem 0;
+        }
+        .ad-slot ins {
+            display: block;
+            width: 100%;
+        }
+        .ad-slot--top {
+            margin-top: 0.25rem;
+        }
+        /* ---------- HEADER ---------- */
+        .header {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.5rem 1.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
+            margin-bottom: 1.5rem;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0f172a, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+        }
+        .header p {
+            color: #475569;
+            font-size: 1.1rem;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        .header-badge {
+            background: #ede9fe;
+            color: #5b21b6;
+            padding: 0.25rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        /* ---------- TOOL CARD ---------- */
+        .tool-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .upload-area {
+            border: 3px dashed #cbd5e1;
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            background: #f8fafc;
+            transition: border 0.2s, background 0.2s;
+            cursor: pointer;
+            margin-bottom: 1.8rem;
+        }
+        .upload-area:hover, .upload-area.dragover {
+            border-color: #8b5cf6;
+            background: #f5f3ff;
+        }
+        .upload-area input[type="file"] {
+            display: none;
+        }
+        .upload-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 500;
+            color: #1e293b;
+        }
+        .upload-label svg {
+            width: 48px;
+            height: 48px;
+            stroke: #8b5cf6;
+            stroke-width: 1.7;
+            fill: none;
+        }
+        .upload-label span {
+            font-size: 1.2rem;
+        }
+        .upload-hint {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 0.5rem;
+        }
+        /* ---------- INFO STRIP ---------- */
+        .info-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.8rem;
+            justify-content: center;
+        }
+        .info-chip {
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 500;
+        }
+        .info-chip svg {
+            width: 16px;
+            height: 16px;
+            stroke: #8b5cf6;
+            fill: none;
+            stroke-width: 2;
+        }
+        /* ---------- ACTION BUTTONS ---------- */
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border-radius: 60px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            flex: 1 1 auto;
+            min-width: 180px;
+            box-shadow: 0 8px 16px -4px rgba(139,92,246,0.3);
+        }
+        .btn:hover {
+            background: #7c3aed;
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        .btn-secondary {
+            background: #ffffff;
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+            box-shadow: none;
+        }
+        .btn-secondary:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        /* ---------- PREVIEW & RESULT ---------- */
+        .preview-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .preview-card {
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 1.2rem;
+            border: 1px solid #e2e8f0;
+        }
+        .preview-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .format-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.55rem;
+            border-radius: 20px;
+            letter-spacing: 0.03em;
+        }
+        .format-tag--jpg {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .format-tag--png {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .image-container {
+            background: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem;
+            background-image: linear-gradient(45deg, #f1f5f9 25%, transparent 25%),
+                              linear-gradient(-45deg, #f1f5f9 25%, transparent 25%),
+                              linear-gradient(45deg, transparent 75%, #f1f5f9 75%),
+                              linear-gradient(-45deg, transparent 75%, #f1f5f9 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 240px;
+            object-fit: contain;
+            display: block;
+        }
+        .file-info {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: #475569;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .badge {
+            background: #e2e8f0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+        }
+        .badge--green {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .error-msg {
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+        .success-msg {
+            color: #065f46;
+            background: #d1fae5;
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        /* ---------- HOW TO SECTION ---------- */
+        .how-to {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+        .how-to h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+        .step {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+        .step-num {
+            background: #8b5cf6;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .step p {
+            font-size: 0.95rem;
+            color: #475569;
+        }
+        .step strong {
+            color: #0f172a;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+        /* ---------- FAQ ---------- */
+        .faq {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+        .faq h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0.9rem 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-item summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #1e293b;
+            font-size: 0.98rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.2rem;
+            color: #8b5cf6;
+            font-weight: 700;
+            transition: transform 0.2s;
+        }
+        .faq-item[open] summary::after {
+            content: '−';
+        }
+        .faq-item p {
+            margin-top: 0.5rem;
+            font-size: 0.92rem;
+            color: #475569;
+        }
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 768px) {
+            body { padding: 0.75rem; }
+            .header { padding: 1.2rem; }
+            .header h1 { font-size: 1.6rem; }
+            .tool-card { padding: 1.5rem 1rem; }
+            .preview-section { grid-template-columns: 1fr; gap: 1rem; }
+            .btn { padding: 0.8rem 1.2rem; font-size: 0.95rem; }
+            .upload-area { padding: 1.5rem 1rem; }
+        }
+        @media (max-width: 480px) {
+            .header h1 { font-size: 1.35rem; }
+            .header p { font-size: 0.95rem; }
+            .action-buttons { flex-direction: column; }
+            .btn { width: 100%; }
+            .how-to, .faq { padding: 1.2rem; }
+        }
+        /* ---------- FOOTER ---------- */
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            padding: 1.5rem 0 0.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1>🔄 JPG to PNG Converter</h1>
+            <p>Free, fast, and secure — convert JPG/JPEG to PNG right in your browser</p>
+            <div class="badge-row">
+                <span class="header-badge">✓ No uploads</span>
+                <span class="header-badge">✓ Unlimited use</span>
+                <span class="header-badge">✓ Lossless PNG</span>
+            </div>
+        </header>
+
+        <!-- ADSENSE TOP LEADERBOARD -->
+        <div class="ad-slot ad-slot--top" aria-label="Advertisement">
+            <!-- 
+                Google AdSense Ad Code – insert your Ad Unit ID below.
+                Example:
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            -->
+            <span>📢 Ad space — insert Google AdSense unit ID here (top leaderboard)</span>
+        </div>
+
+        <!-- MAIN TOOL -->
+        <main class="tool-card">
+            <!-- UPLOAD -->
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/jpeg,image/jpg" aria-label="Upload JPG image">
+                <label for="fileInput" class="upload-label">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    <span>Click or drag & drop a JPG image</span>
+                    <div class="upload-hint">Only JPG / JPEG files · max 25MB</div>
+                </label>
+            </div>
+            <div id="errorMsg" class="error-msg hidden"></div>
+            <div id="successMsg" class="success-msg hidden">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Conversion complete! Your PNG is ready.</span>
+            </div>
+
+            <!-- INFO CHIPS -->
+            <div class="info-strip">
+                <div class="info-chip">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    Lossless quality
+                </div>
+                <div class="info-chip">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Instant conversion
+                </div>
+                <div class="info-chip">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    100% private
+                </div>
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="action-buttons">
+                <button class="btn" id="convertBtn" disabled>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 4v16"/></svg>
+                    Convert to PNG
+                </button>
+                <button class="btn btn-secondary" id="downloadBtn" disabled>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download PNG
+                </button>
+                <button class="btn btn-secondary" id="resetBtn" disabled>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    Reset
+                </button>
+            </div>
+
+            <!-- PREVIEWS -->
+            <div class="preview-section" id="previewSection">
+                <div class="preview-card">
+                    <h3>🖼️ Original <span class="format-tag format-tag--jpg">JPG</span></h3>
+                    <div class="image-container" id="originalPreview">
+                        <span style="color:#94a3b8;">No image</span>
+                    </div>
+                    <div class="file-info">
+                        <span id="originalSize">—</span>
+                        <span class="badge" id="originalDimensions">—</span>
+                    </div>
+                </div>
+                <div class="preview-card">
+                    <h3>✨ Converted <span class="format-tag format-tag--png">PNG</span></h3>
+                    <div class="image-container" id="convertedPreview">
+                        <span style="color:#94a3b8;">Awaiting conversion</span>
+                    </div>
+                    <div class="file-info">
+                        <span id="convertedSize">—</span>
+                        <span class="badge badge--green" id="convertedDimensions">—</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ADSENSE IN-CONTENT -->
+        <div class="ad-slot" aria-label="Advertisement">
+            <!-- 
+                Google AdSense Ad Code – insert your Ad Unit ID below.
+                Example:
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="0987654321"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            -->
+            <span>📢 Ad space — insert Google AdSense unit ID here (in-content)</span>
+        </div>
+
+        <!-- HOW TO SECTION (SEO content) -->
+        <section class="how-to">
+            <h2>How to Convert JPG to PNG</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <strong>Upload your JPG</strong>
+                        <p>Click the upload area or drag & drop a JPG/JPEG file from your device.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <strong>Convert to PNG</strong>
+                        <p>Click the "Convert to PNG" button. The conversion happens instantly in your browser.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <strong>Download your PNG</strong>
+                        <p>Click "Download PNG" to save the converted image to your device.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION (SEO rich) -->
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <details class="faq-item" open>
+                <summary>Why convert JPG to PNG?</summary>
+                <p>PNG supports lossless compression and transparency, making it ideal for graphics, logos, and images that need to be edited repeatedly without quality loss. Unlike JPG, PNG doesn't introduce compression artifacts.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is this JPG to PNG converter free?</summary>
+                <p>Yes, completely free with no limits. You can convert as many JPG images to PNG as you like.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Are my images uploaded to a server?</summary>
+                <p>No. All conversion happens locally in your browser using the HTML5 Canvas API. Your images never leave your device, ensuring complete privacy.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Will converting JPG to PNG increase file size?</summary>
+                <p>Usually yes, because PNG is a lossless format. JPG is lossy and typically produces smaller files. PNG trades file size for perfect quality and transparency support.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Does converting JPG to PNG add transparency?</summary>
+                <p>No. JPG doesn't support transparency, so the converted PNG will have a solid background (usually white or the original JPG background). PNG supports transparency, but we can't invent transparent areas that weren't in the original.</p>
+            </details>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>© 2025 JPG to PNG Converter — All processing happens in your browser. No uploads to any server.</p>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            // DOM elements
+            const fileInput = document.getElementById('fileInput');
+            const uploadArea = document.getElementById('uploadArea');
+            const convertBtn = document.getElementById('convertBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const originalPreview = document.getElementById('originalPreview');
+            const convertedPreview = document.getElementById('convertedPreview');
+            const originalSize = document.getElementById('originalSize');
+            const convertedSize = document.getElementById('convertedSize');
+            const originalDimensions = document.getElementById('originalDimensions');
+            const convertedDimensions = document.getElementById('convertedDimensions');
+            const errorMsg = document.getElementById('errorMsg');
+            const successMsg = document.getElementById('successMsg');
+
+            // State
+            let originalFile = null;
+            let originalImage = null;
+            let pngBlob = null;
+            let pngDataUrl = null;
+            let originalFileName = '';
+
+            // Helper: format bytes
+            function formatBytes(bytes) {
+                if (bytes === 0) return '0 B';
+                const k = 1024;
+                const sizes = ['B', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            // Show error
+            function showError(msg) {
+                errorMsg.textContent = msg;
+                errorMsg.classList.remove('hidden');
+                successMsg.classList.add('hidden');
+                setTimeout(() => {
+                    errorMsg.classList.add('hidden');
+                }, 6000);
+            }
+
+            // Show success
+            function showSuccess(msg) {
+                if (msg) {
+                    successMsg.querySelector('span').textContent = msg;
+                }
+                successMsg.classList.remove('hidden');
+                errorMsg.classList.add('hidden');
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                }, 5000);
+            }
+
+            function clearMessages() {
+                errorMsg.classList.add('hidden');
+                successMsg.classList.add('hidden');
+            }
+
+            // Drag & drop handling
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+            uploadArea.addEventListener('dragenter', () => uploadArea.classList.add('dragover'));
+            uploadArea.addEventListener('dragover', () => uploadArea.classList.add('dragover'));
+            uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+            uploadArea.addEventListener('drop', (e) => {
+                uploadArea.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length) {
+                    handleFile(files[0]);
+                }
+            });
+
+            // File input change
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length) {
+                    handleFile(e.target.files[0]);
+                }
+            });
+
+            // Click on upload area triggers file input
+            uploadArea.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'LABEL' && !e.target.closest('label')) {
+                    fileInput.click();
+                }
+            });
+
+            // Handle selected file
+            function handleFile(file) {
+                clearMessages();
+                // Validate type - strictly JPG/JPEG
+                const validTypes = ['image/jpeg', 'image/jpg'];
+                if (!validTypes.includes(file.type.toLowerCase())) {
+                    showError('Please select a JPG or JPEG image. Other formats are not supported by this tool.');
+                    return;
+                }
+                // Validate size (25MB)
+                if (file.size > 25 * 1024 * 1024) {
+                    showError('File too large. Maximum size is 25MB.');
+                    return;
+                }
+
+                originalFile = file;
+                originalFileName = file.name.replace(/\.[^/.]+$/, ''); // strip extension
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        originalImage = img;
+                        // Display original preview
+                        originalPreview.innerHTML = '';
+                        const previewImg = document.createElement('img');
+                        previewImg.src = ev.target.result;
+                        previewImg.alt = 'Original JPG preview';
+                        originalPreview.appendChild(previewImg);
+
+                        // Update original info
+                        originalSize.textContent = formatBytes(file.size);
+                        originalDimensions.textContent = `${img.width} × ${img.height}`;
+
+                        // Enable convert button, reset converted side
+                        convertBtn.disabled = false;
+                        downloadBtn.disabled = true;
+                        resetBtn.disabled = false;
+                        convertedPreview.innerHTML = '<span style="color:#94a3b8;">Ready to convert</span>';
+                        convertedSize.textContent = '—';
+                        convertedDimensions.textContent = '—';
+                        pngBlob = null;
+                        if (pngDataUrl) {
+                            URL.revokeObjectURL(pngDataUrl);
+                            pngDataUrl = null;
+                        }
+                    };
+                    img.onerror = () => {
+                        showError('Failed to load image. The file may be corrupted.');
+                    };
+                    img.src = ev.target.result;
+                };
+                reader.onerror = () => {
+                    showError('Error reading file.');
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // Convert function
+            function convertToPng() {
+                if (!originalImage || !originalFile) {
+                    showError('Please upload a JPG image first.');
+                    return;
+                }
+                clearMessages();
+
+                // Use canvas to convert
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = originalImage.width;
+                canvas.height = originalImage.height;
+
+                // Draw image on canvas (JPG has no transparency)
+                ctx.drawImage(originalImage, 0, 0);
+
+                // Convert to PNG blob
+                canvas.toBlob((blob) => {
+                    if (!blob) {
+                        showError('Conversion failed. Please try again with a different image.');
+                        return;
+                    }
+                    pngBlob = blob;
+                    const url = URL.createObjectURL(blob);
+                    pngDataUrl = url;
+
+                    // Update converted preview
+                    convertedPreview.innerHTML = '';
+                    const compImg = document.createElement('img');
+                    compImg.src = url;
+                    compImg.alt = 'Converted PNG preview';
+                    convertedPreview.appendChild(compImg);
+
+                    // Update converted info
+                    convertedSize.textContent = formatBytes(blob.size);
+                    convertedDimensions.textContent = `${originalImage.width} × ${originalImage.height}`;
+
+                    // Enable download
+                    downloadBtn.disabled = false;
+                    showSuccess('Conversion complete! Your PNG is ready to download.');
+                }, 'image/png');
+            }
+
+            // Download function
+            function downloadPng() {
+                if (!pngBlob || !pngDataUrl) {
+                    showError('No converted PNG available. Please convert first.');
+                    return;
+                }
+                const link = document.createElement('a');
+                link.href = pngDataUrl;
+                link.download = (originalFileName || 'converted') + '.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                showSuccess('Download started!');
+            }
+
+            // Reset everything
+            function resetTool() {
+                if (pngDataUrl) {
+                    URL.revokeObjectURL(pngDataUrl);
+                    pngDataUrl = null;
+                }
+                fileInput.value = '';
+                originalFile = null;
+                originalImage = null;
+                pngBlob = null;
+                originalFileName = '';
+
+                // Reset UI
+                originalPreview.innerHTML = '<span style="color:#94a3b8;">No image</span>';
+                convertedPreview.innerHTML = '<span style="color:#94a3b8;">Awaiting conversion</span>';
+                originalSize.textContent = '—';
+                convertedSize.textContent = '—';
+                originalDimensions.textContent = '—';
+                convertedDimensions.textContent = '—';
+
+                // Disable buttons
+                convertBtn.disabled = true;
+                downloadBtn.disabled = true;
+                resetBtn.disabled = true;
+
+                clearMessages();
+            }
+
+            // Event listeners
+            convertBtn.addEventListener('click', convertToPng);
+            downloadBtn.addEventListener('click', downloadPng);
+            resetBtn.addEventListener('click', resetTool);
+
+            // Initialize
+            convertBtn.disabled = true;
+            downloadBtn.disabled = true;
+            resetBtn.disabled = true;
+
+            // Cleanup on page unload
+            window.addEventListener('beforeunload', () => {
+                if (pngDataUrl) {
+                    URL.revokeObjectURL(pngDataUrl);
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
