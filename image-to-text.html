@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Image to Text Converter · Free Online OCR Tool | 100+ Languages</title>
+    <meta name="description" content="Free responsive Image to Text (OCR) tool with 100+ languages including Bengali, Hindi, Arabic, Chinese, Japanese. Extract text from JPG, PNG, WebP images instantly in your browser.">
+    <meta name="keywords" content="image to text, ocr online, extract text from image, bengali ocr, hindi ocr, jpg to text, png to text, free ocr, image text reader, online ocr tool">
+    <meta name="author" content="ImageToText">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.example.com/image-to-text">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Image to Text Converter · Free Online OCR Tool · 100+ Languages">
+    <meta property="og:description" content="Extract text from images in 100+ languages including Bengali, Hindi, Arabic, and Chinese. Fast, private, and free OCR tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com/image-to-text">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- Performance -->
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+    <link rel="preconnect" href="//cdn.jsdelivr.net">
+    
+    <style>
+        /* =====================================================
+           RESET & BASE
+           ===================================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            color: #0f172a;
+            line-height: 1.6;
+            padding: 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* =====================================================
+           ADSENSE PLACEHOLDERS
+           ===================================================== */
+        .ad-slot {
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 14px;
+            padding: 0.75rem;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            width: 100%;
+            margin: 1.25rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .ad-slot::before {
+            content: 'AD';
+            position: absolute;
+            top: 6px;
+            left: 8px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: 0.05em;
+        }
+        .ad-slot:hover {
+            border-color: #94a3b8;
+            background: #eef2f6;
+        }
+        .ad-slot ins {
+            display: block;
+            width: 100%;
+        }
+        .ad-slot--top {
+            margin-top: 0.25rem;
+            min-height: 90px;
+        }
+        
+        /* =====================================================
+           HEADER
+           ===================================================== */
+        .header {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0ea5e9, #8b5cf6, #ec4899, #f59e0b);
+        }
+        .header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #0f172a 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            color: #475569;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            max-width: 720px;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .header-badge {
+            background: #e0f2fe;
+            color: #075985;
+            padding: 0.3rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+        
+        /* =====================================================
+           TOOL CARD
+           ===================================================== */
+        .tool-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* =====================================================
+           UPLOAD AREA
+           ===================================================== */
+        .upload-area {
+            border: 3px dashed #cbd5e1;
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            background: #f8fafc;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            margin-bottom: 1.8rem;
+        }
+        .upload-area:hover, .upload-area.dragover {
+            border-color: #0ea5e9;
+            background: #f0f9ff;
+            transform: translateY(-2px);
+        }
+        .upload-area input[type="file"] {
+            display: none;
+        }
+        .upload-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+        }
+        .upload-label svg {
+            width: 56px;
+            height: 56px;
+            stroke: #0ea5e9;
+            stroke-width: 1.6;
+            fill: none;
+            transition: transform 0.25s ease;
+        }
+        .upload-area:hover .upload-label svg {
+            transform: translateY(-4px);
+        }
+        .upload-label span {
+            font-size: 1.2rem;
+        }
+        .upload-hint {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 0.4rem;
+            font-weight: 400;
+        }
+        
+        /* =====================================================
+           INFO STRIP
+           ===================================================== */
+        .info-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.8rem;
+            justify-content: center;
+        }
+        .info-chip {
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+        }
+        .info-chip svg {
+            width: 16px;
+            height: 16px;
+            stroke: #0ea5e9;
+            fill: none;
+            stroke-width: 2.2;
+        }
+        
+        /* =====================================================
+           OPTIONS PANEL
+           ===================================================== */
+        .options-panel {
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 1.8rem;
+        }
+        .options-panel h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+        .option-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .option-field label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .option-field select {
+            padding: 0.7rem 0.9rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.2s;
+            background: #ffffff;
+            color: #0f172a;
+            cursor: pointer;
+        }
+        .option-field select:focus {
+            outline: none;
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12);
+        }
+        .lang-search-wrap {
+            position: relative;
+        }
+        .lang-search-wrap input {
+            padding: 0.7rem 0.9rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.2s;
+            background: #ffffff;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .lang-search-wrap input:focus {
+            outline: none;
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12);
+        }
+        
+        /* =====================================================
+           ACTION BUTTONS
+           ===================================================== */
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            color: #ffffff;
+            border: none;
+            padding: 0.95rem 2rem;
+            font-family: inherit;
+            font-weight: 700;
+            border-radius: 60px;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex: 1 1 auto;
+            min-width: 170px;
+            box-shadow: 0 8px 20px -6px rgba(14, 165, 233, 0.45);
+        }
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(14, 165, 233, 0.55);
+        }
+        .btn:active:not(:disabled) {
+            transform: translateY(0) scale(0.98);
+        }
+        .btn-secondary {
+            background: #ffffff;
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+            box-shadow: none;
+        }
+        .btn-secondary:hover:not(:disabled) {
+            background: #f8fafc;
+            border-color: #94a3b8;
+            box-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.1);
+        }
+        .btn:disabled {
+            opacity: 0.45;
+            pointer-events: none;
+            box-shadow: none;
+        }
+        
+        /* =====================================================
+           MAIN WORKSPACE
+           ===================================================== */
+        .workspace {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .workspace-panel {
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 1.25rem;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+        .workspace-panel h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+        .workspace-panel h3 span.panel-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .char-count {
+            background: #e0f2fe;
+            color: #075985;
+            padding: 0.15rem 0.65rem;
+            border-radius: 30px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        
+        /* Image preview container */
+        .image-preview-container {
+            background: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem;
+            flex: 1;
+            background-image:
+                linear-gradient(45deg, #f1f5f9 25%, transparent 25%),
+                linear-gradient(-45deg, #f1f5f9 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #f1f5f9 75%),
+                linear-gradient(-45deg, transparent 75%, #f1f5f9 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+        }
+        .image-preview-container img {
+            max-width: 100%;
+            max-height: 380px;
+            object-fit: contain;
+            display: block;
+            border-radius: 4px;
+        }
+        .image-placeholder {
+            color: #94a3b8;
+            font-size: 0.92rem;
+            font-weight: 500;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        /* Text output */
+        .text-output {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            padding: 1rem;
+            min-height: 300px;
+            flex: 1;
+            font-family: 'SFMono-Regular', 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #1e293b;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            position: relative;
+        }
+        .text-output:empty::before {
+            content: 'Extracted text will appear here...';
+            color: #94a3b8;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 500;
+        }
+        .text-output.has-content {
+            background: #f0fdf4;
+            border-color: #86efac;
+        }
+        
+        /* Copy button */
+        .copy-btn {
+            background: #ffffff;
+            color: #0ea5e9;
+            border: 2px solid #bae6fd;
+            padding: 0.4rem 0.9rem;
+            border-radius: 30px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .copy-btn:hover:not(:disabled) {
+            background: #0ea5e9;
+            color: #ffffff;
+            border-color: #0ea5e9;
+        }
+        .copy-btn:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .copy-btn.copied {
+            background: #10b981;
+            color: #ffffff;
+            border-color: #10b981;
+        }
+        
+        /* =====================================================
+           MESSAGES
+           ===================================================== */
+        .hidden {
+            display: none !important;
+        }
+        .error-msg, .success-msg, .loading-msg {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .error-msg {
+            color: #991b1b;
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+        }
+        .success-msg {
+            color: #065f46;
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+        }
+        .loading-msg {
+            color: #075985;
+            background: #e0f2fe;
+            border: 1px solid #bae6fd;
+        }
+        
+        /* =====================================================
+           SPINNER
+           ===================================================== */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2.5px solid rgba(7, 89, 133, 0.25);
+            border-top-color: #075985;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* =====================================================
+           PROGRESS BAR
+           ===================================================== */
+        .progress-container {
+            background: #e2e8f0;
+            border-radius: 40px;
+            height: 10px;
+            overflow: hidden;
+            margin-top: 0.75rem;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0ea5e9, #8b5cf6);
+            border-radius: 40px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        .progress-text {
+            font-size: 0.78rem;
+            color: #475569;
+            font-weight: 600;
+            margin-top: 0.35rem;
+            text-align: center;
+        }
+        
+        /* =====================================================
+           CONTENT SECTIONS (SEO)
+           ===================================================== */
+        .content-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+        }
+        .content-section h2 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
+        }
+        .step {
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+        }
+        .step-num {
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            color: #ffffff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px -4px rgba(14, 165, 233, 0.5);
+        }
+        .step p {
+            font-size: 0.93rem;
+            color: #475569;
+        }
+        .step strong {
+            color: #0f172a;
+            display: block;
+            margin-bottom: 0.2rem;
+            font-size: 0.98rem;
+        }
+        
+        /* =====================================================
+           FAQ
+           ===================================================== */
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0.95rem 0;
+        }
+        .faq-item:first-of-type {
+            padding-top: 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .faq-item summary {
+            font-weight: 700;
+            cursor: pointer;
+            color: #1e293b;
+            font-size: 0.98rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.15rem 0;
+            transition: color 0.2s;
+        }
+        .faq-item summary:hover {
+            color: #0284c7;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: #0ea5e9;
+            font-weight: 700;
+            transition: transform 0.25s ease;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .faq-item[open] summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+        .faq-item p {
+            margin-top: 0.6rem;
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            padding: 2rem 1rem 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .footer p + p {
+            margin-top: 0.3rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+        
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+        @media (max-width: 900px) {
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            body { padding: 0.75rem; }
+            .header { padding: 1.5rem 1.25rem; }
+            .tool-card { padding: 1.5rem 1.15rem; }
+            .btn { padding: 0.85rem 1.4rem; font-size: 0.92rem; }
+            .upload-area { padding: 1.75rem 1.1rem; }
+            .content-section { padding: 1.5rem 1.25rem; }
+            .options-panel { padding: 1.15rem; }
+        }
+        @media (max-width: 520px) {
+            .action-buttons { flex-direction: column; }
+            .btn { width: 100%; }
+            .header-badge { font-size: 0.72rem; padding: 0.25rem 0.7rem; }
+            .workspace-panel { padding: 1rem; }
+        }
+        
+        /* =====================================================
+           ACCESSIBILITY
+           ===================================================== */
+        :focus-visible {
+            outline: 3px solid #0ea5e9;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        .btn:focus-visible, .copy-btn:focus-visible {
+            outline: 3px solid #0f172a;
+            outline-offset: 2px;
+        }
+        
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ==================== HEADER ==================== -->
+        <header class="header">
+            <h1>Image to Text Converter</h1>
+            <p>Extract text from JPG, PNG, and WebP images in <strong>100+ languages</strong> including Bengali, Hindi, Arabic, Chinese, and Japanese — all in your browser. Fast, private, and free.</p>
+            <div class="badge-row">
+                <span class="header-badge">✓ 100+ Languages</span>
+                <span class="header-badge">✓ Bengali Support</span>
+                <span class="header-badge">✓ No Uploads</span>
+                <span class="header-badge">✓ Free Forever</span>
+            </div>
+        </header>
+
+        <!-- ==================== ADSENSE TOP ==================== -->
+        <div class="ad-slot ad-slot--top" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (Top Leaderboard)</span>
+        </div>
+
+        <!-- ==================== MAIN TOOL ==================== -->
+        <main class="tool-card">
+            <!-- Upload -->
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/*" aria-label="Upload image">
+                <label for="fileInput" class="upload-label">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    <span>Click or drag & drop an image</span>
+                    <div class="upload-hint">JPG, PNG, WebP, BMP, GIF · Max 20MB</div>
+                </label>
+            </div>
+            <div id="errorMsg" class="error-msg hidden" role="alert"></div>
+            <div id="successMsg" class="success-msg hidden" role="status">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span id="successText">Text extracted successfully!</span>
+            </div>
+            <div id="loadingMsg" class="loading-msg hidden" role="status">
+                <span class="spinner"></span>
+                <span id="loadingText">Processing image...</span>
+            </div>
+            <div id="progressContainer" class="progress-container hidden">
+                <div class="progress-bar-fill" id="progressBar"></div>
+                <div class="progress-text" id="progressText">0%</div>
+            </div>
+
+            <!-- Info Chips -->
+            <div class="info-strip">
+                <div class="info-chip">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 4v16"/></svg>
+                    Powered by Tesseract OCR
+                </div>
+                <div class="info-chip">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    Instant extraction
+                </div>
+                <div class="info-chip">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    100% private
+                </div>
+            </div>
+
+            <!-- Options Panel -->
+            <div class="options-panel">
+                <h3>⚙️ OCR Options</h3>
+                <div class="options-grid">
+                    <div class="option-field" style="grid-column: 1 / -1;">
+                        <label for="langSearch">Search Language</label>
+                        <div class="lang-search-wrap">
+                            <input type="text" id="langSearch" placeholder="Type to filter languages (e.g. Bengali, Hindi, English...)" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="option-field">
+                        <label for="languageSelect">Language (100+)</label>
+                        <select id="languageSelect" aria-label="OCR language" size="1"></select>
+                    </div>
+                    <div class="option-field">
+                        <label for="pageSegModeSelect">Page Segmentation</label>
+                        <select id="pageSegModeSelect" aria-label="Page segmentation mode">
+                            <option value="3">Auto (Default)</option>
+                            <option value="1">Single column of text</option>
+                            <option value="4">Single column, variable sizes</option>
+                            <option value="6">Single uniform block</option>
+                            <option value="11">Sparse text</option>
+                            <option value="12">Sparse text with OSD</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn" id="extractBtn" disabled type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    Extract Text
+                </button>
+                <button class="btn btn-secondary" id="resetBtn" disabled type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    Reset
+                </button>
+            </div>
+
+            <!-- Workspace -->
+            <div class="workspace">
+                <!-- Left: Image preview -->
+                <div class="workspace-panel">
+                    <h3>
+                        <span class="panel-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            Image Preview
+                        </span>
+                    </h3>
+                    <div class="image-preview-container" id="imagePreview">
+                        <div class="image-placeholder">No image uploaded yet</div>
+                    </div>
+                </div>
+
+                <!-- Right: Text output -->
+                <div class="workspace-panel">
+                    <h3>
+                        <span class="panel-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                            Extracted Text
+                        </span>
+                        <span class="char-count hidden" id="charCount">0 chars</span>
+                    </h3>
+                    <div class="text-output" id="textOutput" aria-live="polite"></div>
+                    <div style="display:flex; gap:0.5rem; margin-top:0.75rem; flex-wrap:wrap;">
+                        <button class="copy-btn" id="copyBtn" disabled type="button">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            Copy Text
+                        </button>
+                        <button class="copy-btn" id="downloadTxtBtn" disabled type="button">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download .txt
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ==================== ADSENSE MIDDLE ==================== -->
+        <div class="ad-slot" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="0987654321"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (In-Content)</span>
+        </div>
+
+        <!-- ==================== HOW TO ==================== -->
+        <section class="content-section">
+            <h2>How to Extract Text from Images</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <strong>Upload your image</strong>
+                        <p>Click the upload area or drag & drop an image containing text. Supports JPG, PNG, WebP, BMP, and GIF up to 20MB.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <strong>Select language & settings</strong>
+                        <p>Search and choose from 100+ languages including Bengali, Hindi, Arabic, Chinese, Japanese, Korean, and more.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <strong>Extract, copy, or download</strong>
+                        <p>Click "Extract Text" and the OCR engine will read your image. Copy the result or download it as a .txt file.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FAQ ==================== -->
+        <section class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            <details class="faq-item" open>
+                <summary>How does the Image to Text tool work?</summary>
+                <p>This tool uses Tesseract.js, a JavaScript port of the Tesseract OCR engine. When you upload an image, it analyzes the pixels and identifies characters using machine learning models — all running locally in your browser.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Which languages are supported?</summary>
+                <p>The tool supports <strong>100+ languages</strong> including: English, Bengali (বাংলা), Hindi (हिन्दी), Arabic (العربية), Chinese Simplified & Traditional (中文), Japanese (日本語), Korean (한국어), Russian (Русский), Spanish (Español), French (Français), German (Deutsch), Italian (Italiano), Portuguese (Português), Turkish (Türkçe), Vietnamese (Tiếng Việt), Thai (ไทย), Tamil (தமிழ்), Telugu (తెలుగు), Urdu (اردو), Punjabi (ਪੰਜਾਬੀ), Gujarati (ગુજરાતી), Marathi (मराठी), Kannada (ಕನ್ನಡ), Malayalam (മലയാളം), and many more.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can I extract Bengali text from images?</summary>
+                <p>Yes! Bengali (বাংলা) is fully supported. Select "Bengali (বাংলা)" from the language dropdown, upload your image containing Bengali text, and click "Extract Text". Make sure the image is clear and high-resolution for best results.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Are my images uploaded to a server?</summary>
+                <p>No. Your images never leave your device. All OCR processing happens in your browser using WebAssembly and JavaScript. No image or text is transmitted or stored externally.</p>
+            </details>
+            <details class="faq-item">
+                <summary>What image formats are supported?</summary>
+                <p>The tool supports all common image formats including JPG, JPEG, PNG, WebP, BMP, and GIF. The maximum file size is 20MB per image.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is this Image to Text converter free?</summary>
+                <p>Yes — completely free with no limits, no watermarks, and no sign-up required. All processing happens locally in your browser for maximum privacy.</p>
+            </details>
+        </section>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer class="footer">
+            <p>© 2025 Image to Text Converter. All processing happens locally in your browser — no uploads, no tracking.</p>
+            <p>Powered by Tesseract.js · 100+ languages including Bengali · Built with vanilla HTML, CSS, and JavaScript.</p>
+        </footer>
+    </div>
+
+    <!-- Tesseract.js library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.0.4/dist/tesseract.min.js"></script>
+
+    <script>
+        (function () {
+            'use strict';
+
+            /* =====================================================
+               UTILITY HELPERS
+               ===================================================== */
+            const $ = (sel) => document.querySelector(sel);
+
+            function formatBytes(bytes) {
+                if (!bytes || bytes === 0) return '0 B';
+                const k = 1024;
+                const sizes = ['B', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            /* =====================================================
+               COMPLETE LANGUAGE LIST (100+ languages)
+               ===================================================== */
+            const LANGUAGES = [
+                // English
+                { code: 'eng', name: 'English' },
+                // South Asian
+                { code: 'ben', name: 'Bengali (বাংলা)' },
+                { code: 'hin', name: 'Hindi (हिन्दी)' },
+                { code: 'urd', name: 'Urdu (اردو)' },
+                { code: 'tam', name: 'Tamil (தமிழ்)' },
+                { code: 'tel', name: 'Telugu (తెలుగు)' },
+                { code: 'kan', name: 'Kannada (ಕನ್ನಡ)' },
+                { code: 'mal', name: 'Malayalam (മലയാളം)' },
+                { code: 'guj', name: 'Gujarati (ગુજરાતી)' },
+                { code: 'mar', name: 'Marathi (मराठी)' },
+                { code: 'pan', name: 'Punjabi (ਪੰਜਾਬੀ)' },
+                { code: 'ori', name: 'Odia (ଓଡ଼ିଆ)' },
+                { code: 'sin', name: 'Sinhala (සිංහල)' },
+                { code: 'nep', name: 'Nepali (नेपाली)' },
+                { code: 'san', name: 'Sanskrit (संस्कृतम्)' },
+                { code: 'asm', name: 'Assamese (অসমীয়া)' },
+                { code: 'bod', name: 'Tibetan (བོད་ཡིག)' },
+                { code: 'div', name: 'Dhivehi (ދިވެހި)' },
+                // Middle Eastern
+                { code: 'ara', name: 'Arabic (العربية)' },
+                { code: 'fas', name: 'Persian (فارسی)' },
+                { code: 'heb', name: 'Hebrew (עברית)' },
+                { code: 'tur', name: 'Turkish (Türkçe)' },
+                { code: 'kur', name: 'Kurdish (Kurdî)' },
+                { code: 'pus', name: 'Pashto (پښتو)' },
+                { code: 'syr', name: 'Syriac (ܣܘܪܝܝܐ)' },
+                // East Asian
+                { code: 'chi_sim', name: 'Chinese Simplified (简体中文)' },
+                { code: 'chi_tra', name: 'Chinese Traditional (繁體中文)' },
+                { code: 'jpn', name: 'Japanese (日本語)' },
+                { code: 'kor', name: 'Korean (한국어)' },
+                // Southeast Asian
+                { code: 'vie', name: 'Vietnamese (Tiếng Việt)' },
+                { code: 'tha', name: 'Thai (ไทย)' },
+                { code: 'khm', name: 'Khmer (ខ្មែរ)' },
+                { code: 'lao', name: 'Lao (ລາວ)' },
+                { code: 'mya', name: 'Burmese (မြန်မာ)' },
+                { code: 'ind', name: 'Indonesian (Bahasa Indonesia)' },
+                { code: 'msa', name: 'Malay (Bahasa Melayu)' },
+                { code: 'tgl', name: 'Tagalog (Filipino)' },
+                { code: 'jav', name: 'Javanese (Basa Jawa)' },
+                { code: 'sun', name: 'Sundanese (Basa Sunda)' },
+                // European - Western
+                { code: 'spa', name: 'Spanish (Español)' },
+                { code: 'fra', name: 'French (Français)' },
+                { code: 'deu', name: 'German (Deutsch)' },
+                { code: 'ita', name: 'Italian (Italiano)' },
+                { code: 'por', name: 'Portuguese (Português)' },
+                { code: 'nld', name: 'Dutch (Nederlands)' },
+                { code: 'cat', name: 'Catalan (Català)' },
+                { code: 'glg', name: 'Galician (Galego)' },
+                { code: 'eus', name: 'Basque (Euskara)' },
+                { code: 'gle', name: 'Irish (Gaeilge)' },
+                { code: 'cym', name: 'Welsh (Cymraeg)' },
+                { code: 'gla', name: 'Scottish Gaelic (Gàidhlig)' },
+                // European - Northern
+                { code: 'swe', name: 'Swedish (Svenska)' },
+                { code: 'nor', name: 'Norwegian (Norsk)' },
+                { code: 'dan', name: 'Danish (Dansk)' },
+                { code: 'fin', name: 'Finnish (Suomi)' },
+                { code: 'isl', name: 'Icelandic (Íslenska)' },
+                // European - Central/Eastern
+                { code: 'rus', name: 'Russian (Русский)' },
+                { code: 'ukr', name: 'Ukrainian (Українська)' },
+                { code: 'pol', name: 'Polish (Polski)' },
+                { code: 'ces', name: 'Czech (Čeština)' },
+                { code: 'slk', name: 'Slovak (Slovenčina)' },
+                { code: 'hun', name: 'Hungarian (Magyar)' },
+                { code: 'ron', name: 'Romanian (Română)' },
+                { code: 'bul', name: 'Bulgarian (Български)' },
+                { code: 'hrv', name: 'Croatian (Hrvatski)' },
+                { code: 'srp', name: 'Serbian (Српски)' },
+                { code: 'slv', name: 'Slovenian (Slovenščina)' },
+                { code: 'bos', name: 'Bosnian (Bosanski)' },
+                { code: 'mkd', name: 'Macedonian (Македонски)' },
+                { code: 'sqi', name: 'Albanian (Shqip)' },
+                { code: 'ell', name: 'Greek (Ελληνικά)' },
+                { code: 'lit', name: 'Lithuanian (Lietuvių)' },
+                { code: 'lav', name: 'Latvian (Latviešu)' },
+                { code: 'est', name: 'Estonian (Eesti)' },
+                { code: 'bel', name: 'Belarusian (Беларуская)' },
+                { code: 'kat', name: 'Georgian (ქართული)' },
+                { code: 'hye', name: 'Armenian (Հայերեն)' },
+                { code: 'aze', name: 'Azerbaijani (Azərbaycan)' },
+                { code: 'kaz', name: 'Kazakh (Қазақ)' },
+                { code: 'uzb', name: 'Uzbek (Oʻzbek)' },
+                { code: 'tuk', name: 'Turkmen (Türkmen)' },
+                { code: 'kir', name: 'Kyrgyz (Кыргызча)' },
+                { code: 'tgk', name: 'Tajik (Тоҷикӣ)' },
+                { code: 'mon', name: 'Mongolian (Монгол)' },
+                // African
+                { code: 'amh', name: 'Amharic (አማርኛ)' },
+                { code: 'tir', name: 'Tigrinya (ትግርኛ)' },
+                { code: 'swa', name: 'Swahili (Kiswahili)' },
+                { code: 'yor', name: 'Yoruba (Yorùbá)' },
+                { code: 'hau', name: 'Hausa (Hausa)' },
+                { code: 'ibo', name: 'Igbo (Igbo)' },
+                { code: 'zul', name: 'Zulu (isiZulu)' },
+                { code: 'xho', name: 'Xhosa (isiXhosa)' },
+                { code: 'afr', name: 'Afrikaans (Afrikaans)' },
+                { code: 'som', name: 'Somali (Soomaali)' },
+                { code: 'mlg', name: 'Malagasy (Malagasy)' },
+                // Americas & Pacific
+                { code: 'que', name: 'Quechua (Runasimi)' },
+                { code: 'grn', name: 'Guarani (Avañeʼẽ)' },
+                { code: 'mri', name: 'Maori (Māori)' },
+                { code: 'haw', name: 'Hawaiian (ʻŌlelo Hawaiʻi)' },
+                { code: 'smo', name: 'Samoan (Gagana Samoa)' },
+                { code: 'ton', name: 'Tongan (Lea Faka-Tonga)' },
+                { code: 'fij', name: 'Fijian (Na Vosa Vakaviti)' },
+                // Historical / Constructed
+                { code: 'lat', name: 'Latin (Latina)' },
+                { code: 'epo', name: 'Esperanto (Esperanto)' }
+            ];
+
+            /* =====================================================
+               DOM ELEMENTS
+               ===================================================== */
+            const fileInput = $('#fileInput');
+            const uploadArea = $('#uploadArea');
+            const extractBtn = $('#extractBtn');
+            const resetBtn = $('#resetBtn');
+            const copyBtn = $('#copyBtn');
+            const downloadTxtBtn = $('#downloadTxtBtn');
+            const errorMsg = $('#errorMsg');
+            const successMsg = $('#successMsg');
+            const successText = $('#successText');
+            const loadingMsg = $('#loadingMsg');
+            const loadingText = $('#loadingText');
+            const progressContainer = $('#progressContainer');
+            const progressBar = $('#progressBar');
+            const progressText = $('#progressText');
+            const imagePreview = $('#imagePreview');
+            const textOutput = $('#textOutput');
+            const charCount = $('#charCount');
+            const languageSelect = $('#languageSelect');
+            const pageSegModeSelect = $('#pageSegModeSelect');
+            const langSearch = $('#langSearch');
+
+            /* =====================================================
+               STATE
+               ===================================================== */
+            let currentImageFile = null;
+            let currentImageDataUrl = null;
+            let currentImageName = '';
+            let extractedText = '';
+            let isProcessing = false;
+            let currentWorker = null;
+
+            /* =====================================================
+               POPULATE LANGUAGE DROPDOWN
+               ===================================================== */
+            function populateLanguages(filter) {
+                const q = (filter || '').toLowerCase().trim();
+                const currentValue = languageSelect.value;
+                languageSelect.innerHTML = '';
+
+                const filtered = q
+                    ? LANGUAGES.filter(l =>
+                        l.name.toLowerCase().includes(q) ||
+                        l.code.toLowerCase().includes(q))
+                    : LANGUAGES;
+
+                if (filtered.length === 0) {
+                    const opt = document.createElement('option');
+                    opt.value = '';
+                    opt.textContent = 'No languages match "' + filter + '"';
+                    languageSelect.appendChild(opt);
+                    return;
+                }
+
+                filtered.forEach(function (lang) {
+                    const opt = document.createElement('option');
+                    opt.value = lang.code;
+                    opt.textContent = lang.name + ' (' + lang.code + ')';
+                    if (lang.code === 'eng' && !q) {
+                        opt.selected = true;
+                    }
+                    languageSelect.appendChild(opt);
+                });
+
+                // Restore selection if still present
+                if (!q && currentValue) {
+                    const exists = Array.from(languageSelect.options).some(o => o.value === currentValue);
+                    if (exists) languageSelect.value = currentValue;
+                }
+
+                // Default to English if nothing selected
+                if (!languageSelect.value && filtered.length > 0) {
+                    const engOpt = Array.from(languageSelect.options).find(o => o.value === 'eng');
+                    if (engOpt) languageSelect.value = 'eng';
+                    else languageSelect.value = filtered[0].code;
+                }
+            }
+
+            /* =====================================================
+               MESSAGE HELPERS
+               ===================================================== */
+            function showError(message) {
+                errorMsg.textContent = message;
+                errorMsg.classList.remove('hidden');
+                successMsg.classList.add('hidden');
+                loadingMsg.classList.add('hidden');
+                clearTimeout(errorMsg._timer);
+                errorMsg._timer = setTimeout(() => errorMsg.classList.add('hidden'), 7000);
+            }
+
+            function showSuccess(message) {
+                successText.textContent = message || 'Success!';
+                successMsg.classList.remove('hidden');
+                errorMsg.classList.add('hidden');
+                loadingMsg.classList.add('hidden');
+                clearTimeout(successMsg._timer);
+                successMsg._timer = setTimeout(() => successMsg.classList.add('hidden'), 6000);
+            }
+
+            function showLoading(text) {
+                loadingText.textContent = text || 'Processing...';
+                loadingMsg.classList.remove('hidden');
+                errorMsg.classList.add('hidden');
+                successMsg.classList.add('hidden');
+            }
+
+            function hideLoading() {
+                loadingMsg.classList.add('hidden');
+            }
+
+            function clearMessages() {
+                errorMsg.classList.add('hidden');
+                successMsg.classList.add('hidden');
+                loadingMsg.classList.add('hidden');
+            }
+
+            function updateProgress(percent, text) {
+                progressContainer.classList.remove('hidden');
+                progressBar.style.width = Math.min(100, Math.max(0, percent)) + '%';
+                if (text) {
+                    progressText.textContent = text;
+                } else {
+                    progressText.textContent = Math.round(percent) + '%';
+                }
+                if (percent >= 100) {
+                    setTimeout(() => progressContainer.classList.add('hidden'), 800);
+                }
+            }
+
+            /* =====================================================
+               DRAG & DROP UPLOAD
+               ===================================================== */
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+            uploadArea.addEventListener('dragenter', () => uploadArea.classList.add('dragover'));
+            uploadArea.addEventListener('dragover', () => uploadArea.classList.add('dragover'));
+            uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+            uploadArea.addEventListener('drop', e => {
+                uploadArea.classList.remove('dragover');
+                if (e.dataTransfer.files.length) {
+                    handleFile(e.dataTransfer.files[0]);
+                }
+            });
+
+            fileInput.addEventListener('change', e => {
+                if (e.target.files.length) {
+                    handleFile(e.target.files[0]);
+                    fileInput.value = '';
+                }
+            });
+
+            uploadArea.addEventListener('click', e => {
+                if (e.target.tagName === 'INPUT') return;
+                if (e.target.closest('label')) return;
+                fileInput.click();
+            });
+
+            /* =====================================================
+               FILE HANDLING
+               ===================================================== */
+            function handleFile(file) {
+                clearMessages();
+
+                if (!file.type.startsWith('image/')) {
+                    showError('Please select an image file (JPG, PNG, WebP, BMP, GIF).');
+                    return;
+                }
+
+                if (file.size > 20 * 1024 * 1024) {
+                    showError('File too large. Maximum size is 20MB.');
+                    return;
+                }
+
+                currentImageFile = file;
+                currentImageName = file.name.replace(/\.[^/.]+$/, '') || 'extracted-text';
+                resetTextOutput();
+
+                const reader = new FileReader();
+                reader.onload = function (ev) {
+                    currentImageDataUrl = ev.target.result;
+
+                    imagePreview.innerHTML = '';
+                    const img = document.createElement('img');
+                    img.src = ev.target.result;
+                    img.alt = 'Uploaded image preview';
+                    imagePreview.appendChild(img);
+
+                    extractBtn.disabled = false;
+                    resetBtn.disabled = false;
+
+                    showSuccess('Image loaded: ' + file.name + ' (' + formatBytes(file.size) + ')');
+                };
+                reader.onerror = function () {
+                    showError('Error reading file. Please try again.');
+                };
+                reader.readAsDataURL(file);
+            }
+
+            /* =====================================================
+               TEXT OUTPUT MANAGEMENT
+               ===================================================== */
+            function resetTextOutput() {
+                extractedText = '';
+                textOutput.textContent = '';
+                textOutput.classList.remove('has-content');
+                charCount.classList.add('hidden');
+                charCount.textContent = '0 chars';
+                copyBtn.disabled = true;
+                downloadTxtBtn.disabled = true;
+                copyBtn.classList.remove('copied');
+            }
+
+            function setExtractedText(text) {
+                extractedText = text || '';
+                textOutput.textContent = extractedText;
+                if (extractedText.trim().length > 0) {
+                    textOutput.classList.add('has-content');
+                    charCount.textContent = extractedText.length.toLocaleString() + ' chars';
+                    charCount.classList.remove('hidden');
+                    copyBtn.disabled = false;
+                    downloadTxtBtn.disabled = false;
+                } else {
+                    textOutput.classList.remove('has-content');
+                    charCount.classList.add('hidden');
+                    copyBtn.disabled = true;
+                    downloadTxtBtn.disabled = true;
+                }
+            }
+
+            /* =====================================================
+               OCR EXTRACTION
+               ===================================================== */
+            function extractText() {
+                if (!currentImageDataUrl) {
+                    showError('Please upload an image first.');
+                    return;
+                }
+                if (isProcessing) {
+                    showError('OCR is already running. Please wait...');
+                    return;
+                }
+                if (typeof Tesseract === 'undefined') {
+                    showError('OCR library failed to load. Please check your internet connection and refresh.');
+                    return;
+                }
+
+                const language = languageSelect.value;
+                if (!language) {
+                    showError('Please select a language from the dropdown.');
+                    return;
+                }
+
+                clearMessages();
+                isProcessing = true;
+                extractBtn.disabled = true;
+                resetBtn.disabled = true;
+                copyBtn.disabled = true;
+                downloadTxtBtn.disabled = true;
+
+                const psm = parseInt(pageSegModeSelect.value, 10);
+
+                showLoading('Preparing OCR engine...');
+                updateProgress(0, 'Initializing...');
+
+                // Get the selected language name for the success message
+                const selectedLangName = (function() {
+                    const opt = languageSelect.options[languageSelect.selectedIndex];
+                    return opt ? opt.textContent : language;
+                })();
+
+                Tesseract.recognize(
+                    currentImageDataUrl,
+                    language,
+                    {
+                        logger: function (m) {
+                            if (m.status === 'loading tesseract core') {
+                                showLoading('Loading OCR core...');
+                                updateProgress(5, 'Loading OCR core...');
+                            } else if (m.status === 'initializing tesseract') {
+                                showLoading('Initializing OCR engine...');
+                                updateProgress(10, 'Initializing engine...');
+                            } else if (m.status === 'loading language traineddata') {
+                                showLoading('Downloading language data...');
+                                const p = m.progress ? m.progress * 100 : 0;
+                                updateProgress(10 + p * 0.3, 'Loading language data (' + Math.round(p) + '%)...');
+                            } else if (m.status === 'initializing api') {
+                                showLoading('Preparing OCR...');
+                                updateProgress(45, 'Preparing OCR...');
+                            } else if (m.status === 'recognizing text') {
+                                showLoading('Extracting text...');
+                                const p = m.progress ? m.progress * 100 : 0;
+                                updateProgress(45 + p * 0.55, 'Extracting text (' + Math.round(p) + '%)...');
+                            }
+                        },
+                        tessedit_pageseg_mode: psm
+                    }
+                ).then(function (result) {
+                    hideLoading();
+                    updateProgress(100, 'Complete!');
+                    isProcessing = false;
+                    extractBtn.disabled = false;
+                    resetBtn.disabled = false;
+
+                    const text = (result.data && result.data.text) ? result.data.text : '';
+                    setExtractedText(text);
+
+                    const confidence = result.data && result.data.confidence
+                        ? Math.round(result.data.confidence)
+                        : null;
+
+                    if (text.trim().length === 0) {
+                        showError('No text detected in the image. Try a clearer image, higher resolution, or a different language.');
+                    } else {
+                        const msg = confidence !== null
+                            ? 'Text extracted from ' + selectedLangName + '! Confidence: ' + confidence + '%'
+                            : 'Text extracted from ' + selectedLangName + '!';
+                        showSuccess(msg);
+                    }
+                }).catch(function (err) {
+                    console.error('OCR error:', err);
+                    hideLoading();
+                    updateProgress(0, '');
+                    progressContainer.classList.add('hidden');
+                    isProcessing = false;
+                    extractBtn.disabled = false;
+                    resetBtn.disabled = false;
+                    showError('OCR failed: ' + (err.message || 'Unknown error. Please try again.'));
+                });
+            }
+
+            /* =====================================================
+               COPY & DOWNLOAD
+               ===================================================== */
+            function copyText() {
+                if (!extractedText) {
+                    showError('No text to copy.');
+                    return;
+                }
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(extractedText).then(function () {
+                        copyBtn.classList.add('copied');
+                        const originalHTML = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+                        showSuccess('Text copied to clipboard!');
+                        setTimeout(function () {
+                            copyBtn.classList.remove('copied');
+                            copyBtn.innerHTML = originalHTML;
+                        }, 2200);
+                    }).catch(function () {
+                        fallbackCopy();
+                    });
+                } else {
+                    fallbackCopy();
+                }
+            }
+
+            function fallbackCopy() {
+                try {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = extractedText;
+                    textarea.style.position = 'fixed';
+                    textarea.style.opacity = '0';
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    showSuccess('Text copied to clipboard!');
+                    copyBtn.classList.add('copied');
+                    setTimeout(function () { copyBtn.classList.remove('copied'); }, 2200);
+                } catch (err) {
+                    showError('Failed to copy. Please select and copy manually.');
+                }
+            }
+
+            function downloadTxt() {
+                if (!extractedText) {
+                    showError('No text to download.');
+                    return;
+                }
+                try {
+                    const blob = new Blob([extractedText], { type: 'text/plain;charset=utf-8' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = currentImageName + '.txt';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+                    showSuccess('Text file downloaded!');
+                } catch (err) {
+                    console.error('Download error:', err);
+                    showError('Failed to download text file.');
+                }
+            }
+
+            /* =====================================================
+               RESET
+               ===================================================== */
+            function resetAll() {
+                currentImageFile = null;
+                currentImageDataUrl = null;
+                currentImageName = '';
+                isProcessing = false;
+
+                if (currentWorker) {
+                    try { currentWorker.terminate(); } catch (e) {}
+                    currentWorker = null;
+                }
+
+                fileInput.value = '';
+                imagePreview.innerHTML = '<div class="image-placeholder">No image uploaded yet</div>';
+
+                resetTextOutput();
+
+                extractBtn.disabled = true;
+                resetBtn.disabled = true;
+                copyBtn.disabled = true;
+                downloadTxtBtn.disabled = true;
+
+                progressContainer.classList.add('hidden');
+                progressBar.style.width = '0%';
+                progressText.textContent = '0%';
+
+                languageSelect.value = 'eng';
+                pageSegModeSelect.value = '3';
+                langSearch.value = '';
+                populateLanguages('');
+
+                clearMessages();
+            }
+
+            /* =====================================================
+               EVENT LISTENERS
+               ===================================================== */
+            extractBtn.addEventListener('click', extractText);
+            resetBtn.addEventListener('click', resetAll);
+            copyBtn.addEventListener('click', copyText);
+            downloadTxtBtn.addEventListener('click', downloadTxt);
+
+            // Language search filter
+            langSearch.addEventListener('input', function () {
+                populateLanguages(this.value);
+            });
+
+            /* =====================================================
+               INITIALIZATION
+               ===================================================== */
+            extractBtn.disabled = true;
+            resetBtn.disabled = true;
+            copyBtn.disabled = true;
+            downloadTxtBtn.disabled = true;
+
+            // Populate the full language list
+            populateLanguages('');
+
+            /* =====================================================
+               CLEANUP
+               ===================================================== */
+            window.addEventListener('beforeunload', function () {
+                currentImageFile = null;
+                currentImageDataUrl = null;
+                extractedText = '';
+                if (currentWorker) {
+                    try { currentWorker.terminate(); } catch (e) {}
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
