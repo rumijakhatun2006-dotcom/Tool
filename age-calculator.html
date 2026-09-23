@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Age Calculator · Free Online Tool | Calculate Your Exact Age in Years, Months, Days</title>
+    <meta name="description" content="Free responsive age calculator. Find your exact age in years, months, days, hours, and minutes. Also calculates next birthday and zodiac sign. SEO optimized with AdSense ad spaces.">
+    <meta name="keywords" content="age calculator, calculate age, how old am i, age in days, birthday calculator, date of birth calculator, age difference, exact age, free age tool">
+    <meta name="author" content="AgeCalculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.example.com/age-calculator">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Age Calculator · Free Online Tool">
+    <meta property="og:description" content="Calculate your exact age in years, months, days, and more. Fast, accurate, and free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com/age-calculator">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- Performance -->
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+    
+    <style>
+        /* =====================================================
+           RESET & BASE
+           ===================================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            color: #0f172a;
+            line-height: 1.6;
+            padding: 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* =====================================================
+           ADSENSE PLACEHOLDERS
+           ===================================================== */
+        .ad-slot {
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 14px;
+            padding: 0.75rem;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            width: 100%;
+            margin: 1.25rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .ad-slot::before {
+            content: 'AD';
+            position: absolute;
+            top: 6px;
+            left: 8px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: 0.05em;
+        }
+        .ad-slot:hover {
+            border-color: #94a3b8;
+            background: #eef2f6;
+        }
+        .ad-slot ins {
+            display: block;
+            width: 100%;
+        }
+        .ad-slot--top {
+            margin-top: 0.25rem;
+            min-height: 90px;
+        }
+        
+        /* =====================================================
+           HEADER
+           ===================================================== */
+        .header {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #ec4899, #8b5cf6);
+        }
+        .header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #0f172a 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            color: #475569;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            max-width: 720px;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .header-badge {
+            background: #fce7f3;
+            color: #9d174d;
+            padding: 0.3rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+        
+        /* =====================================================
+           TOOL CARD
+           ===================================================== */
+        .tool-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* =====================================================
+           INPUT SECTION
+           ===================================================== */
+        .input-section {
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 1.75rem;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 1.75rem;
+        }
+        .input-section h2 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .input-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            align-items: end;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .input-group label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .input-group input[type="date"],
+        .input-group input[type="time"] {
+            padding: 0.85rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.2s;
+            background: #ffffff;
+            color: #0f172a;
+            cursor: pointer;
+        }
+        .input-group input[type="date"]:focus,
+        .input-group input[type="time"]:focus {
+            outline: none;
+            border-color: #ec4899;
+            box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.12);
+        }
+        .input-hint {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            font-weight: 500;
+            margin-top: 0.1rem;
+        }
+        
+        /* =====================================================
+           ACTION BUTTONS
+           ===================================================== */
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-bottom: 1.75rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #ec4899, #db2777);
+            color: #ffffff;
+            border: none;
+            padding: 0.95rem 2rem;
+            font-family: inherit;
+            font-weight: 700;
+            border-radius: 60px;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex: 1 1 auto;
+            min-width: 170px;
+            box-shadow: 0 8px 20px -6px rgba(236, 72, 153, 0.45);
+        }
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(236, 72, 153, 0.55);
+        }
+        .btn:active:not(:disabled) {
+            transform: translateY(0) scale(0.98);
+        }
+        .btn-secondary {
+            background: #ffffff;
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+            box-shadow: none;
+        }
+        .btn-secondary:hover:not(:disabled) {
+            background: #f8fafc;
+            border-color: #94a3b8;
+            box-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.1);
+        }
+        .btn:disabled {
+            opacity: 0.45;
+            pointer-events: none;
+            box-shadow: none;
+        }
+        
+        /* =====================================================
+           RESULT SECTION
+           ===================================================== */
+        .result-section {
+            animation: fadeSlide 0.4s ease;
+        }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .result-hero {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            border: 2px solid #f9a8d4;
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .result-hero::before {
+            content: '🎂';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 5rem;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+        .result-hero-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #9d174d;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+        .result-hero-age {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            font-weight: 800;
+            color: #831843;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.35rem;
+        }
+        .result-hero-age span {
+            font-size: 0.4em;
+            font-weight: 700;
+            color: #be185d;
+            letter-spacing: 0;
+            display: block;
+            margin-top: 0.25rem;
+        }
+        .result-hero-sub {
+            font-size: 0.95rem;
+            color: #9d174d;
+            font-weight: 600;
+        }
+        
+        /* Detail cards grid */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .detail-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.15rem 1rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .detail-card:hover {
+            border-color: #ec4899;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px -8px rgba(236, 72, 153, 0.3);
+        }
+        .detail-card-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+        .detail-card-value {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #831843;
+            line-height: 1.1;
+            word-break: break-word;
+        }
+        .detail-card-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.35rem;
+        }
+        
+        /* Additional info rows */
+        .info-list {
+            background: #f8fafc;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 1.25rem;
+            border-bottom: 1px solid #e2e8f0;
+            gap: 1rem;
+        }
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        .info-row-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .info-row-value {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #0f172a;
+            text-align: right;
+        }
+        .info-row-value.highlight {
+            color: #db2777;
+        }
+        
+        /* Countdown */
+        .countdown-box {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            border-radius: 18px;
+            padding: 1.5rem;
+            text-align: center;
+            color: #ffffff;
+            margin-top: 1.25rem;
+            box-shadow: 0 10px 25px -8px rgba(139, 92, 246, 0.45);
+        }
+        .countdown-box h3 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+        .countdown-value {
+            font-size: clamp(1.6rem, 4vw, 2.25rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+        .countdown-sub {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            font-weight: 600;
+        }
+        
+        /* =====================================================
+           MESSAGES
+           ===================================================== */
+        .hidden {
+            display: none !important;
+        }
+        .error-msg {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #991b1b;
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+            margin-bottom: 1.25rem;
+        }
+        
+        /* =====================================================
+           CONTENT SECTIONS (SEO)
+           ===================================================== */
+        .content-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+        }
+        .content-section h2 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
+        }
+        .step {
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+        }
+        .step-num {
+            background: linear-gradient(135deg, #ec4899, #db2777);
+            color: #ffffff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px -4px rgba(236, 72, 153, 0.5);
+        }
+        .step p {
+            font-size: 0.93rem;
+            color: #475569;
+        }
+        .step strong {
+            color: #0f172a;
+            display: block;
+            margin-bottom: 0.2rem;
+            font-size: 0.98rem;
+        }
+        
+        /* =====================================================
+           FAQ
+           ===================================================== */
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0.95rem 0;
+        }
+        .faq-item:first-of-type {
+            padding-top: 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .faq-item summary {
+            font-weight: 700;
+            cursor: pointer;
+            color: #1e293b;
+            font-size: 0.98rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.15rem 0;
+            transition: color 0.2s;
+        }
+        .faq-item summary:hover {
+            color: #db2777;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: #ec4899;
+            font-weight: 700;
+            transition: transform 0.25s ease;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .faq-item[open] summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+        .faq-item p {
+            margin-top: 0.6rem;
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            padding: 2rem 1rem 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .footer p + p {
+            margin-top: 0.3rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+        
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+        @media (max-width: 768px) {
+            body { padding: 0.75rem; }
+            .header { padding: 1.5rem 1.25rem; }
+            .tool-card { padding: 1.5rem 1.15rem; }
+            .btn { padding: 0.85rem 1.4rem; font-size: 0.92rem; }
+            .content-section { padding: 1.5rem 1.25rem; }
+            .input-section { padding: 1.25rem; }
+        }
+        @media (max-width: 560px) {
+            .input-grid { grid-template-columns: 1fr; }
+            .action-buttons { flex-direction: column; }
+            .btn { width: 100%; }
+            .header-badge { font-size: 0.72rem; padding: 0.25rem 0.7rem; }
+            .detail-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+            .detail-card { padding: 0.9rem 0.6rem; }
+            .detail-card-value { font-size: 1.15rem; }
+        }
+        
+        /* =====================================================
+           ACCESSIBILITY
+           ===================================================== */
+        :focus-visible {
+            outline: 3px solid #ec4899;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        .btn:focus-visible {
+            outline: 3px solid #0f172a;
+            outline-offset: 2px;
+        }
+        
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ==================== HEADER ==================== -->
+        <header class="header">
+            <h1>Age Calculator</h1>
+            <p>Calculate your exact age in years, months, days, hours, and minutes. Find out when your next birthday is and discover fun facts about your age.</p>
+            <div class="badge-row">
+                <span class="header-badge">✓ Instant Results</span>
+                <span class="header-badge">✓ Exact to the Day</span>
+                <span class="header-badge">✓ 100% Free</span>
+                <span class="header-badge">✓ No Sign-Up</span>
+            </div>
+        </header>
+
+        <!-- ==================== ADSENSE TOP ==================== -->
+        <div class="ad-slot ad-slot--top" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (Top Leaderboard)</span>
+        </div>
+
+        <!-- ==================== MAIN TOOL ==================== -->
+        <main class="tool-card">
+            <!-- Input Section -->
+            <section class="input-section">
+                <h2>📅 Enter Your Details</h2>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="birthDate">Date of Birth</label>
+                        <input type="date" id="birthDate" aria-label="Date of birth" max="">
+                        <div class="input-hint">Select your birth date</div>
+                    </div>
+                    <div class="input-group">
+                        <label for="birthTime">Time of Birth (optional)</label>
+                        <input type="time" id="birthTime" value="12:00" aria-label="Time of birth">
+                        <div class="input-hint">Defaults to 12:00 PM if not set</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error -->
+            <div id="errorMsg" class="error-msg hidden" role="alert"></div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn" id="calculateBtn" type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Calculate My Age
+                </button>
+                <button class="btn btn-secondary" id="resetBtn" type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    Reset
+                </button>
+            </div>
+
+            <!-- Results -->
+            <div class="result-section hidden" id="resultSection">
+                <!-- Hero: Age -->
+                <div class="result-hero">
+                    <div class="result-hero-label">You are exactly</div>
+                    <div class="result-hero-age" id="heroAge">
+                        <span>0 Years, 0 Months, 0 Days</span>
+                    </div>
+                    <div class="result-hero-sub" id="heroSub">Born on —</div>
+                </div>
+
+                <!-- Detail Grid -->
+                <div class="detail-grid">
+                    <div class="detail-card">
+                        <span class="detail-card-icon">📆</span>
+                        <div class="detail-card-value" id="detailYears">0</div>
+                        <div class="detail-card-label">Years</div>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-card-icon">🗓️</span>
+                        <div class="detail-card-value" id="detailMonths">0</div>
+                        <div class="detail-card-label">Months</div>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-card-icon">📅</span>
+                        <div class="detail-card-value" id="detailDays">0</div>
+                        <div class="detail-card-label">Days</div>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-card-icon">⏰</span>
+                        <div class="detail-card-value" id="detailHours">0</div>
+                        <div class="detail-card-label">Hours</div>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-card-icon">⏱️</span>
+                        <div class="detail-card-value" id="detailMinutes">0</div>
+                        <div class="detail-card-label">Minutes</div>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-card-icon">🎯</span>
+                        <div class="detail-card-value" id="detailTotalDays">0</div>
+                        <div class="detail-card-label">Total Days</div>
+                    </div>
+                </div>
+
+                <!-- Info List -->
+                <div class="info-list">
+                    <div class="info-row">
+                        <span class="info-row-label">💓 Heartbeats (approx.)</span>
+                        <span class="info-row-value" id="infoHeartbeats">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-row-label">😴 Sleep (approx.)</span>
+                        <span class="info-row-value" id="infoSleep">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-row-label">🌬️ Breaths (approx.)</span>
+                        <span class="info-row-value" id="infoBreaths">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-row-label">🌙 Days until next birthday</span>
+                        <span class="info-row-value highlight" id="infoNextBirthday">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-row-label">🎂 Next birthday</span>
+                        <span class="info-row-value" id="infoNextBirthdayDate">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-row-label">⭐ Day of the week born</span>
+                        <span class="info-row-value" id="infoWeekday">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-row-label">♈ Zodiac sign</span>
+                        <span class="info-row-value" id="infoZodiac">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-row-label">💫 Life path number</span>
+                        <span class="info-row-value" id="infoLifePath">—</span>
+                    </div>
+                </div>
+
+                <!-- Countdown -->
+                <div class="countdown-box">
+                    <h3>🎉 Countdown to next birthday</h3>
+                    <div class="countdown-value" id="countdownValue">—</div>
+                    <div class="countdown-sub" id="countdownSub">—</div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ==================== ADSENSE MIDDLE ==================== -->
+        <div class="ad-slot" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="0987654321"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (In-Content)</span>
+        </div>
+
+        <!-- ==================== HOW TO ==================== -->
+        <section class="content-section">
+            <h2>How to Use the Age Calculator</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <strong>Enter your date of birth</strong>
+                        <p>Pick your birth date using the date picker. You can optionally add your time of birth for even more precise results.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <strong>Click "Calculate My Age"</strong>
+                        <p>The tool will instantly compute your exact age in years, months, days, hours, and minutes — all based on today's date.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <strong>Explore fun facts & countdown</strong>
+                        <p>See your next birthday countdown, zodiac sign, life path number, and other interesting estimates about your life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FAQ ==================== -->
+        <section class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            <details class="faq-item" open>
+                <summary>How is my age calculated?</summary>
+                <p>The calculator uses your birth date (and optional birth time) compared against the current date and time. It accounts for leap years and varying month lengths to give you an exact result in years, months, and days.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Why should I enter my time of birth?</summary>
+                <p>If you enter your birth time, the calculator can determine your age down to the exact hour and minute. If you leave it blank, the tool defaults to 12:00 PM (noon) on your birth date.</p>
+            </details>
+            <details class="faq-item">
+                <summary>What is a life path number?</summary>
+                <p>The life path number is a numerology concept derived from your birth date. It's calculated by reducing the digits of your full birth date to a single digit (or master numbers 11, 22, 33) and is said to reveal your life's purpose.</p>
+            </details>
+            <details class="faq-item">
+                <summary>How accurate is the next birthday countdown?</summary>
+                <p>The countdown is calculated in real time based on your birth date and the current date. It accounts for leap years and correctly handles birthdays falling on February 29 in non-leap years (treated as March 1).</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is my data stored or shared?</summary>
+                <p>No. This tool runs entirely in your browser using JavaScript. Your birth date and time are never sent to any server, stored, or shared.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is this age calculator free?</summary>
+                <p>Yes — completely free with no limits, no watermarks, and no sign-up required. You can use it as many times as you like.</p>
+            </details>
+        </section>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer class="footer">
+            <p>© 2025 Age Calculator. All calculations happen locally in your browser — no data is uploaded or tracked.</p>
+            <p>Built with vanilla HTML, CSS, and JavaScript for maximum performance and privacy.</p>
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            /* =====================================================
+               UTILITY HELPERS
+               ===================================================== */
+            const $ = (sel) => document.querySelector(sel);
+
+            // Zodiac sign lookup
+            const ZODIAC_SIGNS = [
+                { name: 'Capricorn ♑', start: [12, 22], end: [1, 19] },
+                { name: 'Aquarius ♒', start: [1, 20], end: [2, 18] },
+                { name: 'Pisces ♓', start: [2, 19], end: [3, 20] },
+                { name: 'Aries ♈', start: [3, 21], end: [4, 19] },
+                { name: 'Taurus ♉', start: [4, 20], end: [5, 20] },
+                { name: 'Gemini ♊', start: [5, 21], end: [6, 20] },
+                { name: 'Cancer ♋', start: [6, 21], end: [7, 22] },
+                { name: 'Leo ♌', start: [7, 23], end: [8, 22] },
+                { name: 'Virgo ♍', start: [8, 23], end: [9, 22] },
+                { name: 'Libra ♎', start: [9, 23], end: [10, 22] },
+                { name: 'Scorpio ♏', start: [10, 23], end: [11, 21] },
+                { name: 'Sagittarius ♐', start: [11, 22], end: [12, 21] }
+            ];
+
+            const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
+                            'July', 'August', 'September', 'October', 'November', 'December'];
+
+            function getZodiac(month, day) {
+                for (let i = 0; i < ZODIAC_SIGNS.length; i++) {
+                    const s = ZODIAC_SIGNS[i];
+                    const [sm, sd] = s.start;
+                    const [em, ed] = s.end;
+                    // Handle Capricorn (spans year boundary)
+                    if (sm > em) {
+                        if ((month === sm && day >= sd) || (month === em && day <= ed)) return s.name;
+                    } else {
+                        if ((month === sm && day >= sd) || (month === em && day <= ed)) return s.name;
+                    }
+                }
+                return '—';
+            }
+
+            function getLifePathNumber(year, month, day) {
+                let sum = 0;
+                const digits = String(year) + String(month) + String(day);
+                for (let i = 0; i < digits.length; i++) {
+                    sum += parseInt(digits[i], 10);
+                }
+                // Reduce to single digit, preserving master numbers
+                while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
+                    let s = 0;
+                    const str = String(sum);
+                    for (let i = 0; i < str.length; i++) s += parseInt(str[i], 10);
+                    sum = s;
+                }
+                return sum;
+            }
+
+            function pad2(n) {
+                return String(n).padStart(2, '0');
+            }
+
+            function formatDateLong(date) {
+                return date.getDate() + ' ' + MONTHS[date.getMonth()] + ' ' + date.getFullYear();
+            }
+
+            function formatDateTime(date) {
+                const h = date.getHours();
+                const m = date.getMinutes();
+                const ampm = h >= 12 ? 'PM' : 'AM';
+                const h12 = h % 12 === 0 ? 12 : h % 12;
+                return formatDateLong(date) + ' at ' + h12 + ':' + pad2(m) + ' ' + ampm;
+            }
+
+            /* =====================================================
+               DOM ELEMENTS
+               ===================================================== */
+            const birthDateInput = $('#birthDate');
+            const birthTimeInput = $('#birthTime');
+            const calculateBtn = $('#calculateBtn');
+            const resetBtn = $('#resetBtn');
+            const errorMsg = $('#errorMsg');
+            const resultSection = $('#resultSection');
+
+            const heroAge = $('#heroAge');
+            const heroSub = $('#heroSub');
+            const detailYears = $('#detailYears');
+            const detailMonths = $('#detailMonths');
+            const detailDays = $('#detailDays');
+            const detailHours = $('#detailHours');
+            const detailMinutes = $('#detailMinutes');
+            const detailTotalDays = $('#detailTotalDays');
+            const infoHeartbeats = $('#infoHeartbeats');
+            const infoSleep = $('#infoSleep');
+            const infoBreaths = $('#infoBreaths');
+            const infoNextBirthday = $('#infoNextBirthday');
+            const infoNextBirthdayDate = $('#infoNextBirthdayDate');
+            const infoWeekday = $('#infoWeekday');
+            const infoZodiac = $('#infoZodiac');
+            const infoLifePath = $('#infoLifePath');
+            const countdownValue = $('#countdownValue');
+            const countdownSub = $('#countdownSub');
+
+            /* =====================================================
+               INITIALIZATION
+               ===================================================== */
+            // Set max date to today
+            const today = new Date();
+            const maxDate = today.getFullYear() + '-' + pad2(today.getMonth() + 1) + '-' + pad2(today.getDate());
+            birthDateInput.setAttribute('max', maxDate);
+
+            // Default birth date (30 years ago for demo)
+            const defaultDate = new Date(today.getFullYear() - 30, today.getMonth(), today.getDate());
+            birthDateInput.value = defaultDate.getFullYear() + '-' +
+                                    pad2(defaultDate.getMonth() + 1) + '-' +
+                                    pad2(defaultDate.getDate());
+
+            /* =====================================================
+               MESSAGE HELPERS
+               ===================================================== */
+            function showError(message) {
+                errorMsg.textContent = message;
+                errorMsg.classList.remove('hidden');
+                clearTimeout(errorMsg._timer);
+                errorMsg._timer = setTimeout(() => errorMsg.classList.add('hidden'), 6000);
+            }
+
+            function clearError() {
+                errorMsg.classList.add('hidden');
+            }
+
+            /* =====================================================
+               CALCULATE AGE
+               ===================================================== */
+            function calculateAge() {
+                clearError();
+
+                const dateVal = birthDateInput.value;
+                if (!dateVal) {
+                    showError('Please select your date of birth.');
+                    return;
+                }
+
+                const timeVal = birthTimeInput.value || '12:00';
+                const [year, month, day] = dateVal.split('-').map(Number);
+                const [hour, minute] = timeVal.split(':').map(Number);
+
+                const birthDate = new Date(year, month - 1, day, hour, minute, 0);
+                const now = new Date();
+
+                // Validate
+                if (birthDate > now) {
+                    showError('Date of birth cannot be in the future.');
+                    return;
+                }
+
+                // Year range sanity check
+                if (year < 1900) {
+                    showError('Please enter a year after 1900.');
+                    return;
+                }
+
+                /* ============== Core age calculation ============== */
+                let years = now.getFullYear() - birthDate.getFullYear();
+                let months = now.getMonth() - birthDate.getMonth();
+                let days = now.getDate() - birthDate.getDate();
+                let hours = now.getHours() - birthDate.getHours();
+                let minutes = now.getMinutes() - birthDate.getMinutes();
+
+                if (minutes < 0) {
+                    minutes += 60;
+                    hours--;
+                }
+                if (hours < 0) {
+                    hours += 24;
+                    days--;
+                }
+                if (days < 0) {
+                    // Days in previous month
+                    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                    days += prevMonth.getDate();
+                    months--;
+                }
+                if (months < 0) {
+                    months += 12;
+                    years--;
+                }
+
+                /* ============== Total days ============== */
+                const msPerDay = 24 * 60 * 60 * 1000;
+                const totalDays = Math.floor((now - birthDate) / msPerDay);
+                const totalHours = Math.floor((now - birthDate) / (60 * 60 * 1000));
+                const totalMinutes = Math.floor((now - birthDate) / (60 * 1000));
+
+                /* ============== Display hero ============== */
+                const yearsStr = years === 1 ? '1 Year' : years + ' Years';
+                const monthsStr = months === 1 ? '1 Month' : months + ' Months';
+                const daysStr = days === 1 ? '1 Day' : days + ' Days';
+                heroAge.innerHTML = yearsStr + ', ' + monthsStr + ', ' + daysStr;
+
+                heroSub.textContent = 'Born on ' + formatDateTime(birthDate);
+
+                /* ============== Detail cards ============== */
+                detailYears.textContent = years;
+                detailMonths.textContent = months;
+                detailDays.textContent = days;
+                detailHours.textContent = hours;
+                detailMinutes.textContent = minutes;
+                detailTotalDays.textContent = totalDays.toLocaleString();
+
+                /* ============== Fun stats ============== */
+                // Avg heart rate: 72 bpm
+                const heartbeats = totalMinutes * 72;
+                infoHeartbeats.textContent = heartbeats.toLocaleString() + ' beats';
+
+                // Avg sleep: 8 hours per day
+                const sleepHours = totalDays * 8;
+                const sleepYears = Math.floor(sleepHours / (365.25 * 24));
+                infoSleep.textContent = sleepHours.toLocaleString() + ' hours (~' + sleepYears + ' years)';
+
+                // Avg breaths: 16 per minute
+                const breaths = totalMinutes * 16;
+                infoBreaths.textContent = breaths.toLocaleString() + ' breaths';
+
+                /* ============== Next birthday ============== */
+                const nextBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+                // If birthday already passed this year, use next year
+                const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                if (nextBirthday < todayMidnight) {
+                    nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+                }
+
+                // Handle Feb 29 birthdays in non-leap years
+                if (birthDate.getMonth() === 1 && birthDate.getDate() === 29) {
+                    const nextYear = nextBirthday.getFullYear();
+                    const isLeap = (nextYear % 4 === 0 && nextYear % 100 !== 0) || (nextYear % 400 === 0);
+                    if (!isLeap) {
+                        nextBirthday.setDate(1);
+                        nextBirthday.setMonth(2); // March 1
+                    }
+                }
+
+                const msUntilBirthday = nextBirthday - now;
+                const daysUntilBirthday = Math.ceil(msUntilBirthday / msPerDay);
+                const untilYears = nextBirthday.getFullYear() - birthDate.getFullYear();
+
+                infoNextBirthday.textContent = daysUntilBirthday === 0
+                    ? '🎉 Today! Happy Birthday!'
+                    : daysUntilBirthday + ' day' + (daysUntilBirthday === 1 ? '' : 's');
+                infoNextBirthdayDate.textContent = 'Turning ' + untilYears + ' on ' + formatDateLong(nextBirthday);
+
+                /* ============== Weekday born ============== */
+                infoWeekday.textContent = WEEKDAYS[birthDate.getDay()];
+
+                /* ============== Zodiac ============== */
+                infoZodiac.textContent = getZodiac(birthDate.getMonth() + 1, birthDate.getDate());
+
+                /* ============== Life path number ============== */
+                const lifePath = getLifePathNumber(birthDate.getFullYear(), birthDate.getMonth() + 1, birthDate.getDate());
+                infoLifePath.textContent = lifePath;
+
+                /* ============== Countdown ============== */
+                if (daysUntilBirthday === 0) {
+                    countdownValue.textContent = '🎂 Happy Birthday!';
+                    countdownSub.textContent = 'Today is your special day!';
+                } else {
+                    const remainingDays = daysUntilBirthday;
+                    const monthsLeft = Math.floor(remainingDays / 30);
+                    const weeksLeft = Math.floor((remainingDays % 30) / 7);
+                    const daysLeft = remainingDays % 7;
+
+                    let parts = [];
+                    if (monthsLeft > 0) parts.push(monthsLeft + ' month' + (monthsLeft > 1 ? 's' : ''));
+                    if (weeksLeft > 0) parts.push(weeksLeft + ' week' + (weeksLeft > 1 ? 's' : ''));
+                    if (daysLeft > 0 || parts.length === 0) parts.push(daysLeft + ' day' + (daysLeft !== 1 ? 's' : ''));
+
+                    countdownValue.textContent = parts.join(', ');
+                    countdownSub.textContent = untilYears + ' years old on ' + formatDateLong(nextBirthday);
+                }
+
+                /* ============== Show results ============== */
+                resultSection.classList.remove('hidden');
+
+                // Smooth scroll to results on mobile
+                if (window.innerWidth < 768) {
+                    setTimeout(function () {
+                        resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            }
+
+            /* =====================================================
+               RESET
+               ===================================================== */
+            function resetAll() {
+                const defaultDate = new Date(today.getFullYear() - 30, today.getMonth(), today.getDate());
+                birthDateInput.value = defaultDate.getFullYear() + '-' +
+                                        pad2(defaultDate.getMonth() + 1) + '-' +
+                                        pad2(defaultDate.getDate());
+                birthTimeInput.value = '12:00';
+                clearError();
+                resultSection.classList.add('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            /* =====================================================
+               EVENT LISTENERS
+               ===================================================== */
+            calculateBtn.addEventListener('click', calculateAge);
+            resetBtn.addEventListener('click', resetAll);
+
+            // Allow Enter key to trigger calculation
+            birthDateInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') calculateAge();
+            });
+            birthTimeInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') calculateAge();
+            });
+
+            // Auto-calculate on change (optional, feels responsive)
+            birthDateInput.addEventListener('change', function () {
+                if (birthDateInput.value && !resultSection.classList.contains('hidden')) {
+                    calculateAge();
+                }
+            });
+            birthTimeInput.addEventListener('change', function () {
+                if (birthDateInput.value && !resultSection.classList.contains('hidden')) {
+                    calculateAge();
+                }
+            });
+
+            /* =====================================================
+               AUTO-CALCULATE ON LOAD (Demo)
+               ===================================================== */
+            // Uncomment to auto-calculate with default values on page load
+            // calculateAge();
+        })();
+    </script>
+</body>
+</html>
