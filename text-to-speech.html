@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Text to Speech Converter · Free Online Tool | Natural Voice Reader</title>
+  <meta name="description" content="Free responsive text-to-speech tool. Convert any text into natural speech instantly in your browser with voice, speed, and pitch controls — no uploads, no sign-up, 100% private.">
+  <meta name="keywords" content="text to speech, tts, text to voice, speech synthesis, read text aloud, online voice reader, free tts, text reader, speak text online, natural voice generator, indian english voice">
+  <meta name="author" content="Tool Master">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://www.example.com/text-to-speech">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Text to Speech Converter · Free Online Tool">
+  <meta property="og:description" content="Convert any text into natural speech instantly in your browser. Voice, speed, and pitch controls — no uploads, no sign-up, 100% private.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.example.com/text-to-speech">
+  <meta property="og:site_name" content="Tool Master">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Text to Speech Converter · Free Online Tool">
+  <meta name="twitter:description" content="Convert any text into natural speech instantly in your browser.">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- Performance -->
+  <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Structured Data (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Text to Speech Converter",
+    "url": "https://www.example.com/text-to-speech",
+    "description": "Free online text-to-speech tool that converts text into natural speech entirely in your browser, with voice, speed, and pitch controls.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "browserRequirements": "Requires JavaScript and Web Speech API"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Convert Text to Speech",
+    "step": [
+      { "@type": "HowToStep", "name": "Enter text", "text": "Type or paste the text you want to hear into the input area." },
+      { "@type": "HowToStep", "name": "Choose a voice", "text": "Pick a voice from the dropdown, then adjust speed and pitch if desired." },
+      { "@type": "HowToStep", "name": "Click Speak", "text": "Click the Speak button to hear the text read aloud in your browser." }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does text to speech work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "This tool uses the browser's built-in Web Speech API (SpeechSynthesis). Your text is processed locally by your device's speech engine — no audio is uploaded to any server." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my text safe and private?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Your text never leaves your device. The Web Speech API runs entirely in your browser and uses your operating system's native voices." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I download the audio file?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Web Speech API plays audio directly and does not expose a downloadable file. If you need an MP3, use a dedicated TTS service that provides file downloads." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are some voices missing on my device?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Available voices depend on your operating system and browser. Installing additional system voices (e.g., language packs on Windows or macOS) will make more options appear." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* =====================================================
+       RESET & BASE
+       ===================================================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+      color: #0f172a;
+      line-height: 1.6;
+      padding: 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container { max-width: 1200px; margin: 0 auto; width: 100%; }
+
+    /* =====================================================
+       ADSENSE PLACEHOLDERS
+       ===================================================== */
+    .ad-slot {
+      background: #f1f5f9;
+      border: 2px dashed #cbd5e1;
+      border-radius: 14px;
+      padding: 0.75rem;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100px;
+      width: 100%;
+      margin: 1.25rem 0;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .ad-slot::before {
+      content: 'AD';
+      position: absolute;
+      top: 6px;
+      left: 8px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #94a3b8;
+      letter-spacing: 0.05em;
+    }
+    .ad-slot:hover { border-color: #94a3b8; background: #eef2f6; }
+    .ad-slot ins { display: block; width: 100%; }
+    .ad-slot--top { margin-top: 0.25rem; min-height: 90px; }
+    .ad-slot--square { min-height: 250px; }
+    .ad-slot--tall { min-height: 600px; }
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+    .header {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2rem;
+      box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
+    }
+    .header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #0f172a 0%, #ef4444 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .header p {
+      color: #475569;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      max-width: 720px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .header-badge {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    /* =====================================================
+       TOOL CARD
+       ===================================================== */
+    .tool-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    /* =====================================================
+       INPUT AREA
+       ===================================================== */
+    .input-area {
+      border: 3px dashed #cbd5e1;
+      border-radius: 20px;
+      padding: 1.5rem;
+      background: #f8fafc;
+      transition: all 0.25s ease;
+      margin-bottom: 1.8rem;
+    }
+    .input-area:focus-within {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+    .input-area textarea {
+      width: 100%;
+      min-height: 220px;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #1e293b;
+      resize: vertical;
+      outline: none;
+    }
+    .input-area textarea::placeholder { color: #94a3b8; font-style: italic; }
+    .input-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed #cbd5e1;
+    }
+    .input-footer-hint { font-size: 0.82rem; color: #64748b; font-weight: 500; }
+    .input-footer-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .mini-btn {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      color: #475569;
+      padding: 0.4rem 0.9rem;
+      border-radius: 30px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .mini-btn:hover { border-color: #ef4444; color: #dc2626; background: #fef2f2; }
+    .mini-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+
+    /* =====================================================
+       INFO STRIP
+       ===================================================== */
+    .info-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.8rem;
+      justify-content: center;
+    }
+    .info-chip {
+      background: #f1f5f9;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+    }
+    .info-chip svg { width: 16px; height: 16px; stroke: #ef4444; fill: none; stroke-width: 2.2; }
+
+    /* =====================================================
+       STATS GRID
+       ===================================================== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+    .stat-card {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ef4444, #f59e0b);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .stat-card:hover { border-color: #fecaca; background: #fef2f2; transform: translateY(-3px); }
+    .stat-card:hover::before { opacity: 1; }
+    .stat-card .stat-icon { font-size: 1.4rem; margin-bottom: 0.35rem; }
+    .stat-card .stat-value {
+      font-size: clamp(1.3rem, 3.5vw, 1.75rem);
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-card .stat-label {
+      font-size: 0.78rem;
+      color: #64748b;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 0.25rem;
+    }
+    .stat-card.highlight { background: #fef2f2; border-color: #fecaca; }
+    .stat-card.highlight .stat-value { color: #dc2626; }
+
+    /* =====================================================
+       CONTROL PANEL (VOICE, SPEED, PITCH)
+       ===================================================== */
+    .control-panel {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin-bottom: 1.8rem;
+    }
+    .control-panel h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #334155;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .control-panel h3 svg {
+      width: 18px;
+      height: 18px;
+      stroke: #ef4444;
+      fill: none;
+      stroke-width: 2.2;
+    }
+    .control-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .control-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .control-group label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .control-group label .value-badge {
+      background: #ffffff;
+      color: #dc2626;
+      font-size: 0.78rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 20px;
+      border: 1.5px solid #fecaca;
+      font-variant-numeric: tabular-nums;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .control-group select {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border-radius: 12px;
+      border: 1.5px solid #e2e8f0;
+      background: #ffffff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: #1e293b;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .control-group select:hover { border-color: #94a3b8; }
+    .control-group select:focus { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15); }
+    .control-group input[type="range"] {
+      width: 100%;
+      height: 8px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: linear-gradient(90deg, #ef4444 0%, #ef4444 var(--percent, 50%), #e2e8f0 var(--percent, 50%), #e2e8f0 100%);
+      border-radius: 30px;
+      outline: none;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .control-group input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid #ef4444;
+      cursor: pointer;
+      box-shadow: 0 2px 8px -2px rgba(239, 68, 68, 0.5);
+      transition: transform 0.15s;
+    }
+    .control-group input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    .control-group input[type="range"]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid #ef4444;
+      cursor: pointer;
+      box-shadow: 0 2px 8px -2px rgba(239, 68, 68, 0.5);
+    }
+    .range-minmax {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    /* =====================================================
+       SPEAKING HIGHLIGHT PREVIEW
+       ===================================================== */
+    .speak-preview {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1.8rem;
+      max-height: 260px;
+      overflow-y: auto;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #1e293b;
+      transition: border-color 0.2s;
+    }
+    .speak-preview:empty::before {
+      content: 'Text being spoken will be highlighted here...';
+      color: #94a3b8;
+      font-style: italic;
+    }
+    .speak-preview.speaking { border-color: #86efac; background: #f0fdf4; }
+    .speak-preview .word {
+      padding: 0.05rem 0.15rem;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .speak-preview .word.active {
+      background: #ef4444;
+      color: #ffffff;
+      box-shadow: 0 2px 8px -2px rgba(239, 68, 68, 0.6);
+    }
+    .speak-preview::-webkit-scrollbar { width: 8px; }
+    .speak-preview::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+    .speak-preview::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    .speak-preview::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* =====================================================
+       ACTION BUTTONS
+       ===================================================== */
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: #ffffff;
+      border: none;
+      padding: 0.95rem 2rem;
+      font-family: inherit;
+      font-weight: 700;
+      border-radius: 60px;
+      font-size: 0.98rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex: 1 1 auto;
+      min-width: 170px;
+      box-shadow: 0 8px 20px -6px rgba(239, 68, 68, 0.45);
+    }
+    .btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 24px -8px rgba(239, 68, 68, 0.55); }
+    .btn:active:not(:disabled) { transform: translateY(0) scale(0.98); }
+    .btn-secondary {
+      background: #ffffff;
+      color: #1e293b;
+      border: 2px solid #e2e8f0;
+      box-shadow: none;
+    }
+    .btn-secondary:hover:not(:disabled) { background: #f8fafc; border-color: #94a3b8; box-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.1); }
+    .btn-play {
+      background: linear-gradient(135deg, #10b981, #059669);
+      box-shadow: 0 8px 20px -6px rgba(16, 185, 129, 0.45);
+    }
+    .btn-play:hover:not(:disabled) { box-shadow: 0 12px 24px -8px rgba(16, 185, 129, 0.55); }
+    .btn-pause {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      box-shadow: 0 8px 20px -6px rgba(245, 158, 11, 0.45);
+    }
+    .btn-pause:hover:not(:disabled) { box-shadow: 0 12px 24px -8px rgba(245, 158, 11, 0.55); }
+    .btn:disabled { opacity: 0.45; pointer-events: none; box-shadow: none; }
+
+    /* =====================================================
+       MESSAGES
+       ===================================================== */
+    .hidden { display: none !important; }
+    .error-msg, .success-msg {
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .error-msg { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+    .success-msg { color: #065f46; background: #d1fae5; border: 1px solid #a7f3d0; }
+
+    /* =====================================================
+       WORKSPACE / STATUS
+       ===================================================== */
+    .workspace {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .workspace-panel {
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 1.25rem;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+    }
+    .workspace-panel h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .workspace-panel h3 span.panel-label { display: flex; align-items: center; gap: 0.5rem; }
+    .text-stats { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .stat-pill {
+      background: #ffffff;
+      color: #475569;
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border: 1px solid #e2e8f0;
+    }
+    .stat-pill.highlight { background: #fef2f2; color: #991b1b; border-color: #fecaca; }
+    .stat-pill.green { background: #d1fae5; color: #065f46; border-color: #a7f3d0; }
+
+    .status-panel {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .status-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .status-icon svg { width: 24px; height: 24px; stroke: #64748b; fill: none; stroke-width: 2.2; transition: stroke 0.2s; }
+    .status-icon.active { background: #d1fae5; }
+    .status-icon.active svg { stroke: #059669; }
+    .status-icon.speaking { background: #fef2f2; animation: pulse 1.2s ease-in-out infinite; }
+    .status-icon.speaking svg { stroke: #dc2626; }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+    }
+    .status-text { flex: 1; min-width: 150px; }
+    .status-text strong { display: block; font-size: 0.95rem; color: #0f172a; font-weight: 800; }
+    .status-text span { font-size: 0.85rem; color: #64748b; }
+
+    /* =====================================================
+       CONTENT SECTIONS (SEO)
+       ===================================================== */
+    .content-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+      margin-bottom: 1.5rem;
+    }
+    .content-section h2 {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+    }
+    .step { display: flex; gap: 0.85rem; align-items: flex-start; }
+    .step-num {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: #ffffff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px -4px rgba(239, 68, 68, 0.5);
+    }
+    .step p { font-size: 0.93rem; color: #475569; }
+    .step strong { color: #0f172a; display: block; margin-bottom: 0.2rem; font-size: 0.98rem; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+    }
+    .feature-card {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.25rem;
+      transition: all 0.2s ease;
+    }
+    .feature-card:hover { border-color: #fecaca; background: #fef2f2; transform: translateY(-3px); }
+    .feature-icon { font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .feature-card h4 { font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 0.35rem; }
+    .feature-card p { font-size: 0.88rem; color: #475569; }
+
+    /* =====================================================
+       FAQ
+       ===================================================== */
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 0.95rem 0; }
+    .faq-item:first-of-type { padding-top: 0; }
+    .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .faq-item summary {
+      font-weight: 700;
+      cursor: pointer;
+      color: #1e293b;
+      font-size: 0.98rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.15rem 0;
+      transition: color 0.2s;
+    }
+    .faq-item summary:hover { color: #dc2626; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: #ef4444;
+      font-weight: 700;
+      transition: transform 0.25s ease;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .faq-item[open] summary::after { content: '−'; transform: rotate(180deg); }
+    .faq-item p { margin-top: 0.6rem; font-size: 0.92rem; color: #475569; line-height: 1.6; }
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+    .footer {
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #64748b;
+      padding: 2rem 1rem 1rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    .footer p + p { margin-top: 0.3rem; font-size: 0.8rem; color: #94a3b8; }
+
+    /* =====================================================
+       TOAST
+       ===================================================== */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      color: #ffffff;
+      padding: 0.85rem 1.5rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.4);
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      pointer-events: none;
+      max-width: 90vw;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast svg { width: 18px; height: 18px; stroke: #10b981; fill: none; stroke-width: 3; flex-shrink: 0; }
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+    @media (max-width: 768px) {
+      body { padding: 0.75rem; }
+      .header { padding: 1.5rem 1.25rem; }
+      .tool-card { padding: 1.5rem 1.15rem; }
+      .content-section { padding: 1.5rem 1.25rem; }
+      .btn { padding: 0.85rem 1.4rem; font-size: 0.92rem; }
+      .input-area { padding: 1.1rem; }
+      .control-panel { padding: 1.15rem; }
+    }
+    @media (max-width: 520px) {
+      .header-badge { font-size: 0.72rem; padding: 0.25rem 0.7rem; }
+      .action-buttons { flex-direction: column; }
+      .btn { width: 100%; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .speak-preview { max-height: 180px; padding: 1rem; font-size: 0.92rem; }
+      .control-grid { grid-template-columns: 1fr; }
+    }
+
+    /* =====================================================
+       ACCESSIBILITY
+       ===================================================== */
+    :focus-visible { outline: 3px solid #ef4444; outline-offset: 2px; border-radius: 4px; }
+    .btn:focus-visible { outline: 3px solid #0f172a; outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+      <h1>Text to Speech Converter</h1>
+      <p>Convert any text into natural-sounding speech instantly in your browser. Choose from dozens of voices, control speed and pitch, and watch words highlight as they're spoken — completely private.</p>
+      <div class="badge-row">
+        <span class="header-badge">✓ Real-Time Speech</span>
+        <span class="header-badge">✓ Indian English Default</span>
+        <span class="header-badge">✓ Speed &amp; Pitch</span>
+        <span class="header-badge">✓ 100% Private</span>
+        <span class="header-badge">✓ Free Forever</span>
+      </div>
+    </header>
+
+    <!-- ==================== ADSENSE TOP ==================== -->
+    <div class="ad-slot ad-slot--top" aria-label="Advertisement">
+      <!--
+        ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+        Replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID and 1234567890 with your ad slot ID.
+
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      -->
+      <span>📢 Advertisement — Insert Google AdSense Unit ID here (Top Leaderboard)</span>
+    </div>
+
+    <!-- ==================== MAIN TOOL ==================== -->
+    <main class="tool-card">
+      <!-- Input -->
+      <div class="input-area">
+        <textarea id="textInput" placeholder="Type or paste the text you want to hear spoken aloud..." aria-label="Text input for speech synthesis"></textarea>
+        <div class="input-footer">
+          <span class="input-footer-hint" id="charHint">0 characters · 0 words · ~0s</span>
+          <div class="input-footer-actions">
+            <button class="mini-btn" id="pasteBtn" type="button" title="Paste from clipboard">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+              Paste
+            </button>
+            <button class="mini-btn" id="clearMiniBtn" type="button" title="Clear text">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Clear
+            </button>
+            <button class="mini-btn" id="sampleBtn" type="button" title="Load sample text">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Sample
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success message -->
+      <div id="successMsg" class="success-msg hidden" role="status">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="successText">Done!</span>
+      </div>
+      <div id="errorMsg" class="error-msg hidden" role="alert"></div>
+
+      <!-- Info Chips -->
+      <div class="info-strip">
+        <div class="info-chip">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          Natural voices
+        </div>
+        <div class="info-chip">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Speed &amp; pitch control
+        </div>
+        <div class="info-chip">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          100% private
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card highlight">
+          <div class="stat-icon">📝</div>
+          <div class="stat-value" id="statWords">0</div>
+          <div class="stat-label">Words</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🔤</div>
+          <div class="stat-value" id="statChars">0</div>
+          <div class="stat-label">Characters</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⏱️</div>
+          <div class="stat-value" id="statDuration">0s</div>
+          <div class="stat-label">Est. Duration</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🗣️</div>
+          <div class="stat-value" id="statVoices">0</div>
+          <div class="stat-label">Voices</div>
+        </div>
+      </div>
+
+      <!-- Control Panel -->
+      <div class="control-panel">
+        <h3>
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          Voice Settings
+        </h3>
+        <div class="control-grid">
+          <div class="control-group">
+            <label for="voiceSelect">Voice</label>
+            <select id="voiceSelect" aria-label="Select a voice"></select>
+          </div>
+          <div class="control-group">
+            <label for="speedRange">
+              Speed
+              <span class="value-badge" id="speedValue">1.0×</span>
+            </label>
+            <input type="range" id="speedRange" min="0.5" max="2" step="0.1" value="1" aria-label="Speech speed">
+            <div class="range-minmax"><span>0.5×</span><span>2.0×</span></div>
+          </div>
+          <div class="control-group">
+            <label for="pitchRange">
+              Pitch
+              <span class="value-badge" id="pitchValue">1.0</span>
+            </label>
+            <input type="range" id="pitchRange" min="0" max="2" step="0.1" value="1" aria-label="Speech pitch">
+            <div class="range-minmax"><span>0.0</span><span>2.0</span></div>
+          </div>
+          <div class="control-group">
+            <label for="volumeRange">
+              Volume
+              <span class="value-badge" id="volumeValue">100%</span>
+            </label>
+            <input type="range" id="volumeRange" min="0" max="1" step="0.05" value="1" aria-label="Speech volume">
+            <div class="range-minmax"><span>0%</span><span>100%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Speaking Preview -->
+      <div class="speak-preview" id="speakPreview" aria-live="polite"></div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-play" id="speakBtn" type="button" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span id="speakBtnText">Speak</span>
+        </button>
+        <button class="btn btn-pause" id="pauseBtn" type="button" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          <span id="pauseBtnText">Pause</span>
+        </button>
+        <button class="btn btn-secondary" id="stopBtn" type="button" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>
+          Stop
+        </button>
+        <button class="btn btn-secondary" id="resetBtn" type="button" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          Reset
+        </button>
+      </div>
+
+      <!-- Workspace -->
+      <div class="workspace">
+        <div class="workspace-panel">
+          <h3>
+            <span class="panel-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Playback Status
+            </span>
+            <span class="text-stats" id="textStats">
+              <span class="stat-pill" id="voiceStat">— voice</span>
+              <span class="stat-pill green" id="statusStat">Ready</span>
+            </span>
+          </h3>
+          <div class="status-panel">
+            <div class="status-icon" id="statusIcon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </div>
+            <div class="status-text">
+              <strong id="statusTitle">Ready to Speak</strong>
+              <span id="statusDesc">Enter text and click "Speak" to begin playback.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ==================== ADSENSE MIDDLE ==================== -->
+    <div class="ad-slot" aria-label="Advertisement">
+      <!--
+        ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+        Replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID and 0987654321 with your ad slot ID.
+
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="0987654321"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      -->
+      <span>📢 Advertisement — Insert Google AdSense Unit ID here (In-Content)</span>
+    </div>
+
+    <!-- ==================== HOW TO ==================== -->
+    <section class="content-section">
+      <h2>How to Convert Text to Speech</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <strong>Enter your text</strong>
+            <p>Type, paste, or load the sample text into the input area. Speech synthesis works with any length of text.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <strong>Choose a voice &amp; settings</strong>
+            <p>Pick a voice from the dropdown, then fine-tune speed, pitch, and volume to your liking.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <strong>Click Speak</strong>
+            <p>Your text will be read aloud with word-by-word highlighting. Use Pause, Resume, or Stop at any time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURES ==================== -->
+    <section class="content-section">
+      <h2>Why Use Our Text to Speech Tool?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎙️</div>
+          <h4>Natural Voices</h4>
+          <p>Access all voices installed on your device, including premium neural voices on modern systems.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎚️</div>
+          <h4>Full Control</h4>
+          <p>Adjust speed (0.5×–2×), pitch (0–2), and volume (0–100%) for the perfect listening experience.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <h4>Word Highlighting</h4>
+          <p>Watch each word highlight in real time as it's spoken, making it easy to follow along.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h4>100% Private</h4>
+          <p>Your text never leaves your browser. All speech is generated locally by your device's speech engine.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h4>Fully Responsive</h4>
+          <p>Works beautifully on desktop, tablet, and mobile — no app installation required.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🆓</div>
+          <h4>Free Forever</h4>
+          <p>No sign-up, no watermarks, no limits. Use it as many times as you need.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ADSENSE SQUARE ==================== -->
+    <div class="ad-slot ad-slot--square" aria-label="Advertisement">
+      <!--
+        ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+        Replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID and 1122334455 with your ad slot ID.
+
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="1122334455"
+             data-ad-format="rectangle"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      -->
+      <span>📢 Advertisement — Insert Google AdSense Unit ID here (Square/Responsive)</span>
+    </div>
+
+    <!-- ==================== ADSENSE TALL (SIDEBAR) ==================== -->
+    <div class="ad-slot ad-slot--tall" aria-label="Advertisement">
+      <!--
+        ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+        Replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID and 5566778899 with your ad slot ID.
+
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="5566778899"
+             data-ad-format="vertical"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      -->
+      <span>📢 Advertisement — Insert Google AdSense Unit ID here (Tall / Vertical)</span>
+    </div>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="content-section">
+      <h2>Frequently Asked Questions</h2>
+      <details class="faq-item" open>
+        <summary>How does text to speech work?</summary>
+        <p>This tool uses the browser's built-in <strong>Web Speech API</strong> (SpeechSynthesis). Your text is processed locally by your device's speech engine — no audio is uploaded to any server. Voices are provided by your operating system and browser.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is my text safe and private?</summary>
+        <p>Absolutely. Your text never leaves your device. The Web Speech API runs entirely in your browser and uses your operating system's native voices. Once you close the tab, your text is gone from memory.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I download the audio file?</summary>
+        <p>The Web Speech API plays audio directly and does not expose a downloadable file for security reasons. If you need an MP3 file, use a dedicated TTS service that provides file downloads.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Why are some voices missing on my device?</summary>
+        <p>Available voices depend on your operating system and browser. Windows, macOS, Android, and iOS each ship with different voices. Installing additional system voices (e.g., language packs on Windows or macOS) will make more options appear in the dropdown.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Why does the voice sound robotic sometimes?</summary>
+        <p>Older "standard" voices use concatenative synthesis and sound robotic. Modern systems (Windows 10/11, macOS, Chrome, Edge) include <strong>neural voices</strong> that sound far more natural — look for voices labeled "Natural," "Neural," or with a specific person's name in the voice list.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does it work on mobile devices?</summary>
+        <p>Yes — the tool is fully responsive and works on Android and iOS. Mobile browsers expose their own set of voices, which usually include high-quality system voices.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there a character limit?</summary>
+        <p>There is no hard limit imposed by this tool, but individual browsers and operating systems may impose their own limits on utterance length. For very long texts, consider speaking them in chunks.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is this text to speech tool free?</summary>
+        <p>Yes — completely free with no limits, no watermarks, and no sign-up required. Use it as many times as you like for reading, studying, accessibility, or any other purpose.</p>
+      </details>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <p>© 2025 Text to Speech Converter by Tool Master. All processing happens locally in your browser — no uploads, no tracking.</p>
+      <p>Powered by the Web Speech API · Built with vanilla HTML, CSS, and JavaScript.</p>
+    </footer>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toastText">Done!</span>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* =====================================================
+         DOM ELEMENTS
+         ===================================================== */
+      const $ = (sel) => document.querySelector(sel);
+
+      const textInput = $('#textInput');
+      const pasteBtn = $('#pasteBtn');
+      const clearMiniBtn = $('#clearMiniBtn');
+      const sampleBtn = $('#sampleBtn');
+      const speakBtn = $('#speakBtn');
+      const speakBtnText = $('#speakBtnText');
+      const pauseBtn = $('#pauseBtn');
+      const pauseBtnText = $('#pauseBtnText');
+      const stopBtn = $('#stopBtn');
+      const resetBtn = $('#resetBtn');
+
+      const voiceSelect = $('#voiceSelect');
+      const speedRange = $('#speedRange');
+      const speedValue = $('#speedValue');
+      const pitchRange = $('#pitchRange');
+      const pitchValue = $('#pitchValue');
+      const volumeRange = $('#volumeRange');
+      const volumeValue = $('#volumeValue');
+
+      const speakPreview = $('#speakPreview');
+
+      const statWords = $('#statWords');
+      const statChars = $('#statChars');
+      const statDuration = $('#statDuration');
+      const statVoices = $('#statVoices');
+
+      const charHint = $('#charHint');
+      const voiceStat = $('#voiceStat');
+      const statusStat = $('#statusStat');
+
+      const statusIcon = $('#statusIcon');
+      const statusTitle = $('#statusTitle');
+      const statusDesc = $('#statusDesc');
+
+      const successMsg = $('#successMsg');
+      const successText = $('#successText');
+      const errorMsg = $('#errorMsg');
+
+      const toast = $('#toast');
+      const toastText = $('#toastText');
+
+      /* =====================================================
+         STATE
+         ===================================================== */
+      const synth = window.speechSynthesis;
+      let voices = [];
+      let utterance = null;
+      let isPaused = false;
+      let isSpeaking = false;
+      let wordSpans = [];
+      let currentWordIndex = -1;
+      let highlightTimer = null;
+      let highlightStartTime = 0;
+      let estimatedDurationMs = 0;
+      let debounceTimer = null;
+      let userSelectedVoice = false; // tracks if user manually picked a voice
+
+      const SAMPLE_TEXT = "Welcome to the Text to Speech Converter. " +
+        "This free tool reads your text aloud using your browser's built-in speech engine. " +
+        "You can choose from multiple voices, adjust the speed and pitch, " +
+        "and watch each word highlight as it is spoken. " +
+        "Everything runs locally on your device, so your text stays completely private. " +
+        "Try it now — just type or paste any text and click Speak!";
+
+      /* =====================================================
+         DEFAULT VOICE PRIORITY
+         -----------------------------------------------------
+         Priority order (highest first):
+         1. Indian English neural/natural voices
+         2. Any Indian English voice (en-IN)
+         3. Any English voice (en-*)
+         4. Any voice with "India" or "Hindi" in the name
+         5. Any voice with "English" in the name
+         6. First available voice
+         ===================================================== */
+      function pickDefaultVoice() {
+        if (voices.length === 0) return null;
+
+        // 1. Indian English neural/natural voices
+        let v = voices.find(x =>
+          /en[-_]IN/i.test(x.lang) &&
+          /natural|neural|premium|enhanced/i.test(x.name)
+        );
+        if (v) return v;
+
+        // 2. Any Indian English voice
+        v = voices.find(x => /en[-_]IN/i.test(x.lang));
+        if (v) return v;
+
+        // 3. Voice with "India" in the name and English
+        v = voices.find(x =>
+          /india/i.test(x.name) &&
+          /english/i.test(x.name)
+        );
+        if (v) return v;
+
+        // 4. Any voice with "India" in the name
+        v = voices.find(x => /india/i.test(x.name));
+        if (v) return v;
+
+        // 5. Any English (en-*) voice, prefer local
+        v = voices.find(x => /^en/i.test(x.lang) && x.localService);
+        if (v) return v;
+        v = voices.find(x => /^en/i.test(x.lang));
+        if (v) return v;
+
+        // 6. Any voice with "English" in the name
+        v = voices.find(x => /english/i.test(x.name));
+        if (v) return v;
+
+        // 7. First available
+        return voices[0];
+      }
+
+      /* =====================================================
+         INITIALIZATION
+         ===================================================== */
+      function init() {
+        if (!('speechSynthesis' in window)) {
+          showError('Your browser does not support the Web Speech API. Please try Chrome, Edge, Safari, or Firefox.');
+          speakBtn.disabled = true;
+          return;
+        }
+
+        loadVoices();
+
+        // Some browsers load voices asynchronously
+        if (synth.onvoiceschanged !== undefined) {
+          synth.onvoiceschanged = loadVoices;
+        }
+
+        // Retry after a delay for Chrome / Safari
+        setTimeout(loadVoices, 250);
+        setTimeout(loadVoices, 1000);
+        setTimeout(loadVoices, 2500);
+
+        bindEvents();
+        updateUI();
+        updateRangeFill(speedRange);
+        updateRangeFill(pitchRange);
+        updateRangeFill(volumeRange);
+      }
+
+      function loadVoices() {
+        const newVoices = synth.getVoices() || [];
+        if (newVoices.length === 0) return;
+
+        voices = newVoices;
+        populateVoiceList();
+        statVoices.textContent = voices.length.toLocaleString();
+
+        // Set default voice to English (India) if user hasn't manually selected one
+        if (!userSelectedVoice) {
+          const defaultVoice = pickDefaultVoice();
+          if (defaultVoice) {
+            voiceSelect.value = defaultVoice.name;
+          }
+        }
+
+        updateVoiceStat();
+      }
+
+      function populateVoiceList() {
+        const previous = voiceSelect.value;
+        voiceSelect.innerHTML = '';
+
+        if (voices.length === 0) {
+          const opt = document.createElement('option');
+          opt.textContent = 'Loading voices...';
+          opt.disabled = true;
+          voiceSelect.appendChild(opt);
+          return;
+        }
+
+        // Group by language
+        const groups = {};
+        voices.forEach(v => {
+          const lang = v.lang || 'Unknown';
+          if (!groups[lang]) groups[lang] = [];
+          groups[lang].push(v);
+        });
+
+        // Sort languages: Indian English first, other English next, then alphabetical
+        const langs = Object.keys(groups).sort((a, b) => {
+          const rank = (lang) => {
+            if (/en[-_]IN/i.test(lang)) return 0;
+            if (/^en/i.test(lang)) return 1;
+            return 2;
+          };
+          const ra = rank(a);
+          const rb = rank(b);
+          if (ra !== rb) return ra - rb;
+          return a.localeCompare(b);
+        });
+
+        langs.forEach(lang => {
+          const optgroup = document.createElement('optgroup');
+          optgroup.label = lang;
+
+          groups[lang].forEach(v => {
+            const opt = document.createElement('option');
+            opt.value = v.name;
+            opt.textContent = v.name + (v.localService ? ' · Local' : ' · Network');
+            optgroup.appendChild(opt);
+          });
+
+          voiceSelect.appendChild(optgroup);
+        });
+
+        // Restore previous selection if still available
+        if (previous) {
+          const exists = voices.some(v => v.name === previous);
+          if (exists) voiceSelect.value = previous;
+        }
+      }
+
+      function getSelectedVoice() {
+        const name = voiceSelect.value;
+        return voices.find(v => v.name === name) || null;
+      }
+
+      /* =====================================================
+         UI UPDATES
+         ===================================================== */
+      function updateUI() {
+        const text = textInput.value;
+        const trimmed = text.trim();
+
+        const words = trimmed.length === 0
+          ? 0
+          : trimmed.split(/\s+/).filter(w => w.length > 0).length;
+        const chars = text.length;
+
+        const speed = parseFloat(speedRange.value) || 1;
+        const wpm = 150 * speed;
+        const durationSec = words > 0 ? (words / wpm) * 60 : 0;
+        const durationMin = Math.floor(durationSec / 60);
+        const durationRemSec = Math.round(durationSec % 60);
+
+        statWords.textContent = words.toLocaleString();
+        statChars.textContent = chars.toLocaleString();
+        statDuration.textContent = words === 0
+          ? '0s'
+          : (durationMin > 0 ? durationMin + 'm ' + durationRemSec + 's' : durationRemSec + 's');
+
+        charHint.textContent = chars.toLocaleString() + ' characters · ' + words.toLocaleString() + ' words · ~' +
+          (words === 0 ? '0s' : (durationMin > 0 ? durationMin + 'm ' + durationRemSec + 's' : durationRemSec + 's'));
+
+        const hasText = trimmed.length > 0;
+        speakBtn.disabled = !hasText;
+
+        if (!isSpeaking) {
+          renderPreview(text);
+        }
+
+        resetBtn.disabled = !hasText && !isSpeaking;
+      }
+
+      function renderPreview(text) {
+        if (isSpeaking) return;
+
+        if (!text || text.trim().length === 0) {
+          speakPreview.innerHTML = '';
+          speakPreview.classList.remove('speaking');
+          wordSpans = [];
+          return;
+        }
+
+        const parts = text.split(/(\s+)/);
+        let html = '';
+        wordSpans = [];
+
+        parts.forEach(part => {
+          if (/\s+/.test(part)) {
+            html += part.replace(/\n/g, '<br>');
+          } else if (part.length > 0) {
+            html += '<span class="word">' + escapeHtml(part) + '</span>';
+          }
+        });
+
+        speakPreview.innerHTML = html;
+        wordSpans = Array.from(speakPreview.querySelectorAll('.word'));
+      }
+
+      function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
+      function updateVoiceStat() {
+        const v = getSelectedVoice();
+        if (v) {
+          const shortName = v.name.length > 28 ? v.name.substring(0, 25) + '...' : v.name;
+          voiceStat.textContent = shortName;
+        } else {
+          voiceStat.textContent = '— voice';
+        }
+      }
+
+      function setStatus(state, title, desc) {
+        statusIcon.classList.remove('active', 'speaking');
+        statusStat.classList.remove('green', 'highlight');
+
+        if (state === 'speaking') {
+          statusIcon.classList.add('speaking');
+          statusStat.classList.add('highlight');
+          statusStat.textContent = 'Speaking';
+        } else if (state === 'paused') {
+          statusIcon.classList.add('active');
+          statusStat.textContent = 'Paused';
+        } else if (state === 'ready') {
+          statusStat.classList.add('green');
+          statusStat.textContent = 'Ready';
+        } else if (state === 'error') {
+          statusStat.textContent = 'Error';
+        }
+
+        statusTitle.textContent = title;
+        statusDesc.textContent = desc;
+      }
+
+      /* =====================================================
+         RANGE FILL
+         ===================================================== */
+      function updateRangeFill(input) {
+        const min = parseFloat(input.min) || 0;
+        const max = parseFloat(input.max) || 100;
+        const val = parseFloat(input.value) || 0;
+        const percent = ((val - min) / (max - min)) * 100;
+        input.style.setProperty('--percent', percent + '%');
+      }
+
+      /* =====================================================
+         SPEAK
+         ===================================================== */
+      function speak() {
+        if (!('speechSynthesis' in window)) {
+          showError('Speech synthesis is not supported in your browser.');
+          return;
+        }
+
+        const text = textInput.value.trim();
+        if (!text) {
+          showError('Please enter some text to speak.');
+          return;
+        }
+
+        synth.cancel();
+        clearHighlightTimer();
+
+        utterance = new SpeechSynthesisUtterance(text);
+
+        const voice = getSelectedVoice();
+        if (voice) utterance.voice = voice;
+        utterance.rate = parseFloat(speedRange.value) || 1;
+        utterance.pitch = parseFloat(pitchRange.value) || 1;
+        utterance.volume = parseFloat(volumeRange.value) || 1;
+
+        renderPreview(text);
+        speakPreview.classList.add('speaking');
+        currentWordIndex = -1;
+        highlightStartTime = performance.now();
+        estimatedDurationMs = (utterance.rate > 0)
+          ? (wordSpans.length / (150 * utterance.rate)) * 60000
+          : 0;
+
+        utterance.onstart = function () {
+          isSpeaking = true;
+          isPaused = false;
+          setStatus('speaking', 'Speaking', 'Your text is being read aloud.');
+          speakBtnText.textContent = 'Speaking...';
+          speakBtn.disabled = true;
+          pauseBtn.disabled = false;
+          stopBtn.disabled = false;
+          resetBtn.disabled = false;
+          pauseBtnText.textContent = 'Pause';
+
+          highlightStartTime = performance.now();
+          startHighlightLoop();
+        };
+
+        utterance.onend = function () {
+          isSpeaking = false;
+          isPaused = false;
+          setStatus('ready', 'Playback Finished', 'Ready to speak again.');
+          speakBtnText.textContent = 'Speak';
+          speakBtn.disabled = false;
+          pauseBtn.disabled = true;
+          stopBtn.disabled = true;
+          speakPreview.classList.remove('speaking');
+          clearHighlightTimer();
+          clearAllHighlights();
+          showToast('Playback finished');
+        };
+
+        utterance.onerror = function (e) {
+          if (e.error === 'canceled' || e.error === 'interrupted') {
+            return;
+          }
+          console.warn('Speech error:', e);
+          isSpeaking = false;
+          isPaused = false;
+          setStatus('error', 'Playback Error', 'Something went wrong. Please try again.');
+          speakBtnText.textContent = 'Speak';
+          speakBtn.disabled = false;
+          pauseBtn.disabled = true;
+          stopBtn.disabled = true;
+          speakPreview.classList.remove('speaking');
+          clearHighlightTimer();
+          showError('Speech playback error: ' + (e.error || 'unknown'));
+        };
+
+        utterance.onpause = function () {
+          isPaused = true;
+          setStatus('paused', 'Paused', 'Click Resume to continue.');
+          pauseBtnText.textContent = 'Resume';
+        };
+
+        utterance.onresume = function () {
+          isPaused = false;
+          setStatus('speaking', 'Speaking', 'Your text is being read aloud.');
+          pauseBtnText.textContent = 'Pause';
+          highlightStartTime = performance.now() - (currentWordIndex / wordSpans.length) * estimatedDurationMs;
+        };
+
+        utterance.onboundary = function (e) {
+          if (e.name === 'word' && e.charIndex >= 0) {
+            highlightWordAtCharIndex(e.charIndex);
+          }
+        };
+
+        synth.speak(utterance);
+      }
+
+      /* =====================================================
+         HIGHLIGHT LOOP
+         ===================================================== */
+      function startHighlightLoop() {
+        clearHighlightTimer();
+        if (wordSpans.length === 0 || estimatedDurationMs === 0) return;
+
+        const intervalMs = Math.max(60, estimatedDurationMs / wordSpans.length);
+
+        highlightTimer = setInterval(function () {
+          if (!isSpeaking || isPaused) return;
+
+          const elapsed = performance.now() - highlightStartTime;
+          const idx = Math.min(wordSpans.length - 1, Math.floor(elapsed / intervalMs));
+
+          if (idx !== currentWordIndex && idx < wordSpans.length) {
+            setActiveWord(idx);
+          }
+        }, 50);
+      }
+
+      function highlightWordAtCharIndex(charIndex) {
+        let running = 0;
+        for (let i = 0; i < wordSpans.length; i++) {
+          const len = wordSpans[i].textContent.length;
+          if (charIndex >= running && charIndex < running + len + 1) {
+            setActiveWord(i);
+            return;
+          }
+          running += len + 1;
+        }
+      }
+
+      function setActiveWord(index) {
+        if (wordSpans[currentWordIndex]) {
+          wordSpans[currentWordIndex].classList.remove('active');
+        }
+        if (wordSpans[index]) {
+          wordSpans[index].classList.add('active');
+          currentWordIndex = index;
+          try {
+            wordSpans[index].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          } catch (e) {}
+        }
+      }
+
+      function clearAllHighlights() {
+        wordSpans.forEach(s => s.classList.remove('active'));
+        currentWordIndex = -1;
+      }
+
+      function clearHighlightTimer() {
+        if (highlightTimer) {
+          clearInterval(highlightTimer);
+          highlightTimer = null;
+        }
+      }
+
+      /* =====================================================
+         PAUSE / RESUME / STOP / RESET
+         ===================================================== */
+      function togglePause() {
+        if (!isSpeaking) return;
+        if (synth.paused) {
+          synth.resume();
+          isPaused = false;
+          pauseBtnText.textContent = 'Pause';
+        } else {
+          synth.pause();
+          isPaused = true;
+          pauseBtnText.textContent = 'Resume';
+        }
+      }
+
+      function stopSpeaking() {
+        if (synth.speaking || synth.pending) {
+          synth.cancel();
+        }
+        isSpeaking = false;
+        isPaused = false;
+        clearHighlightTimer();
+        clearAllHighlights();
+        speakPreview.classList.remove('speaking');
+        speakBtnText.textContent = 'Speak';
+        speakBtn.disabled = !textInput.value.trim();
+        pauseBtn.disabled = true;
+        stopBtn.disabled = true;
+        pauseBtnText.textContent = 'Pause';
+        setStatus('ready', 'Stopped', 'Playback stopped. Ready to speak again.');
+      }
+
+      function resetAll() {
+        stopSpeaking();
+        textInput.value = '';
+        updateUI();
+        textInput.focus();
+        showToast('Reset — ready for new text');
+      }
+
+      /* =====================================================
+         HELPERS
+         ===================================================== */
+      function showToast(message) {
+        toastText.textContent = message || 'Done!';
+        toast.classList.add('show');
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => toast.classList.remove('show'), 2400);
+      }
+
+      function showError(message) {
+        errorMsg.textContent = message;
+        errorMsg.classList.remove('hidden');
+        successMsg.classList.add('hidden');
+        clearTimeout(errorMsg._timer);
+        errorMsg._timer = setTimeout(() => errorMsg.classList.add('hidden'), 6000);
+      }
+
+      function showSuccess(message) {
+        successText.textContent = message || 'Success!';
+        successMsg.classList.remove('hidden');
+        errorMsg.classList.add('hidden');
+        clearTimeout(successMsg._timer);
+        successMsg._timer = setTimeout(() => successMsg.classList.add('hidden'), 3000);
+      }
+
+      function pasteFromClipboard() {
+        if (navigator.clipboard && navigator.clipboard.readText) {
+          navigator.clipboard.readText().then(function (text) {
+            if (text) {
+              textInput.value = text;
+              updateUI();
+              showToast('Text pasted!');
+            } else {
+              showToast('Clipboard is empty');
+            }
+          }).catch(function () {
+            showToast('Please paste manually (Ctrl+V)');
+            textInput.focus();
+          });
+        } else {
+          showToast('Please paste manually (Ctrl+V)');
+          textInput.focus();
+        }
+      }
+
+      function loadSample() {
+        textInput.value = SAMPLE_TEXT;
+        updateUI();
+        showToast('Sample text loaded!');
+      }
+
+      /* =====================================================
+         EVENT LISTENERS
+         ===================================================== */
+      function bindEvents() {
+        textInput.addEventListener('input', function () {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(updateUI, 100);
+        });
+
+        textInput.addEventListener('beforeinput', function () {
+          if (isSpeaking) {
+            stopSpeaking();
+          }
+        });
+
+        pasteBtn.addEventListener('click', pasteFromClipboard);
+        clearMiniBtn.addEventListener('click', resetAll);
+        sampleBtn.addEventListener('click', loadSample);
+        speakBtn.addEventListener('click', speak);
+        pauseBtn.addEventListener('click', togglePause);
+        stopBtn.addEventListener('click', stopSpeaking);
+        resetBtn.addEventListener('click', resetAll);
+
+        voiceSelect.addEventListener('change', function () {
+          userSelectedVoice = true;   // user has manually chosen a voice
+          updateVoiceStat();
+          if (isSpeaking) {
+            speak();
+          }
+        });
+
+        speedRange.addEventListener('input', function () {
+          speedValue.textContent = parseFloat(this.value).toFixed(1) + '×';
+          updateRangeFill(this);
+          updateUI();
+          if (isSpeaking) {
+            speak();
+          }
+        });
+
+        pitchRange.addEventListener('input', function () {
+          pitchValue.textContent = parseFloat(this.value).toFixed(1);
+          updateRangeFill(this);
+          if (isSpeaking) {
+            speak();
+          }
+        });
+
+        volumeRange.addEventListener('input', function () {
+          volumeValue.textContent = Math.round(parseFloat(this.value) * 100) + '%';
+          updateRangeFill(this);
+          if (isSpeaking && utterance) {
+            utterance.volume = parseFloat(this.value);
+          }
+        });
+
+        window.addEventListener('beforeunload', function () {
+          try { synth.cancel(); } catch (e) {}
+        });
+
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden && isSpeaking && !isPaused) {
+            try { synth.pause(); } catch (e) {}
+          }
+        });
+      }
+
+      /* =====================================================
+         GO
+         ===================================================== */
+      init();
+    })();
+  </script>
+</body>
+</html>
