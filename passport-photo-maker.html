@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Passport Photo Maker · Free Online Tool | Create Passport Size Photos</title>
+    <meta name="description" content="Free responsive passport photo maker. Create passport, visa, and ID photos with custom background colors. Crop, resize, and download print-ready sheets instantly.">
+    <meta name="keywords" content="passport photo maker, passport size photo, visa photo, id photo maker, passport photo online, free passport photo, photo background changer">
+    <meta name="author" content="Tool Master">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.example.com/passport-photo-maker">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Passport Photo Maker · Free Online Tool">
+    <meta property="og:description" content="Create passport, visa, and ID photos with custom backgrounds. Crop, resize, and download instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com/passport-photo-maker">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- Performance -->
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+    
+    <style>
+        /* =====================================================
+           RESET & BASE
+           ===================================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            color: #0f172a;
+            line-height: 1.6;
+            padding: 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* =====================================================
+           ADSENSE PLACEHOLDERS
+           ===================================================== */
+        .ad-slot {
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 14px;
+            padding: 0.75rem;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            width: 100%;
+            margin: 1.25rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .ad-slot::before {
+            content: 'AD';
+            position: absolute;
+            top: 6px;
+            left: 8px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: 0.05em;
+        }
+        .ad-slot:hover {
+            border-color: #94a3b8;
+            background: #eef2f6;
+        }
+        .ad-slot ins {
+            display: block;
+            width: 100%;
+        }
+        .ad-slot--top {
+            margin-top: 0.25rem;
+            min-height: 90px;
+        }
+        
+        /* =====================================================
+           HEADER
+           ===================================================== */
+        .header {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #10b981, #3b82f6);
+        }
+        .header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #0f172a 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            color: #475569;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            max-width: 720px;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .header-badge {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.3rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+        
+        /* =====================================================
+           TOOL CARD
+           ===================================================== */
+        .tool-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* =====================================================
+           UPLOAD AREA
+           ===================================================== */
+        .upload-area {
+            border: 3px dashed #cbd5e1;
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            background: #f8fafc;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            margin-bottom: 1.8rem;
+        }
+        .upload-area:hover, .upload-area.dragover {
+            border-color: #f59e0b;
+            background: #fffbeb;
+            transform: translateY(-2px);
+        }
+        .upload-area input[type="file"] {
+            display: none;
+        }
+        .upload-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+        }
+        .upload-label svg {
+            width: 56px;
+            height: 56px;
+            stroke: #f59e0b;
+            stroke-width: 1.6;
+            fill: none;
+            transition: transform 0.25s ease;
+        }
+        .upload-area:hover .upload-label svg {
+            transform: translateY(-4px);
+        }
+        .upload-label span {
+            font-size: 1.2rem;
+        }
+        .upload-hint {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 0.4rem;
+            font-weight: 400;
+        }
+        
+        /* =====================================================
+           INFO STRIP
+           ===================================================== */
+        .info-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.8rem;
+            justify-content: center;
+        }
+        .info-chip {
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+        }
+        .info-chip svg {
+            width: 16px;
+            height: 16px;
+            stroke: #f59e0b;
+            fill: none;
+            stroke-width: 2.2;
+        }
+        
+        /* =====================================================
+           OPTIONS PANEL
+           ===================================================== */
+        .options-panel {
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 1.8rem;
+        }
+        .options-panel h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+        }
+        .option-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .option-field label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .option-field select {
+            padding: 0.7rem 0.9rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.2s;
+            background: #ffffff;
+            color: #0f172a;
+            cursor: pointer;
+        }
+        .option-field select:focus {
+            outline: none;
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.12);
+        }
+        
+        /* Background color presets */
+        .color-presets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.4rem;
+        }
+        .color-swatch {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            border: 3px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .color-swatch:hover {
+            transform: scale(1.1);
+            border-color: #94a3b8;
+        }
+        .color-swatch.active {
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+            transform: scale(1.05);
+        }
+        .color-swatch.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #0f172a;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-shadow: 0 0 4px rgba(255,255,255,0.9);
+        }
+        
+        input[type="color"] {
+            width: 100%;
+            height: 44px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            background: #ffffff;
+            padding: 4px;
+        }
+        input[type="color"]:focus {
+            outline: none;
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.12);
+        }
+        
+        /* =====================================================
+           ACTION BUTTONS
+           ===================================================== */
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #ffffff;
+            border: none;
+            padding: 0.95rem 2rem;
+            font-family: inherit;
+            font-weight: 700;
+            border-radius: 60px;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex: 1 1 auto;
+            min-width: 170px;
+            box-shadow: 0 8px 20px -6px rgba(245, 158, 11, 0.45);
+        }
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(245, 158, 11, 0.55);
+        }
+        .btn:active:not(:disabled) {
+            transform: translateY(0) scale(0.98);
+        }
+        .btn-secondary {
+            background: #ffffff;
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+            box-shadow: none;
+        }
+        .btn-secondary:hover:not(:disabled) {
+            background: #f8fafc;
+            border-color: #94a3b8;
+            box-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.1);
+        }
+        .btn-download {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow: 0 8px 20px -6px rgba(16, 185, 129, 0.45);
+        }
+        .btn:disabled {
+            opacity: 0.45;
+            pointer-events: none;
+            box-shadow: none;
+        }
+        
+        /* =====================================================
+           WORKSPACE
+           ===================================================== */
+        .workspace {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .workspace-panel {
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 1.25rem;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+        .workspace-panel h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+        .workspace-panel h3 span.panel-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .dimensions-badge {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.72rem;
+            font-weight: 800;
+        }
+        
+        /* Canvas preview */
+        .canvas-wrap {
+            background: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            padding: 0.85rem;
+            flex: 1;
+            min-height: 380px;
+            background-image:
+                linear-gradient(45deg, #f1f5f9 25%, transparent 25%),
+                linear-gradient(-45deg, #f1f5f9 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #f1f5f9 75%),
+                linear-gradient(-45deg, transparent 75%, #f1f5f9 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+        #previewCanvas {
+            max-width: 100%;
+            max-height: 460px;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.15);
+        }
+        .image-placeholder {
+            color: #94a3b8;
+            font-size: 0.92rem;
+            font-weight: 500;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        /* Sheet preview */
+        .sheet-wrap {
+            background: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            padding: 0.85rem;
+            flex: 1;
+            min-height: 380px;
+        }
+        #sheetCanvas {
+            max-width: 100%;
+            max-height: 460px;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.15);
+        }
+        
+        /* Zoom control */
+        .zoom-control {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin-top: 0.85rem;
+            padding: 0.65rem 0.85rem;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        .zoom-control label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #64748b;
+            white-space: nowrap;
+        }
+        .zoom-control input[type="range"] {
+            flex: 1;
+        }
+        .zoom-value {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #f59e0b;
+            min-width: 44px;
+            text-align: right;
+        }
+        
+        /* =====================================================
+           SLIDER STYLES
+           ===================================================== */
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 10px;
+            background: #e2e8f0;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #f59e0b;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
+            border: 3px solid #ffffff;
+            transition: transform 0.15s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #f59e0b;
+            cursor: pointer;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
+        }
+        
+        /* =====================================================
+           MESSAGES
+           ===================================================== */
+        .hidden { display: none !important; }
+        .error-msg, .success-msg, .loading-msg {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .error-msg {
+            color: #991b1b;
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+        }
+        .success-msg {
+            color: #065f46;
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+        }
+        .loading-msg {
+            color: #92400e;
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2.5px solid rgba(146, 64, 14, 0.25);
+            border-top-color: #92400e;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        /* =====================================================
+           CONTENT SECTIONS (SEO)
+           ===================================================== */
+        .content-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+        }
+        .content-section h2 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
+        }
+        .step {
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+        }
+        .step-num {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #ffffff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px -4px rgba(245, 158, 11, 0.5);
+        }
+        .step p { font-size: 0.93rem; color: #475569; }
+        .step strong {
+            color: #0f172a;
+            display: block;
+            margin-bottom: 0.2rem;
+            font-size: 0.98rem;
+        }
+        
+        /* =====================================================
+           FAQ
+           ===================================================== */
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0.95rem 0;
+        }
+        .faq-item:first-of-type { padding-top: 0; }
+        .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .faq-item summary {
+            font-weight: 700;
+            cursor: pointer;
+            color: #1e293b;
+            font-size: 0.98rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.15rem 0;
+            transition: color 0.2s;
+        }
+        .faq-item summary:hover { color: #d97706; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: #f59e0b;
+            font-weight: 700;
+            transition: transform 0.25s ease;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .faq-item[open] summary::after { content: '−'; transform: rotate(180deg); }
+        .faq-item p {
+            margin-top: 0.6rem;
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            padding: 2rem 1rem 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .footer p + p { margin-top: 0.3rem; font-size: 0.8rem; color: #94a3b8; }
+        
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+        @media (max-width: 900px) {
+            .workspace { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            body { padding: 0.75rem; }
+            .header { padding: 1.5rem 1.25rem; }
+            .tool-card { padding: 1.5rem 1.15rem; }
+            .btn { padding: 0.85rem 1.4rem; font-size: 0.92rem; }
+            .upload-area { padding: 1.75rem 1.1rem; }
+            .content-section { padding: 1.5rem 1.25rem; }
+            .options-panel { padding: 1.15rem; }
+            .canvas-wrap, .sheet-wrap { min-height: 300px; }
+        }
+        @media (max-width: 520px) {
+            .action-buttons { flex-direction: column; }
+            .btn { width: 100%; }
+            .header-badge { font-size: 0.72rem; padding: 0.25rem 0.7rem; }
+            .workspace-panel { padding: 1rem; }
+            .canvas-wrap, .sheet-wrap { min-height: 240px; }
+            .color-swatch { width: 34px; height: 34px; }
+        }
+        
+        /* =====================================================
+           ACCESSIBILITY
+           ===================================================== */
+        :focus-visible {
+            outline: 3px solid #f59e0b;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        .btn:focus-visible, .color-swatch:focus-visible {
+            outline: 3px solid #0f172a;
+            outline-offset: 2px;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ==================== HEADER ==================== -->
+        <header class="header">
+            <h1>Passport Photo Maker</h1>
+            <p>Create professional passport, visa, and ID photos in seconds. Choose your size, customize the background color, and download a print-ready sheet — all in your browser.</p>
+            <div class="badge-row">
+                <span class="header-badge">✓ Custom Background</span>
+                <span class="header-badge">✓ Standard Sizes</span>
+                <span class="header-badge">✓ Print-Ready Sheet</span>
+                <span class="header-badge">✓ 100% Free</span>
+            </div>
+        </header>
+
+        <!-- ==================== ADSENSE TOP ==================== -->
+        <div class="ad-slot ad-slot--top" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (Top Leaderboard)</span>
+        </div>
+
+        <!-- ==================== MAIN TOOL ==================== -->
+        <main class="tool-card">
+            <!-- Upload -->
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/*" aria-label="Upload photo">
+                <label for="fileInput" class="upload-label">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    <span>Click or drag & drop your photo</span>
+                    <div class="upload-hint">JPG, PNG, WebP · Max 20MB · Use a clear face photo</div>
+                </label>
+            </div>
+            <div id="errorMsg" class="error-msg hidden" role="alert"></div>
+            <div id="successMsg" class="success-msg hidden" role="status">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span id="successText">Passport photo ready!</span>
+            </div>
+            <div id="loadingMsg" class="loading-msg hidden" role="status">
+                <span class="spinner"></span>
+                <span id="loadingText">Processing image...</span>
+            </div>
+
+            <!-- Info Chips -->
+            <div class="info-strip">
+                <div class="info-chip">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    Standard passport sizes
+                </div>
+                <div class="info-chip">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                    Custom background
+                </div>
+                <div class="info-chip">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    100% private
+                </div>
+            </div>
+
+            <!-- Options Panel -->
+            <div class="options-panel" id="optionsPanel" style="display:none;">
+                <h3>⚙️ Photo Settings</h3>
+                <div class="options-grid">
+                    <!-- Photo Size -->
+                    <div class="option-field">
+                        <label for="sizeSelect">📐 Photo Size</label>
+                        <select id="sizeSelect" aria-label="Passport photo size">
+                            <option value="us">US Passport (2 × 2 in / 51 × 51 mm)</option>
+                            <option value="uk">UK Passport (35 × 45 mm)</option>
+                            <option value="eu">EU / Schengen (35 × 45 mm)</option>
+                            <option value="in">India Passport (51 × 51 mm)</option>
+                            <option value="bd">Bangladesh Passport (45 × 35 mm)</option>
+                            <option value="pk">Pakistan Passport (35 × 45 mm)</option>
+                            <option value="cn">China Visa (33 × 48 mm)</option>
+                            <option value="jp">Japan Passport (35 × 45 mm)</option>
+                            <option value="au">Australia Passport (35 × 45 mm)</option>
+                            <option value="ca">Canada Passport (50 × 70 mm)</option>
+                            <option value="custom">Custom Size...</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Custom size inputs -->
+                    <div class="option-field hidden" id="customSizeField">
+                        <label for="customWidth">Custom Size (mm)</label>
+                        <div style="display:flex; gap:0.5rem;">
+                            <input type="number" id="customWidth" value="35" min="20" max="100" step="1" style="padding:0.7rem 0.9rem;border:2px solid #e2e8f0;border-radius:12px;font-family:inherit;font-size:0.95rem;font-weight:600;width:100%;">
+                            <input type="number" id="customHeight" value="45" min="20" max="100" step="1" style="padding:0.7rem 0.9rem;border:2px solid #e2e8f0;border-radius:12px;font-family:inherit;font-size:0.95rem;font-weight:600;width:100%;">
+                        </div>
+                    </div>
+                    
+                    <!-- Background Color -->
+                    <div class="option-field">
+                        <label for="bgColorInput">🎨 Background Color</label>
+                        <input type="color" id="bgColorInput" value="#ffffff" aria-label="Background color">
+                        <div class="color-presets" id="colorPresets">
+                            <div class="color-swatch active" data-color="#ffffff" style="background:#ffffff;" title="White" tabindex="0" role="button" aria-label="White background"></div>
+                            <div class="color-swatch" data-color="#f1f5f9" style="background:#f1f5f9;" title="Light Gray" tabindex="0" role="button" aria-label="Light gray background"></div>
+                            <div class="color-swatch" data-color="#dbeafe" style="background:#dbeafe;" title="Light Blue" tabindex="0" role="button" aria-label="Light blue background"></div>
+                            <div class="color-swatch" data-color="#bfdbfe" style="background:#bfdbfe;" title="Sky Blue" tabindex="0" role="button" aria-label="Sky blue background"></div>
+                            <div class="color-swatch" data-color="#fce7f3" style="background:#fce7f3;" title="Light Pink" tabindex="0" role="button" aria-label="Light pink background"></div>
+                            <div class="color-swatch" data-color="#d1fae5" style="background:#d1fae5;" title="Light Green" tabindex="0" role="button" aria-label="Light green background"></div>
+                            <div class="color-swatch" data-color="#fef3c7" style="background:#fef3c7;" title="Light Yellow" tabindex="0" role="button" aria-label="Light yellow background"></div>
+                            <div class="color-swatch" data-color="#e5e7eb" style="background:#e5e7eb;" title="Neutral Gray" tabindex="0" role="button" aria-label="Neutral gray background"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Print Sheet Layout -->
+                    <div class="option-field">
+                        <label for="sheetSelect">🖨️ Print Sheet Layout</label>
+                        <select id="sheetSelect" aria-label="Print sheet layout">
+                            <option value="4x6">4 × 6 inch (Standard)</option>
+                            <option value="a4">A4 (210 × 297 mm)</option>
+                            <option value="letter">US Letter (8.5 × 11 in)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn" id="generateBtn" disabled type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Generate Photo
+                </button>
+                <button class="btn btn-download" id="downloadBtn" disabled type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download Sheet
+                </button>
+                <button class="btn btn-secondary" id="resetBtn" disabled type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    Reset
+                </button>
+            </div>
+
+            <!-- Workspace -->
+            <div class="workspace">
+                <!-- Single Photo Preview -->
+                <div class="workspace-panel">
+                    <h3>
+                        <span class="panel-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            Passport Photo
+                        </span>
+                        <span class="dimensions-badge" id="dimBadge">— mm</span>
+                    </h3>
+                    <div class="canvas-wrap">
+                        <canvas id="previewCanvas" class="hidden"></canvas>
+                        <div class="image-placeholder" id="previewPlaceholder">Upload a photo to begin</div>
+                    </div>
+                    <div class="zoom-control hidden" id="zoomControl">
+                        <label for="zoomSlider">Zoom</label>
+                        <input type="range" id="zoomSlider" min="1" max="3" value="1" step="0.05" aria-label="Zoom photo">
+                        <span class="zoom-value" id="zoomValue">1.0×</span>
+                    </div>
+                </div>
+
+                <!-- Print Sheet Preview -->
+                <div class="workspace-panel">
+                    <h3>
+                        <span class="panel-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                            Print Sheet
+                        </span>
+                        <span class="dimensions-badge" id="sheetBadge">—</span>
+                    </h3>
+                    <div class="sheet-wrap">
+                        <canvas id="sheetCanvas" class="hidden"></canvas>
+                        <div class="image-placeholder" id="sheetPlaceholder">Print sheet will appear here</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ==================== ADSENSE MIDDLE ==================== -->
+        <div class="ad-slot" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="0987654321"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (In-Content)</span>
+        </div>
+
+        <!-- ==================== HOW TO ==================== -->
+        <section class="content-section">
+            <h2>How to Make a Passport Photo</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <strong>Upload your photo</strong>
+                        <p>Use a clear, front-facing photo with good lighting. A plain or light background works best.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <strong>Choose size & background</strong>
+                        <p>Select your country's passport size, pick a background color (white, blue, etc.), and adjust zoom if needed.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <strong>Generate & download sheet</strong>
+                        <p>Click "Generate Photo" then "Download Sheet" to save a print-ready 4×6 or A4 sheet with multiple copies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FAQ ==================== -->
+        <section class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            <details class="faq-item" open>
+                <summary>What sizes are supported?</summary>
+                <p>We support the most common passport and visa sizes: US Passport (2×2 in), UK/EU/Australia/Japan/Pakistan (35×45 mm), India (51×51 mm), Bangladesh (45×35 mm), China Visa (33×48 mm), Canada (50×70 mm), and you can also enter a custom size in millimeters.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can I change the background color?</summary>
+                <p>Yes! You can pick any background color using the color picker or choose from 8 quick presets including white, light blue, light gray, and more. Simply click a swatch or use the color input.</p>
+            </details>
+            <details class="faq-item">
+                <summary>How does the photo get cropped?</summary>
+                <p>The tool automatically scales your uploaded photo to fill the selected passport size and centers it. You can adjust the zoom slider to fine-tune the framing — a higher zoom means a tighter crop on the face.</p>
+            </details>
+            <details class="faq-item">
+                <summary>What does the print sheet do?</summary>
+                <p>The print sheet arranges multiple copies of your passport photo on a standard paper size (4×6 inch, A4, or US Letter) so you can print them at home or a photo lab and cut them out.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Are my photos uploaded to a server?</summary>
+                <p>No. All processing happens locally in your browser using the HTML5 Canvas API. Your photo is never uploaded, transmitted, or stored on any server.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is this passport photo maker free?</summary>
+                <p>Yes — completely free with no limits, no watermarks, and no sign-up required.</p>
+            </details>
+        </section>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer class="footer">
+            <p>© 2025 Passport Photo Maker by Tool Master. All processing happens locally in your browser — no uploads, no tracking.</p>
+            <p>Built with vanilla HTML, CSS, and JavaScript for maximum performance and privacy.</p>
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            /* =====================================================
+               DOM ELEMENTS
+               ===================================================== */
+            const $ = (sel) => document.querySelector(sel);
+
+            const fileInput = $('#fileInput');
+            const uploadArea = $('#uploadArea');
+            const generateBtn = $('#generateBtn');
+            const downloadBtn = $('#downloadBtn');
+            const resetBtn = $('#resetBtn');
+            const errorMsg = $('#errorMsg');
+            const successMsg = $('#successMsg');
+            const successText = $('#successText');
+            const loadingMsg = $('#loadingMsg');
+            const loadingText = $('#loadingText');
+
+            const optionsPanel = $('#optionsPanel');
+            const sizeSelect = $('#sizeSelect');
+            const customSizeField = $('#customSizeField');
+            const customWidth = $('#customWidth');
+            const customHeight = $('#customHeight');
+            const bgColorInput = $('#bgColorInput');
+            const colorPresets = $('#colorPresets');
+            const sheetSelect = $('#sheetSelect');
+
+            const previewCanvas = $('#previewCanvas');
+            const previewPlaceholder = $('#previewPlaceholder');
+            const sheetCanvas = $('#sheetCanvas');
+            const sheetPlaceholder = $('#sheetPlaceholder');
+            const dimBadge = $('#dimBadge');
+            const sheetBadge = $('#sheetBadge');
+
+            const zoomControl = $('#zoomControl');
+            const zoomSlider = $('#zoomSlider');
+            const zoomValue = $('#zoomValue');
+
+            /* =====================================================
+               PASSPORT SIZE PRESETS (in mm)
+               ===================================================== */
+            const SIZE_PRESETS = {
+                us:   { width: 51, height: 51, name: 'US Passport' },
+                uk:   { width: 35, height: 45, name: 'UK Passport' },
+                eu:   { width: 35, height: 45, name: 'EU / Schengen' },
+                in:   { width: 51, height: 51, name: 'India Passport' },
+                bd:   { width: 45, height: 35, name: 'Bangladesh Passport' },
+                pk:   { width: 35, height: 45, name: 'Pakistan Passport' },
+                cn:   { width: 33, height: 48, name: 'China Visa' },
+                jp:   { width: 35, height: 45, name: 'Japan Passport' },
+                au:   { width: 35, height: 45, name: 'Australia Passport' },
+                ca:   { width: 50, height: 70, name: 'Canada Passport' },
+                custom: { width: 35, height: 45, name: 'Custom' }
+            };
+
+            /* =====================================================
+               SHEET PRESETS (in mm)
+               ===================================================== */
+            const SHEET_PRESETS = {
+                '4x6':   { width: 152.4, height: 101.6, name: '4×6 inch' },
+                a4:      { width: 210, height: 297, name: 'A4' },
+                letter:  { width: 215.9, height: 279.4, name: 'US Letter' }
+            };
+
+            /* =====================================================
+               STATE
+               ===================================================== */
+            let originalImage = null;
+            let originalFileName = '';
+            let zoomLevel = 1;
+            let generatedBlob = null;
+            let generatedDataUrl = null;
+
+            /* =====================================================
+               MESSAGE HELPERS
+               ===================================================== */
+            function showError(message) {
+                errorMsg.textContent = message;
+                errorMsg.classList.remove('hidden');
+                successMsg.classList.add('hidden');
+                clearTimeout(errorMsg._timer);
+                errorMsg._timer = setTimeout(() => errorMsg.classList.add('hidden'), 6000);
+            }
+
+            function showSuccess(message) {
+                successText.textContent = message || 'Success!';
+                successMsg.classList.remove('hidden');
+                errorMsg.classList.add('hidden');
+                clearTimeout(successMsg._timer);
+                successMsg._timer = setTimeout(() => successMsg.classList.add('hidden'), 5000);
+            }
+
+            function showLoading(text) {
+                loadingText.textContent = text || 'Processing...';
+                loadingMsg.classList.remove('hidden');
+                errorMsg.classList.add('hidden');
+                successMsg.classList.add('hidden');
+            }
+
+            function hideLoading() {
+                loadingMsg.classList.add('hidden');
+            }
+
+            function clearMessages() {
+                errorMsg.classList.add('hidden');
+                successMsg.classList.add('hidden');
+                loadingMsg.classList.add('hidden');
+            }
+
+            /* =====================================================
+               DRAG & DROP
+               ===================================================== */
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+            uploadArea.addEventListener('dragenter', () => uploadArea.classList.add('dragover'));
+            uploadArea.addEventListener('dragover', () => uploadArea.classList.add('dragover'));
+            uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+            uploadArea.addEventListener('drop', e => {
+                uploadArea.classList.remove('dragover');
+                if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+            });
+
+            fileInput.addEventListener('change', e => {
+                if (e.target.files.length) {
+                    handleFile(e.target.files[0]);
+                    fileInput.value = '';
+                }
+            });
+
+            uploadArea.addEventListener('click', e => {
+                if (e.target.tagName === 'INPUT') return;
+                if (e.target.closest('label')) return;
+                fileInput.click();
+            });
+
+            /* =====================================================
+               FILE HANDLING
+               ===================================================== */
+            function handleFile(file) {
+                clearMessages();
+                if (!file.type.startsWith('image/')) {
+                    showError('Please select an image file (JPG, PNG, WebP).');
+                    return;
+                }
+                if (file.size > 20 * 1024 * 1024) {
+                    showError('File too large. Maximum size is 20MB.');
+                    return;
+                }
+
+                originalFileName = file.name.replace(/\.[^/.]+$/, '') || 'passport-photo';
+
+                const reader = new FileReader();
+                reader.onload = ev => {
+                    const img = new Image();
+                    img.onload = () => {
+                        originalImage = img;
+                        zoomLevel = 1;
+                        zoomSlider.value = 1;
+                        zoomValue.textContent = '1.0×';
+
+                        optionsPanel.style.display = 'block';
+                        generateBtn.disabled = false;
+                        resetBtn.disabled = false;
+                        downloadBtn.disabled = true;
+
+                        // Hide initial placeholder
+                        previewPlaceholder.classList.add('hidden');
+                        previewCanvas.classList.remove('hidden');
+                        zoomControl.classList.remove('hidden');
+
+                        // Reset sheet
+                        sheetCanvas.classList.add('hidden');
+                        sheetPlaceholder.classList.remove('hidden');
+                        sheetPlaceholder.textContent = 'Click "Generate Photo" to create the print sheet';
+                        sheetBadge.textContent = '—';
+
+                        // Auto-generate preview
+                        generatePhoto();
+
+                        showSuccess('Photo loaded: ' + file.name);
+                    };
+                    img.onerror = () => showError('Failed to load image. The file may be corrupted.');
+                    img.src = ev.target.result;
+                };
+                reader.onerror = () => showError('Error reading file.');
+                reader.readAsDataURL(file);
+            }
+
+            /* =====================================================
+               GET CURRENT SIZE
+               ===================================================== */
+            function getCurrentSize() {
+                const presetKey = sizeSelect.value;
+                if (presetKey === 'custom') {
+                    return {
+                        width: Math.max(20, parseInt(customWidth.value, 10) || 35),
+                        height: Math.max(20, parseInt(customHeight.value, 10) || 45),
+                        name: 'Custom'
+                    };
+                }
+                return SIZE_PRESETS[presetKey] || SIZE_PRESETS.us;
+            }
+
+            function getCurrentSheet() {
+                return SHEET_PRESETS[sheetSelect.value] || SHEET_PRESETS['4x6'];
+            }
+
+            /* =====================================================
+               GENERATE PASSPORT PHOTO (SINGLE)
+               ===================================================== */
+            function generatePhoto() {
+                if (!originalImage) {
+                    showError('Please upload a photo first.');
+                    return null;
+                }
+
+                const size = getCurrentSize();
+                const bgColor = bgColorInput.value;
+
+                // We use a base DPI of 300 (standard for print)
+                const DPI = 300;
+                const pxPerMm = DPI / 25.4;
+
+                // Canvas dimensions in pixels (at 300 DPI)
+                const canvasW = Math.round(size.width * pxPerMm);
+                const canvasH = Math.round(size.height * pxPerMm);
+
+                // Create preview canvas (at display resolution)
+                const displayW = 400;
+                const displayH = Math.round(displayW * (size.height / size.width));
+
+                previewCanvas.width = displayW;
+                previewCanvas.height = displayH;
+                const ctx = previewCanvas.getContext('2d');
+
+                // Fill background
+                ctx.fillStyle = bgColor;
+                ctx.fillRect(0, 0, displayW, displayH);
+
+                // Draw image with cover fit + zoom
+                const imgAspect = originalImage.width / originalImage.height;
+                const targetAspect = displayW / displayH;
+
+                let drawW, drawH, drawX, drawY;
+
+                // Cover fit
+                if (imgAspect > targetAspect) {
+                    drawH = displayH;
+                    drawW = drawH * imgAspect;
+                } else {
+                    drawW = displayW;
+                    drawH = drawW / imgAspect;
+                }
+
+                // Apply zoom
+                drawW *= zoomLevel;
+                drawH *= zoomLevel;
+
+                // Center
+                drawX = (displayW - drawW) / 2;
+                drawY = (displayH - drawH) / 2;
+
+                // Draw a subtle border
+                ctx.save();
+                ctx.beginPath();
+                ctx.rect(0, 0, displayW, displayH);
+                ctx.clip();
+                ctx.drawImage(originalImage, drawX, drawY, drawW, drawH);
+                ctx.restore();
+
+                // Update dimension badge
+                dimBadge.textContent = size.width + ' × ' + size.height + ' mm';
+
+                // Also create high-res version for the sheet
+                return {
+                    canvasW: canvasW,
+                    canvasH: canvasH,
+                    size: size,
+                    bgColor: bgColor,
+                    DPI: DPI
+                };
+            }
+
+            /* =====================================================
+               GENERATE PRINT SHEET
+               ===================================================== */
+            function generateSheet() {
+                if (!originalImage) {
+                    showError('Please upload a photo first.');
+                    return;
+                }
+
+                showLoading('Generating print sheet...');
+
+                setTimeout(function () {
+                    try {
+                        const size = getCurrentSize();
+                        const sheet = getCurrentSheet();
+                        const bgColor = bgColorInput.value;
+                        const DPI = 300;
+                        const pxPerMm = DPI / 25.4;
+
+                        // Sheet dimensions in pixels
+                        const sheetW = Math.round(sheet.width * pxPerMm);
+                        const sheetH = Math.round(sheet.height * pxPerMm);
+
+                        // Photo dimensions in pixels
+                        const photoW = Math.round(size.width * pxPerMm);
+                        const photoH = Math.round(size.height * pxPerMm);
+
+                        // Create high-res sheet canvas
+                        const hiResCanvas = document.createElement('canvas');
+                        hiResCanvas.width = sheetW;
+                        hiResCanvas.height = sheetH;
+                        const hiCtx = hiResCanvas.getContext('2d');
+
+                        // Fill sheet background (white paper)
+                        hiCtx.fillStyle = '#ffffff';
+                        hiCtx.fillRect(0, 0, sheetW, sheetH);
+
+                        // Create individual photo canvas at high res
+                        const photoCanvas = document.createElement('canvas');
+                        photoCanvas.width = photoW;
+                        photoCanvas.height = photoH;
+                        const photoCtx = photoCanvas.getContext('2d');
+
+                        // Fill photo background
+                        photoCtx.fillStyle = bgColor;
+                        photoCtx.fillRect(0, 0, photoW, photoH);
+
+                        // Draw image onto photo canvas with cover + zoom
+                        const imgAspect = originalImage.width / originalImage.height;
+                        const targetAspect = photoW / photoH;
+
+                        let drawW, drawH, drawX, drawY;
+                        if (imgAspect > targetAspect) {
+                            drawH = photoH;
+                            drawW = drawH * imgAspect;
+                        } else {
+                            drawW = photoW;
+                            drawH = drawW / imgAspect;
+                        }
+                        drawW *= zoomLevel;
+                        drawH *= zoomLevel;
+                        drawX = (photoW - drawW) / 2;
+                        drawY = (photoH - drawH) / 2;
+
+                        photoCtx.save();
+                        photoCtx.beginPath();
+                        photoCtx.rect(0, 0, photoW, photoH);
+                        photoCtx.clip();
+                        photoCtx.drawImage(originalImage, drawX, drawY, drawW, drawH);
+                        photoCtx.restore();
+
+                        // Photo data URL for stamping
+                        const photoDataUrl = photoCanvas.toDataURL('image/png');
+                        const photoImg = new Image();
+                        photoImg.onload = function () {
+                            // Layout photos on the sheet with small gaps
+                            const gap = Math.round(2 * pxPerMm); // 2mm gap
+                            const marginX = Math.round(5 * pxPerMm);
+                            const marginY = Math.round(5 * pxPerMm);
+
+                            const availW = sheetW - marginX * 2;
+                            const availH = sheetH - marginY * 2;
+
+                            const cols = Math.max(1, Math.floor((availW + gap) / (photoW + gap)));
+                            const rows = Math.max(1, Math.floor((availH + gap) / (photoH + gap)));
+
+                            // Total block size for centering
+                            const totalW = cols * photoW + (cols - 1) * gap;
+                            const totalH = rows * photoH + (rows - 1) * gap;
+
+                            const startX = Math.round((sheetW - totalW) / 2);
+                            const startY = Math.round((sheetH - totalH) / 2);
+
+                            let placed = 0;
+                            for (let r = 0; r < rows; r++) {
+                                for (let c = 0; c < cols; c++) {
+                                    const x = startX + c * (photoW + gap);
+                                    const y = startY + r * (photoH + gap);
+                                    hiCtx.drawImage(photoImg, x, y, photoW, photoH);
+
+                                    // Light border around each photo
+                                    hiCtx.strokeStyle = '#e2e8f0';
+                                    hiCtx.lineWidth = 1;
+                                    hiCtx.strokeRect(x + 0.5, y + 0.5, photoW - 1, photoH - 1);
+
+                                    placed++;
+                                }
+                            }
+
+                            // Draw the display preview (scaled down to fit 460px max height)
+                            const displayMaxH = 460;
+                            const displayMaxW = 400;
+                            const scale = Math.min(displayMaxW / sheetW, displayMaxH / sheetH);
+                            const dW = Math.round(sheetW * scale);
+                            const dH = Math.round(sheetH * scale);
+
+                            sheetCanvas.width = dW;
+                            sheetCanvas.height = dH;
+                            const dCtx = sheetCanvas.getContext('2d');
+                            dCtx.drawImage(hiResCanvas, 0, 0, dW, dH);
+
+                            sheetCanvas.classList.remove('hidden');
+                            sheetPlaceholder.classList.add('hidden');
+                            sheetBadge.textContent = cols + '×' + rows + ' (' + placed + ' photos)';
+
+                            // Store hi-res canvas for download
+                            generatedBlob = null;
+                            hiResCanvas.toBlob(function (blob) {
+                                if (blob) {
+                                    if (generatedDataUrl) URL.revokeObjectURL(generatedDataUrl);
+                                    generatedBlob = blob;
+                                    generatedDataUrl = URL.createObjectURL(blob);
+                                }
+                                hideLoading();
+                                downloadBtn.disabled = false;
+                                showSuccess('Sheet ready! ' + placed + ' photos on ' + sheet.name + '. Click "Download Sheet".');
+                            }, 'image/png');
+                        };
+                        photoImg.onerror = function () {
+                            hideLoading();
+                            showError('Failed to render sheet. Please try again.');
+                        };
+                        photoImg.src = photoDataUrl;
+
+                    } catch (err) {
+                        console.error('Sheet generation error:', err);
+                        hideLoading();
+                        showError('Sheet generation failed: ' + (err.message || 'Unknown error'));
+                    }
+                }, 100);
+            }
+
+            /* =====================================================
+               DOWNLOAD
+               ===================================================== */
+            function downloadSheet() {
+                if (!generatedBlob || !generatedDataUrl) {
+                    showError('No sheet generated yet. Click "Generate Photo" first.');
+                    return;
+                }
+                try {
+                    const link = document.createElement('a');
+                    link.href = generatedDataUrl;
+                    link.download = originalFileName + '-passport-sheet.png';
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    showSuccess('Download started!');
+                } catch (err) {
+                    console.error('Download error:', err);
+                    showError('Download failed. Please try again.');
+                }
+            }
+
+            /* =====================================================
+               RESET
+               ===================================================== */
+            function resetAll() {
+                if (generatedDataUrl) {
+                    URL.revokeObjectURL(generatedDataUrl);
+                    generatedDataUrl = null;
+                }
+                originalImage = null;
+                originalFileName = '';
+                generatedBlob = null;
+                zoomLevel = 1;
+
+                fileInput.value = '';
+                previewCanvas.classList.add('hidden');
+                sheetCanvas.classList.add('hidden');
+                previewPlaceholder.classList.remove('hidden');
+                previewPlaceholder.textContent = 'Upload a photo to begin';
+                sheetPlaceholder.classList.remove('hidden');
+                sheetPlaceholder.textContent = 'Print sheet will appear here';
+                zoomControl.classList.add('hidden');
+                optionsPanel.style.display = 'none';
+
+                generateBtn.disabled = true;
+                downloadBtn.disabled = true;
+                resetBtn.disabled = true;
+
+                sizeSelect.value = 'us';
+                sheetSelect.value = '4x6';
+                bgColorInput.value = '#ffffff';
+                customSizeField.classList.add('hidden');
+                customWidth.value = 35;
+                customHeight.value = 45;
+                zoomSlider.value = 1;
+                zoomValue.textContent = '1.0×';
+                dimBadge.textContent = '— mm';
+                sheetBadge.textContent = '—';
+
+                // Reset active color swatch
+                colorPresets.querySelectorAll('.color-swatch').forEach(function (s) {
+                    s.classList.remove('active');
+                    if (s.dataset.color === '#ffffff') s.classList.add('active');
+                });
+
+                clearMessages();
+            }
+
+            /* =====================================================
+               EVENT LISTENERS
+               ===================================================== */
+            generateBtn.addEventListener('click', function () {
+                if (generatePhoto() === null) return;
+                generateSheet();
+            });
+            downloadBtn.addEventListener('click', downloadSheet);
+            resetBtn.addEventListener('click', resetAll);
+
+            // Size change
+            sizeSelect.addEventListener('change', function () {
+                if (this.value === 'custom') {
+                    customSizeField.classList.remove('hidden');
+                } else {
+                    customSizeField.classList.add('hidden');
+                }
+                if (originalImage) {
+                    generatePhoto();
+                    generateSheet();
+                }
+            });
+
+            // Custom size changes
+            customWidth.addEventListener('input', function () {
+                if (originalImage && sizeSelect.value === 'custom') {
+                    generatePhoto();
+                    generateSheet();
+                }
+            });
+            customHeight.addEventListener('input', function () {
+                if (originalImage && sizeSelect.value === 'custom') {
+                    generatePhoto();
+                    generateSheet();
+                }
+            });
+
+            // Sheet change
+            sheetSelect.addEventListener('change', function () {
+                if (originalImage) generateSheet();
+            });
+
+            // Background color change
+            bgColorInput.addEventListener('input', function () {
+                // Remove active state from swatches (custom color)
+                colorPresets.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+                if (originalImage) {
+                    generatePhoto();
+                    generateSheet();
+                }
+            });
+
+            // Color swatch click
+            colorPresets.querySelectorAll('.color-swatch').forEach(function (swatch) {
+                swatch.addEventListener('click', function () {
+                    const color = this.dataset.color;
+                    bgColorInput.value = color;
+                    colorPresets.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+                    this.classList.add('active');
+                    if (originalImage) {
+                        generatePhoto();
+                        generateSheet();
+                    }
+                });
+                swatch.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+
+            // Zoom slider
+            zoomSlider.addEventListener('input', function () {
+                zoomLevel = parseFloat(this.value);
+                zoomValue.textContent = zoomLevel.toFixed(1) + '×';
+                if (originalImage) {
+                    generatePhoto();
+                    generateSheet();
+                }
+            });
+
+            /* =====================================================
+               INITIALIZATION
+               ===================================================== */
+            generateBtn.disabled = true;
+            downloadBtn.disabled = true;
+            resetBtn.disabled = true;
+
+            /* =====================================================
+               CLEANUP
+               ===================================================== */
+            window.addEventListener('beforeunload', function () {
+                if (generatedDataUrl) {
+                    URL.revokeObjectURL(generatedDataUrl);
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
