@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Speech to Text · Free Online Voice Typing Tool | Real-Time Transcription</title>
-    <meta name="description" content="Free responsive speech-to-text tool with 50+ languages. Convert your voice to text in real time using your browser. No sign-up, no uploads — 100% private.">
-    <meta name="keywords" content="speech to text, voice to text, voice typing, speech recognition, dictation tool, transcription online, free speech to text, voice recorder to text">
+    <title>Speech to Text · Multi-Format Voice Typing Tool | One Voice, Many Outputs</title>
+    <meta name="description" content="Free responsive speech-to-text tool with multiple output formats. Speak once and get your transcript as plain text, uppercase, title case, bullets, JSON, and more.">
+    <meta name="keywords" content="speech to text, voice to text, multi format transcript, voice typing, speech recognition, dictation tool, transcription online, free speech to text">
     <meta name="author" content="Tool Master">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.example.com/speech-to-text">
     
     <!-- Open Graph / Social -->
-    <meta property="og:title" content="Speech to Text · Free Online Voice Typing Tool">
-    <meta property="og:description" content="Convert your voice to text in real time with 50+ languages. Free, private, and works in your browser.">
+    <meta property="og:title" content="Speech to Text · Multi-Format Voice Typing Tool">
+    <meta property="og:description" content="Speak once, get multiple text formats instantly. Free, private, and works in your browser.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.example.com/speech-to-text">
     <meta name="twitter:card" content="summary_large_image">
@@ -45,7 +45,7 @@
             flex-direction: column;
         }
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             width: 100%;
         }
@@ -117,7 +117,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6);
+            background: linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6, #ec4899);
         }
         .header h1 {
             font-size: clamp(1.5rem, 4vw, 2.25rem);
@@ -133,7 +133,7 @@
         .header p {
             color: #475569;
             font-size: clamp(0.95rem, 2vw, 1.1rem);
-            max-width: 720px;
+            max-width: 780px;
         }
         .badge-row {
             display: flex;
@@ -150,6 +150,10 @@
             font-weight: 700;
             letter-spacing: 0.01em;
         }
+        .header-badge.purple {
+            background: #ede9fe;
+            color: #5b21b6;
+        }
         
         /* =====================================================
            TOOL CARD
@@ -160,35 +164,6 @@
             padding: 2rem;
             box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.1);
             margin-bottom: 1.5rem;
-        }
-        
-        /* =====================================================
-           INFO STRIP
-           ===================================================== */
-        .info-strip {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 1.75rem;
-            justify-content: center;
-        }
-        .info-chip {
-            background: #f1f5f9;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            color: #334155;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-weight: 600;
-        }
-        .info-chip svg {
-            width: 16px;
-            height: 16px;
-            stroke: #06b6d4;
-            fill: none;
-            stroke-width: 2.2;
         }
         
         /* =====================================================
@@ -221,7 +196,7 @@
         }
         
         /* =====================================================
-           LANGUAGE & OPTIONS BAR
+           OPTIONS BAR
            ===================================================== */
         .options-bar {
             display: grid;
@@ -330,31 +305,20 @@
             stroke-width: 2;
             transition: all 0.2s;
         }
-        
         .mic-btn.listening {
             background: linear-gradient(135deg, #ef4444, #dc2626);
             box-shadow: 0 12px 30px -8px rgba(239, 68, 68, 0.55);
         }
-        .mic-btn.listening:hover {
-            box-shadow: 0 16px 36px -8px rgba(239, 68, 68, 0.65);
-        }
-        
-        /* Pulsing ring animation when listening */
         .mic-btn.listening::before,
         .mic-btn.listening::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             border-radius: 50%;
             border: 3px solid #ef4444;
             animation: pulse-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
-        .mic-btn.listening::after {
-            animation-delay: 0.9s;
-        }
+        .mic-btn.listening::after { animation-delay: 0.9s; }
         @keyframes pulse-ring {
             0% { transform: scale(1); opacity: 0.8; }
             100% { transform: scale(1.7); opacity: 0; }
@@ -370,9 +334,7 @@
             gap: 0.5rem;
             transition: color 0.2s;
         }
-        .mic-status.listening {
-            color: #dc2626;
-        }
+        .mic-status.listening { color: #dc2626; }
         .status-dot {
             width: 10px;
             height: 10px;
@@ -389,7 +351,6 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.3; }
         }
-        
         .mic-hint {
             font-size: 0.82rem;
             color: #64748b;
@@ -398,12 +359,12 @@
         }
         
         /* =====================================================
-           TRANSCRIPT
+           LIVE TRANSCRIPT
            ===================================================== */
-        .transcript-section {
+        .live-transcript-section {
             margin-bottom: 1.5rem;
         }
-        .transcript-header {
+        .live-transcript-header {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -411,7 +372,7 @@
             gap: 0.75rem;
             margin-bottom: 0.85rem;
         }
-        .transcript-header h3 {
+        .live-transcript-header h3 {
             font-size: 1rem;
             font-weight: 800;
             color: #0f172a;
@@ -437,14 +398,13 @@
             background: #cffafe;
             color: #155e75;
         }
-        
-        .transcript-box {
+        .live-transcript-box {
             background: #f8fafc;
             border: 2px solid #e2e8f0;
             border-radius: 16px;
             padding: 1.25rem;
-            min-height: 220px;
-            max-height: 400px;
+            min-height: 160px;
+            max-height: 280px;
             overflow-y: auto;
             font-size: 1rem;
             line-height: 1.8;
@@ -452,39 +412,17 @@
             white-space: pre-wrap;
             word-break: break-word;
             transition: all 0.2s;
-            position: relative;
         }
-        .transcript-box:focus {
-            outline: none;
-            border-color: #06b6d4;
-            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.12);
-        }
-        .transcript-box:empty::before {
-            content: 'Click the microphone button and start speaking. Your words will appear here in real time...';
+        .live-transcript-box:empty::before {
+            content: 'Click the microphone button and start speaking. Your live transcript will appear here...';
             color: #94a3b8;
             font-style: italic;
             pointer-events: none;
         }
-        .transcript-box.has-content {
+        .live-transcript-box.has-content {
             background: #ffffff;
             border-color: #a5f3fc;
         }
-        .transcript-box::-webkit-scrollbar {
-            width: 8px;
-        }
-        .transcript-box::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 10px;
-        }
-        .transcript-box::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-        .transcript-box::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-        
-        /* Interim text highlight */
         .interim-text {
             color: #94a3b8;
             font-style: italic;
@@ -494,12 +432,198 @@
         }
         
         /* =====================================================
+           MULTI-OUTPUT SECTION
+           ===================================================== */
+        .multi-output-section {
+            margin-top: 1.75rem;
+            padding-top: 1.75rem;
+            border-top: 2px solid #e2e8f0;
+        }
+        .multi-output-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .multi-output-header h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .multi-output-header h3 svg {
+            width: 20px;
+            height: 20px;
+            stroke: #8b5cf6;
+            fill: none;
+            stroke-width: 2.2;
+        }
+        .multi-output-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .mini-btn {
+            background: #ffffff;
+            color: #8b5cf6;
+            border: 1.5px solid #ddd6fe;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .mini-btn:hover:not(:disabled) {
+            background: #f5f3ff;
+            border-color: #8b5cf6;
+        }
+        .mini-btn:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .mini-btn.copied {
+            background: #10b981;
+            color: #ffffff;
+            border-color: #10b981;
+        }
+        
+        /* Output grid */
+        .output-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+        .output-card {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .output-card:hover {
+            border-color: #c7d2fe;
+            box-shadow: 0 12px 28px -12px rgba(139, 92, 246, 0.2);
+            transform: translateY(-2px);
+        }
+        .output-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .output-card-title {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .output-card-title .format-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .format-icon.plain { background: #cffafe; }
+        .format-icon.upper { background: #fee2e2; }
+        .format-icon.lower { background: #dbeafe; }
+        .format-icon.title { background: #fef3c7; }
+        .format-icon.sentence { background: #d1fae5; }
+        .format-icon.bullets { background: #ede9fe; }
+        .format-icon.numbered { background: #fce7f3; }
+        .format-icon.json { background: #e0f2fe; }
+        .format-icon.slug { background: #ffedd5; }
+        .format-icon.words { background: #f0fdf4; }
+        
+        .output-card-copy {
+            background: #ffffff;
+            color: #8b5cf6;
+            border: 1.5px solid #ddd6fe;
+            padding: 0.35rem 0.75rem;
+            border-radius: 30px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            flex-shrink: 0;
+        }
+        .output-card-copy:hover:not(:disabled) {
+            background: #8b5cf6;
+            color: #ffffff;
+            border-color: #8b5cf6;
+        }
+        .output-card-copy:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .output-card-copy.copied {
+            background: #10b981;
+            color: #ffffff;
+            border-color: #10b981;
+        }
+        
+        .output-card-content {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 0.85rem;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: #1e293b;
+            max-height: 180px;
+            overflow-y: auto;
+            font-family: 'SFMono-Regular', 'Consolas', 'Monaco', monospace;
+            white-space: pre-wrap;
+            word-break: break-word;
+            min-height: 80px;
+            border: 1px solid #e2e8f0;
+        }
+        .output-card-content:empty::before {
+            content: 'Waiting for speech...';
+            color: #94a3b8;
+            font-style: italic;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .output-card-content::-webkit-scrollbar { width: 6px; }
+        .output-card-content::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        
+        .output-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.72rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+        
+        /* =====================================================
            ACTION BUTTONS
            ===================================================== */
         .action-buttons {
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
+            margin-top: 1.5rem;
         }
         .btn {
             display: inline-flex;
@@ -537,6 +661,13 @@
             background: #f8fafc;
             border-color: #94a3b8;
             box-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.1);
+        }
+        .btn-purple {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            box-shadow: 0 8px 20px -6px rgba(139, 92, 246, 0.45);
+        }
+        .btn-purple:hover:not(:disabled) {
+            box-shadow: 0 12px 24px -8px rgba(139, 92, 246, 0.55);
         }
         .btn:disabled {
             opacity: 0.45;
@@ -648,8 +779,8 @@
             transition: all 0.2s ease;
         }
         .feature-card:hover {
-            border-color: #a5f3fc;
-            background: #ecfeff;
+            border-color: #c7d2fe;
+            background: #f5f3ff;
             transform: translateY(-3px);
         }
         .feature-icon {
@@ -732,6 +863,7 @@
             .btn { padding: 0.8rem 1.4rem; font-size: 0.88rem; min-width: 130px; }
             .mic-btn { width: 96px; height: 96px; }
             .mic-btn svg { width: 38px; height: 38px; }
+            .output-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 520px) {
             .header-badge { font-size: 0.72rem; padding: 0.25rem 0.7rem; }
@@ -739,7 +871,7 @@
             .btn { width: 100%; }
             .mic-btn { width: 84px; height: 84px; }
             .mic-btn svg { width: 34px; height: 34px; }
-            .transcript-box { min-height: 180px; padding: 1rem; font-size: 0.95rem; }
+            .live-transcript-box { min-height: 140px; padding: 1rem; font-size: 0.95rem; }
             .options-bar { padding: 1rem; }
         }
         
@@ -751,7 +883,7 @@
             outline-offset: 2px;
             border-radius: 4px;
         }
-        .btn:focus-visible, .mic-btn:focus-visible {
+        .btn:focus-visible, .mic-btn:focus-visible, .mini-btn:focus-visible, .output-card-copy:focus-visible {
             outline: 3px solid #0f172a;
             outline-offset: 2px;
         }
@@ -774,12 +906,12 @@
     <div class="container">
         <!-- ==================== HEADER ==================== -->
         <header class="header">
-            <h1>Speech to Text Converter</h1>
-            <p>Convert your voice into text in real time using your browser's built-in speech recognition. Support for 50+ languages — no sign-up, no uploads, completely private.</p>
+            <h1>Speech to Text — One Voice, Many Outputs</h1>
+            <p>Speak once and get your words instantly transformed into <strong>10 different text formats</strong> — plain text, uppercase, title case, bullet points, JSON, and more. All in your browser, no uploads.</p>
             <div class="badge-row">
-                <span class="header-badge">✓ Real-Time</span>
+                <span class="header-badge">✓ Real-Time Voice</span>
+                <span class="header-badge purple">✓ 10 Output Formats</span>
                 <span class="header-badge">✓ 50+ Languages</span>
-                <span class="header-badge">✓ No Uploads</span>
                 <span class="header-badge">✓ 100% Free</span>
             </div>
         </header>
@@ -804,28 +936,12 @@
 
         <!-- ==================== MAIN TOOL ==================== -->
         <main class="tool-card">
-            <!-- Browser Warning (shown if Web Speech API not supported) -->
+            <!-- Browser Warning -->
             <div class="browser-warning hidden" id="browserWarning">
                 <div class="browser-warning-icon">⚠️</div>
                 <div class="browser-warning-content">
                     <h4>Browser Not Supported</h4>
-                    <p>Your browser doesn't support the Web Speech API. For the best experience, please use <strong>Google Chrome</strong>, <strong>Microsoft Edge</strong>, or <strong>Safari</strong> on desktop or Android. Firefox and some mobile browsers may not support this feature.</p>
-                </div>
-            </div>
-
-            <!-- Info Chips -->
-            <div class="info-strip">
-                <div class="info-chip">
-                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
-                    Real-time recognition
-                </div>
-                <div class="info-chip">
-                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                    Multi-language
-                </div>
-                <div class="info-chip">
-                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    100% private
+                    <p>Your browser doesn't support the Web Speech API. Please use <strong>Google Chrome</strong>, <strong>Microsoft Edge</strong>, or <strong>Safari</strong> for the best experience.</p>
                 </div>
             </div>
 
@@ -839,23 +955,23 @@
                     <select id="languageSelect" aria-label="Recognition language"></select>
                 </div>
                 <div class="option-field">
-                    <label for="punctuationSelect">
-                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-                        Formatting
-                    </label>
-                    <select id="punctuationSelect" aria-label="Punctuation and formatting">
-                        <option value="auto">Auto-Punctuation</option>
-                        <option value="none" selected>Raw Text (Recommended)</option>
-                    </select>
-                </div>
-                <div class="option-field">
                     <label for="continuousSelect">
                         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-                        Mode
+                        Listening Mode
                     </label>
                     <select id="continuousSelect" aria-label="Recognition mode">
                         <option value="continuous" selected>Continuous (Keeps Listening)</option>
-                        <option value="single">Single Utterance (Stops After Pause)</option>
+                        <option value="single">Single Utterance (Auto-Stop)</option>
+                    </select>
+                </div>
+                <div class="option-field">
+                    <label for="autoUpdateSelect">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                        Live Update
+                    </label>
+                    <select id="autoUpdateSelect" aria-label="Live update">
+                        <option value="realtime" selected>Real-Time (Every Word)</option>
+                        <option value="final">On Final Result Only</option>
                     </select>
                 </div>
             </div>
@@ -875,32 +991,53 @@
                     <span id="micStatusText">Click to start listening</span>
                 </div>
                 <div class="mic-hint" id="micHint">
-                    Make sure your microphone is connected and you've granted permission.
+                    Make sure your microphone is connected and permission is granted.
                 </div>
             </div>
 
-            <!-- Transcript -->
-            <div class="transcript-section">
-                <div class="transcript-header">
-                    <h3>📝 Your Transcript</h3>
+            <!-- Live Transcript -->
+            <div class="live-transcript-section">
+                <div class="live-transcript-header">
+                    <h3>📝 Live Transcript</h3>
                     <div class="transcript-stats">
                         <span class="stat-pill" id="wordCountPill">0 words</span>
                         <span class="stat-pill" id="charCountPill">0 chars</span>
                         <span class="stat-pill highlight" id="statusPill">Idle</span>
                     </div>
                 </div>
-                <div class="transcript-box" id="transcriptBox" contenteditable="true" spellcheck="true" aria-label="Transcript output"></div>
+                <div class="live-transcript-box" id="liveTranscriptBox" aria-live="polite"></div>
+            </div>
+
+            <!-- Multi-Output Section -->
+            <div class="multi-output-section">
+                <div class="multi-output-header">
+                    <h3>
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                        Multi-Format Outputs
+                    </h3>
+                    <div class="multi-output-actions">
+                        <button class="mini-btn" id="copyAllBtn" type="button" disabled>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            Copy All Formats
+                        </button>
+                        <button class="mini-btn" id="downloadAllBtn" type="button" disabled>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download All
+                        </button>
+                    </div>
+                </div>
+                <div class="output-grid" id="outputGrid"></div>
             </div>
 
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <button class="btn" id="copyBtn" type="button" disabled>
+                <button class="btn" id="copyPrimaryBtn" type="button" disabled>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                    Copy Text
+                    Copy Plain Text
                 </button>
-                <button class="btn btn-secondary" id="downloadBtn" type="button" disabled>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Download .txt
+                <button class="btn btn-purple" id="copyAllBtnBottom" type="button" disabled>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                    Copy All Formats
                 </button>
                 <button class="btn btn-secondary" id="clearBtn" type="button" disabled>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
@@ -929,65 +1066,85 @@
 
         <!-- ==================== HOW TO ==================== -->
         <section class="content-section">
-            <h2>How to Use the Speech to Text Tool</h2>
+            <h2>How to Use One Voice → Many Text Outputs</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-num">1</div>
                     <div>
                         <strong>Select your language</strong>
-                        <p>Choose your speaking language from 50+ options. The default is English (US).</p>
+                        <p>Choose from 50+ languages. Auto-detects your browser language on first load.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-num">2</div>
                     <div>
-                        <strong>Click the microphone</strong>
-                        <p>Click the big mic button and grant microphone permission when your browser asks. Start speaking clearly.</p>
+                        <strong>Click the microphone & speak</strong>
+                        <p>Grant microphone permission when asked. Speak clearly. Your live transcript appears in real time.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
                     <div>
-                        <strong>Copy, edit, or download</strong>
-                        <p>Your words appear in real time. Click "Copy Text" or "Download .txt" to save your transcript.</p>
+                        <strong>Get 10 formats instantly</strong>
+                        <p>As you speak, all 10 output cards update in real time. Copy any format individually or copy/download all at once.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== FEATURES ==================== -->
+        <!-- ==================== OUTPUT FORMATS INFO ==================== -->
         <section class="content-section">
-            <h2>Why Use Our Speech to Text Tool?</h2>
+            <h2>The 10 Output Formats Explained</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h4>Real-Time Recognition</h4>
-                    <p>Your speech is transcribed instantly as you talk, with interim results shown in gray.</p>
+                    <div class="feature-icon">📄</div>
+                    <h4>Plain Text</h4>
+                    <p>Your speech as-is, preserving natural spacing and flow. Best for general use.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h4>50+ Languages</h4>
-                    <p>Supports English, Spanish, French, German, Hindi, Bengali, Arabic, Chinese, Japanese, and more.</p>
+                    <div class="feature-icon">🔠</div>
+                    <h4>UPPERCASE</h4>
+                    <p>All letters capitalized. Perfect for headings, emphasis, or titles.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">✏️</div>
-                    <h4>Editable Transcript</h4>
-                    <p>Click directly into the transcript box to fix any errors, add punctuation, or refine the text.</p>
+                    <div class="feature-icon">🔡</div>
+                    <h4>lowercase</h4>
+                    <p>All letters in lowercase. Useful for URLs, tags, or casual text.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎙️</div>
-                    <h4>Continuous Mode</h4>
-                    <p>Keeps listening until you stop it — perfect for long dictation sessions or meeting notes.</p>
+                    <div class="feature-icon">📖</div>
+                    <h4>Title Case</h4>
+                    <p>Every Word Capitalized. Great for headlines and article titles.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h4>100% Private</h4>
-                    <p>Recognition happens in your browser. No audio is uploaded to our servers — ever.</p>
+                    <div class="feature-icon">✍️</div>
+                    <h4>Sentence Case</h4>
+                    <p>Only the first letter of each sentence is capital. Natural, readable prose.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h4>Works Everywhere</h4>
-                    <p>Fully responsive and works on desktop, tablet, and mobile devices with Chrome, Edge, or Safari.</p>
+                    <div class="feature-icon">🔘</div>
+                    <h4>Bullet Points</h4>
+                    <p>Each sentence becomes a bullet. Ideal for note-taking and presentations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔢</div>
+                    <h4>Numbered List</h4>
+                    <p>Each sentence numbered sequentially. Perfect for step-by-step instructions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h4>JSON Format</h4>
+                    <p>Structured data with word count, character count, and sentence array. Ready for developers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h4>URL Slug</h4>
+                    <p>Hyphen-separated, lowercase-friendly text. Use it directly in blog URLs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>Word List</h4>
+                    <p>Every unique word on its own line with a count. Great for analysis and keyword research.</p>
                 </div>
             </div>
         </section>
@@ -1014,43 +1171,43 @@
         <section class="content-section">
             <h2>Frequently Asked Questions</h2>
             <details class="faq-item" open>
-                <summary>How does speech-to-text work in the browser?</summary>
-                <p>This tool uses the <strong>Web Speech API</strong>, a built-in browser feature that sends your audio to a cloud recognition service (Google's for Chrome/Edge, Apple's for Safari). The transcribed text is returned to your browser in real time. No audio is stored on our servers — we don't even see it.</p>
+                <summary>How does "One Voice → Many Outputs" work?</summary>
+                <p>As you speak, the Web Speech API transcribes your voice in real time. Instantly, our JavaScript runs <strong>10 transformation functions</strong> on the text — plain, uppercase, lowercase, title case, sentence case, bullets, numbered list, JSON, slug, and a word frequency list. Each output updates in its own card. You can copy or download any single format or all of them together.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can I copy all 10 formats at once?</summary>
+                <p>Yes! Click <strong>"Copy All Formats"</strong>. This copies a single combined block containing all 10 outputs, each labeled with its format name so you can paste them into any document. You can also download them all as a <code>.txt</code> file using <strong>"Download All"</strong>.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is my voice or transcript private?</summary>
+                <p>Yes. Recognition happens in your browser via the Web Speech API. Audio is sent directly from your browser to your browser vendor's recognition service (Google for Chrome/Edge, Apple for Safari). We never receive, store, or have access to your audio or transcript.</p>
             </details>
             <details class="faq-item">
                 <summary>Which browsers are supported?</summary>
-                <p>The Web Speech API is best supported in <strong>Google Chrome</strong>, <strong>Microsoft Edge</strong>, and <strong>Safari</strong>. Firefox has limited support, and some mobile browsers may not work. For best results, use Chrome on desktop or Android.</p>
+                <p><strong>Google Chrome</strong>, <strong>Microsoft Edge</strong>, and <strong>Safari</strong> offer the best support. Firefox has limited support. For the most accurate and reliable results, use Chrome on desktop or Android.</p>
             </details>
             <details class="faq-item">
-                <summary>Is my voice data private?</summary>
-                <p>Yes. The tool runs entirely in your browser. Audio is sent directly from your browser to the speech recognition service provided by your browser vendor (Google or Apple). We never receive, store, or have access to your audio or transcript.</p>
+                <summary>How many languages are supported?</summary>
+                <p>Over <strong>50 languages</strong> including English (US/UK/AU/IN/CA), Bengali, Hindi, Urdu, Tamil, Telugu, Marathi, Gujarati, Kannada, Malayalam, Punjabi, Spanish, French, German, Italian, Portuguese, Russian, Arabic, Chinese (Simplified/Traditional), Japanese, Korean, Thai, Vietnamese, Indonesian, Malay, Filipino, and more.</p>
             </details>
             <details class="faq-item">
-                <summary>Why isn't my microphone working?</summary>
-                <p>Common causes: (1) You haven't granted microphone permission — check your browser's address bar for a permission prompt. (2) Another app is using the microphone. (3) Your microphone is muted in system settings. (4) You're on an unsupported browser. Try refreshing the page and granting permission when asked.</p>
+                <summary>Why does it sometimes stop after a while?</summary>
+                <p>Some browsers automatically stop recognition after about 60 seconds of continuous listening to save resources. When this happens, just click the mic button again to continue. Your previous transcript is preserved.</p>
             </details>
             <details class="faq-item">
-                <summary>Can I use this for long dictation sessions?</summary>
-                <p>Yes! Choose <strong>"Continuous"</strong> mode in the options. The tool will keep listening until you click the mic button again. Note that some browsers have a ~60-second timeout, in which case the recognition may stop — just click the mic again to continue.</p>
-            </details>
-            <details class="faq-item">
-                <summary>How accurate is the transcription?</summary>
-                <p>Accuracy depends on audio quality, background noise, your accent, and the language. For best results, speak clearly at a moderate pace in a quiet environment. Chrome and Edge on desktop tend to produce the most accurate results.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Is this speech-to-text tool free?</summary>
-                <p>Yes — completely free with unlimited use, no sign-up, and no watermarks. The only requirement is a supported browser and a working microphone.</p>
+                <summary>Is this tool free?</summary>
+                <p>Yes — completely free with unlimited use, no sign-up, and no watermarks. The only requirements are a supported browser and a working microphone.</p>
             </details>
         </section>
 
         <!-- ==================== FOOTER ==================== -->
         <footer class="footer">
-            <p>© 2025 Speech to Text Converter by Tool Master. All processing happens in your browser — no uploads, no tracking.</p>
-            <p>Powered by the Web Speech API · Not affiliated with Google or Apple.</p>
+            <p>© 2025 Speech to Text — One Voice, Many Outputs by Tool Master. All processing happens in your browser.</p>
+            <p>Powered by the Web Speech API · 10 transformation formats · Not affiliated with Google or Apple.</p>
         </footer>
     </div>
 
-    <!-- Toast notification -->
+    <!-- Toast -->
     <div class="toast" id="toast" role="status" aria-live="polite">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         <span id="toastText">Done!</span>
@@ -1066,8 +1223,8 @@
             const $ = (sel) => document.querySelector(sel);
 
             const languageSelect = $('#languageSelect');
-            const punctuationSelect = $('#punctuationSelect');
             const continuousSelect = $('#continuousSelect');
+            const autoUpdateSelect = $('#autoUpdateSelect');
             const micBtn = $('#micBtn');
             const micIcon = $('#micIcon');
             const micControl = $('#micControl');
@@ -1076,20 +1233,23 @@
             const micHint = $('#micHint');
             const browserWarning = $('#browserWarning');
 
-            const transcriptBox = $('#transcriptBox');
+            const liveTranscriptBox = $('#liveTranscriptBox');
             const wordCountPill = $('#wordCountPill');
             const charCountPill = $('#charCountPill');
             const statusPill = $('#statusPill');
 
-            const copyBtn = $('#copyBtn');
-            const downloadBtn = $('#downloadBtn');
+            const outputGrid = $('#outputGrid');
+            const copyAllBtn = $('#copyAllBtn');
+            const downloadAllBtn = $('#downloadAllBtn');
+            const copyPrimaryBtn = $('#copyPrimaryBtn');
+            const copyAllBtnBottom = $('#copyAllBtnBottom');
             const clearBtn = $('#clearBtn');
 
             const toast = $('#toast');
             const toastText = $('#toastText');
 
             /* =====================================================
-               SUPPORTED LANGUAGES
+               LANGUAGES
                ===================================================== */
             const LANGUAGES = [
                 { code: 'en-US', name: 'English (US)' },
@@ -1146,13 +1306,29 @@
             ];
 
             /* =====================================================
+               OUTPUT FORMAT DEFINITIONS
+               ===================================================== */
+            const FORMATS = [
+                { id: 'plain',    label: 'Plain Text',      icon: '📄', cls: 'plain' },
+                { id: 'upper',    label: 'UPPERCASE',       icon: '🔠', cls: 'upper' },
+                { id: 'lower',    label: 'lowercase',       icon: '🔡', cls: 'lower' },
+                { id: 'title',    label: 'Title Case',      icon: '📖', cls: 'title' },
+                { id: 'sentence', label: 'Sentence Case',   icon: '✍️', cls: 'sentence' },
+                { id: 'bullets',  label: 'Bullet Points',   icon: '🔘', cls: 'bullets' },
+                { id: 'numbered', label: 'Numbered List',   icon: '🔢', cls: 'numbered' },
+                { id: 'json',     label: 'JSON Format',     icon: '🧩', cls: 'json' },
+                { id: 'slug',     label: 'URL Slug',        icon: '🔗', cls: 'slug' },
+                { id: 'words',    label: 'Word List',       icon: '📊', cls: 'words' }
+            ];
+
+            /* =====================================================
                STATE
                ===================================================== */
             let recognition = null;
             let isListening = false;
             let finalTranscript = '';
             let interimTranscript = '';
-            let autoScroll = true;
+            let outputElements = {}; // id -> { contentEl, copyBtn }
 
             /* =====================================================
                TOAST
@@ -1173,33 +1349,31 @@
                     const opt = document.createElement('option');
                     opt.value = lang.code;
                     opt.textContent = lang.name;
-                    if (lang.code === 'en-US') opt.selected = true;
                     languageSelect.appendChild(opt);
                 });
-
-                // Try to auto-detect browser language
+                // Auto-detect browser language
                 const browserLang = (navigator.language || 'en-US');
-                const matched = LANGUAGES.find(l => l.code.toLowerCase() === browserLang.toLowerCase());
-                if (!matched) {
-                    // Try partial match (e.g., 'en' -> 'en-US')
+                const exact = LANGUAGES.find(l => l.code.toLowerCase() === browserLang.toLowerCase());
+                if (exact) {
+                    languageSelect.value = exact.code;
+                } else {
                     const shortLang = browserLang.split('-')[0].toLowerCase();
                     const partial = LANGUAGES.find(l => l.code.toLowerCase().startsWith(shortLang + '-'));
                     if (partial) languageSelect.value = partial.code;
-                } else {
-                    languageSelect.value = matched.code;
+                    else languageSelect.value = 'en-US';
                 }
             }
 
             /* =====================================================
-               CHECK BROWSER SUPPORT
+               BROWSER SUPPORT CHECK
                ===================================================== */
             function checkBrowserSupport() {
-                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                if (!SpeechRecognition) {
+                const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+                if (!SR) {
                     browserWarning.classList.remove('hidden');
                     micBtn.disabled = true;
                     micStatusText.textContent = 'Speech recognition not supported';
-                    micHint.textContent = 'Please try Chrome, Edge, or Safari.';
+                    micHint.textContent = 'Please use Chrome, Edge, or Safari.';
                     return false;
                 }
                 return true;
@@ -1209,10 +1383,10 @@
                SETUP RECOGNITION
                ===================================================== */
             function setupRecognition() {
-                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                if (!SpeechRecognition) return null;
+                const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+                if (!SR) return null;
 
-                const rec = new SpeechRecognition();
+                const rec = new SR();
                 rec.lang = languageSelect.value;
                 rec.continuous = continuousSelect.value === 'continuous';
                 rec.interimResults = true;
@@ -1227,7 +1401,6 @@
                     statusPill.textContent = 'Listening';
                     statusPill.style.background = '#fee2e2';
                     statusPill.style.color = '#991b1b';
-                    // Change icon to stop icon
                     micIcon.innerHTML = '<rect x="6" y="6" width="12" height="12" rx="2" ry="2" fill="currentColor"/>';
                 };
 
@@ -1241,28 +1414,25 @@
                             interimTranscript += transcript;
                         }
                     }
-                    renderTranscript();
-                    updateStats();
+                    renderLiveTranscript();
+                    const liveMode = autoUpdateSelect.value === 'realtime';
+                    if (liveMode || interimTranscript === '') {
+                        renderAllOutputs();
+                    }
                 };
 
                 rec.onerror = function (event) {
                     console.warn('Speech recognition error:', event.error);
-                    let errorMsg = 'Recognition error: ' + event.error;
+                    if (event.error === 'no-speech' || event.error === 'aborted') return;
 
+                    let errorMsg = 'Recognition error: ' + event.error;
                     if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
                         errorMsg = 'Microphone access denied. Please allow microphone permission and try again.';
-                    } else if (event.error === 'no-speech') {
-                        // Ignore no-speech errors (common when user pauses)
-                        return;
                     } else if (event.error === 'audio-capture') {
                         errorMsg = 'No microphone detected. Please connect a microphone and try again.';
                     } else if (event.error === 'network') {
                         errorMsg = 'Network error. Please check your internet connection.';
-                    } else if (event.error === 'aborted') {
-                        // User stopped or another recognition took over; ignore
-                        return;
                     }
-
                     showToast(errorMsg);
                     micHint.textContent = errorMsg;
                 };
@@ -1276,7 +1446,6 @@
                     statusPill.textContent = 'Idle';
                     statusPill.style.background = '#f1f5f9';
                     statusPill.style.color = '#334155';
-                    // Restore mic icon
                     micIcon.innerHTML = '<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/>';
                     updateButtonStates();
                 };
@@ -1285,34 +1454,22 @@
             }
 
             /* =====================================================
-               RENDER TRANSCRIPT
+               RENDER LIVE TRANSCRIPT
                ===================================================== */
-            function renderTranscript() {
-                // Use HTML to show interim in gray
+            function renderLiveTranscript() {
                 let html = '';
-
-                if (finalTranscript) {
-                    html += escapeHtml(finalTranscript);
-                }
-
+                if (finalTranscript) html += escapeHtml(finalTranscript);
                 if (interimTranscript) {
                     html += '<span class="interim-text">' + escapeHtml(interimTranscript) + '</span>';
                 }
-
-                transcriptBox.innerHTML = html;
-
+                liveTranscriptBox.innerHTML = html;
                 if (finalTranscript.trim() || interimTranscript.trim()) {
-                    transcriptBox.classList.add('has-content');
+                    liveTranscriptBox.classList.add('has-content');
                 } else {
-                    transcriptBox.classList.remove('has-content');
+                    liveTranscriptBox.classList.remove('has-content');
                 }
-
-                // Auto-scroll to bottom
-                if (autoScroll) {
-                    transcriptBox.scrollTop = transcriptBox.scrollHeight;
-                }
-
-                updateButtonStates();
+                liveTranscriptBox.scrollTop = liveTranscriptBox.scrollHeight;
+                updateStats();
             }
 
             function escapeHtml(text) {
@@ -1328,9 +1485,184 @@
                 const fullText = (finalTranscript + ' ' + interimTranscript).trim();
                 const words = fullText ? fullText.split(/\s+/).filter(w => w.length > 0).length : 0;
                 const chars = fullText.length;
-
                 wordCountPill.textContent = words + ' word' + (words !== 1 ? 's' : '');
                 charCountPill.textContent = chars + ' char' + (chars !== 1 ? 's' : '');
+            }
+
+            /* =====================================================
+               FORMAT TRANSFORMERS
+               ===================================================== */
+            function getBaseText() {
+                // Combine final + interim for live, or just final when idle
+                if (isListening && interimTranscript) {
+                    return (finalTranscript + ' ' + interimTranscript).trim();
+                }
+                return finalTranscript.trim();
+            }
+
+            function splitSentences(text) {
+                return text
+                    .replace(/([.!?])\s+/g, '$1|')
+                    .split('|')
+                    .map(s => s.trim())
+                    .filter(s => s.length > 0);
+            }
+
+            function toTitleCase(str) {
+                return str.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+            }
+
+            function toSentenceCase(str) {
+                return str.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g, c => c.toUpperCase());
+            }
+
+            function toSlug(str) {
+                return str
+                    .toLowerCase()
+                    .replace(/[^a-z0-9\s-]/g, '')
+                    .trim()
+                    .replace(/\s+/g, '-')
+                    .replace(/-+/g, '-');
+            }
+
+            function toWordList(str) {
+                const words = str.toLowerCase()
+                    .replace(/[^a-z0-9\s]/g, '')
+                    .trim()
+                    .split(/\s+/)
+                    .filter(w => w.length > 1);
+                const counts = {};
+                words.forEach(w => { counts[w] = (counts[w] || 0) + 1; });
+                const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+                if (sorted.length === 0) return '';
+                const maxCount = sorted[0][1];
+                const maxWordLen = Math.max(...sorted.map(s => s[0].length), 5);
+                return sorted.map(([word, count]) => {
+                    const paddedWord = word.padEnd(maxWordLen, ' ');
+                    const bar = '█'.repeat(Math.max(1, Math.round((count / maxCount) * 12)));
+                    return paddedWord + '  ' + bar + '  (' + count + ')';
+                }).join('\n');
+            }
+
+            function generateFormatText(formatId, baseText) {
+                if (!baseText) return '';
+
+                switch (formatId) {
+                    case 'plain':
+                        return baseText;
+                    case 'upper':
+                        return baseText.toUpperCase();
+                    case 'lower':
+                        return baseText.toLowerCase();
+                    case 'title':
+                        return toTitleCase(baseText);
+                    case 'sentence':
+                        return toSentenceCase(baseText);
+                    case 'bullets':
+                        return splitSentences(baseText).map(s => '• ' + s).join('\n');
+                    case 'numbered':
+                        return splitSentences(baseText).map((s, i) => (i + 1) + '. ' + s).join('\n');
+                    case 'json':
+                        return JSON.stringify({
+                            transcript: baseText,
+                            words: baseText.split(/\s+/).filter(w => w.length > 0).length,
+                            characters: baseText.length,
+                            sentences: splitSentences(baseText)
+                        }, null, 2);
+                    case 'slug':
+                        return toSlug(baseText);
+                    case 'words':
+                        return toWordList(baseText);
+                    default:
+                        return baseText;
+                }
+            }
+
+            /* =====================================================
+               BUILD OUTPUT CARDS
+               ===================================================== */
+            function buildOutputCards() {
+                outputGrid.innerHTML = '';
+                outputElements = {};
+
+                FORMATS.forEach(fmt => {
+                    const card = document.createElement('div');
+                    card.className = 'output-card';
+
+                    // Header
+                    const header = document.createElement('div');
+                    header.className = 'output-card-header';
+
+                    const title = document.createElement('div');
+                    title.className = 'output-card-title';
+                    title.innerHTML = '<span class="format-icon ' + fmt.cls + '">' + fmt.icon + '</span>' + fmt.label;
+
+                    const copyBtn = document.createElement('button');
+                    copyBtn.type = 'button';
+                    copyBtn.className = 'output-card-copy';
+                    copyBtn.disabled = true;
+                    copyBtn.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy';
+
+                    header.appendChild(title);
+                    header.appendChild(copyBtn);
+
+                    // Content
+                    const content = document.createElement('div');
+                    content.className = 'output-card-content';
+
+                    // Footer
+                    const footer = document.createElement('div');
+                    footer.className = 'output-card-footer';
+                    const footerLeft = document.createElement('span');
+                    footerLeft.textContent = fmt.label;
+                    const footerRight = document.createElement('span');
+                    footerRight.textContent = '0 chars';
+                    footer.appendChild(footerLeft);
+                    footer.appendChild(footerRight);
+
+                    card.appendChild(header);
+                    card.appendChild(content);
+                    card.appendChild(footer);
+                    outputGrid.appendChild(card);
+
+                    outputElements[fmt.id] = {
+                        contentEl: content,
+                        copyBtn: copyBtn,
+                        footerRight: footerRight
+                    };
+
+                    copyBtn.addEventListener('click', function () {
+                        const text = content.textContent;
+                        if (!text) return;
+                        copyToClipboard(text, 'Copied ' + fmt.label + '!');
+                        copyBtn.classList.add('copied');
+                        const originalHTML = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied';
+                        setTimeout(() => {
+                            copyBtn.classList.remove('copied');
+                            copyBtn.innerHTML = originalHTML;
+                        }, 1600);
+                    });
+                });
+            }
+
+            /* =====================================================
+               RENDER ALL OUTPUTS
+               ===================================================== */
+            function renderAllOutputs() {
+                const baseText = getBaseText();
+                const hasText = baseText.length > 0;
+
+                FORMATS.forEach(fmt => {
+                    const el = outputElements[fmt.id];
+                    if (!el) return;
+                    const text = generateFormatText(fmt.id, baseText);
+                    el.contentEl.textContent = text;
+                    el.footerRight.textContent = text.length + ' chars';
+                    el.copyBtn.disabled = !text;
+                });
+
+                updateButtonStates();
             }
 
             /* =====================================================
@@ -1338,89 +1670,31 @@
                ===================================================== */
             function updateButtonStates() {
                 const hasText = finalTranscript.trim().length > 0;
-                copyBtn.disabled = !hasText;
-                downloadBtn.disabled = !hasText;
+                copyAllBtn.disabled = !hasText;
+                downloadAllBtn.disabled = !hasText;
+                copyPrimaryBtn.disabled = !hasText;
+                copyAllBtnBottom.disabled = !hasText;
                 clearBtn.disabled = !hasText && !interimTranscript;
             }
 
             /* =====================================================
-               START / STOP RECOGNITION
+               COPY / DOWNLOAD HELPERS
                ===================================================== */
-            function startListening() {
-                if (!recognition) {
-                    recognition = setupRecognition();
-                }
-                if (!recognition) {
-                    showToast('Speech recognition not available in this browser.');
-                    return;
-                }
-
-                // Update settings before starting
-                recognition.lang = languageSelect.value;
-                recognition.continuous = continuousSelect.value === 'continuous';
-                recognition.interimResults = true;
-
-                try {
-                    recognition.start();
-                    micHint.textContent = 'Speak clearly into your microphone. Click the button again to stop.';
-                } catch (err) {
-                    // If already started, ignore
-                    if (err.name === 'InvalidStateError') {
-                        // Already listening, no action needed
-                        console.warn('Recognition already started.');
-                    } else {
-                        console.error('Start error:', err);
-                        showToast('Failed to start recognition. Please try again.');
-                    }
-                }
-            }
-
-            function stopListening() {
-                if (recognition) {
-                    try {
-                        recognition.stop();
-                    } catch (err) {
-                        console.warn('Stop error:', err);
-                    }
-                }
-            }
-
-            function toggleListening() {
-                if (isListening) {
-                    stopListening();
-                } else {
-                    // Commit any interim text before starting new session
-                    if (interimTranscript) {
-                        finalTranscript += interimTranscript + ' ';
-                        interimTranscript = '';
-                        renderTranscript();
-                    }
-                    startListening();
-                }
-            }
-
-            /* =====================================================
-               COPY / DOWNLOAD / CLEAR
-               ===================================================== */
-            function copyTranscript() {
-                const text = finalTranscript.trim();
+            function copyToClipboard(text, successMsg) {
                 if (!text) {
                     showToast('Nothing to copy');
                     return;
                 }
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     navigator.clipboard.writeText(text).then(() => {
-                        showToast('Transcript copied to clipboard!');
-                        const originalHTML = copyBtn.innerHTML;
-                        copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
-                        setTimeout(() => { copyBtn.innerHTML = originalHTML; }, 1800);
-                    }).catch(() => fallbackCopy(text));
+                        showToast(successMsg || 'Copied to clipboard!');
+                    }).catch(() => fallbackCopy(text, successMsg));
                 } else {
-                    fallbackCopy(text);
+                    fallbackCopy(text, successMsg);
                 }
             }
 
-            function fallbackCopy(text) {
+            function fallbackCopy(text, successMsg) {
                 try {
                     const ta = document.createElement('textarea');
                     ta.value = text;
@@ -1430,70 +1704,132 @@
                     ta.select();
                     document.execCommand('copy');
                     document.body.removeChild(ta);
-                    showToast('Transcript copied!');
+                    showToast(successMsg || 'Copied to clipboard!');
                 } catch (e) {
-                    showToast('Copy failed — please select and copy manually');
+                    showToast('Copy failed — please select manually');
                 }
             }
 
-            function downloadTranscript() {
-                const text = finalTranscript.trim();
-                if (!text) {
+            function getCombinedAllFormats() {
+                const baseText = finalTranscript.trim();
+                if (!baseText) return '';
+                let output = '═══════════════════════════════════════\n';
+                output += '  SPEECH-TO-TEXT — ALL FORMATS EXPORT\n';
+                output += '  Generated: ' + new Date().toLocaleString() + '\n';
+                output += '═══════════════════════════════════════\n\n';
+                FORMATS.forEach((fmt, i) => {
+                    output += '─── ' + (i + 1) + '. ' + fmt.label.toUpperCase() + ' ───\n';
+                    output += generateFormatText(fmt.id, baseText) + '\n\n';
+                });
+                return output;
+            }
+
+            /* =====================================================
+               ACTION HANDLERS
+               ===================================================== */
+            function handleCopyPrimary() {
+                copyToClipboard(finalTranscript.trim(), 'Plain text copied!');
+            }
+
+            function handleCopyAll() {
+                const combined = getCombinedAllFormats();
+                if (!combined) {
+                    showToast('Nothing to copy — please speak first');
+                    return;
+                }
+                copyToClipboard(combined, 'All 10 formats copied!');
+            }
+
+            function handleDownloadAll() {
+                const combined = getCombinedAllFormats();
+                if (!combined) {
                     showToast('Nothing to download');
                     return;
                 }
                 try {
-                    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+                    const blob = new Blob([combined], { type: 'text/plain;charset=utf-8' });
                     const url = URL.createObjectURL(blob);
                     const link = document.createElement('a');
                     link.href = url;
-                    link.download = 'transcript-' + new Date().toISOString().slice(0, 10) + '.txt';
+                    link.download = 'speech-transcript-' + new Date().toISOString().slice(0, 10) + '.txt';
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
                     setTimeout(() => URL.revokeObjectURL(url), 2000);
-                    showToast('Transcript downloaded!');
+                    showToast('All formats downloaded!');
                 } catch (e) {
                     console.error('Download error:', e);
-                    showToast('Download failed — please try again');
+                    showToast('Download failed');
                 }
             }
 
-            function clearTranscript() {
+            function handleClear() {
                 if (!finalTranscript.trim() && !interimTranscript) return;
-                if (!confirm('Clear the entire transcript? This cannot be undone.')) return;
+                if (!confirm('Clear the entire transcript and all outputs? This cannot be undone.')) return;
                 finalTranscript = '';
                 interimTranscript = '';
-                transcriptBox.innerHTML = '';
-                transcriptBox.classList.remove('has-content');
+                renderLiveTranscript();
+                renderAllOutputs();
                 updateStats();
                 updateButtonStates();
-                showToast('Transcript cleared');
+                showToast('Cleared');
             }
 
             /* =====================================================
-               MANUAL EDITING SYNC
+               TOGGLE LISTENING
                ===================================================== */
-            transcriptBox.addEventListener('input', function () {
-                // Sync manually edited text back to finalTranscript
-                finalTranscript = this.innerText;
-                updateStats();
-                updateButtonStates();
-            });
-
-            // Prevent Enter key creating newlines too aggressively
-            transcriptBox.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    // Allow Enter to create a new paragraph for readability
+            function startListening() {
+                if (!recognition) recognition = setupRecognition();
+                if (!recognition) {
+                    showToast('Speech recognition not available.');
+                    return;
                 }
-            });
+                recognition.lang = languageSelect.value;
+                recognition.continuous = continuousSelect.value === 'continuous';
+                recognition.interimResults = true;
+
+                try {
+                    recognition.start();
+                    micHint.textContent = 'Speak clearly. Click the button again to stop.';
+                } catch (err) {
+                    if (err.name !== 'InvalidStateError') {
+                        console.error('Start error:', err);
+                        showToast('Failed to start. Please try again.');
+                    }
+                }
+            }
+
+            function stopListening() {
+                if (recognition) {
+                    try { recognition.stop(); } catch (e) {}
+                }
+            }
+
+            function toggleListening() {
+                if (isListening) {
+                    stopListening();
+                } else {
+                    if (interimTranscript) {
+                        finalTranscript += interimTranscript + ' ';
+                        interimTranscript = '';
+                        renderLiveTranscript();
+                    }
+                    startListening();
+                }
+            }
 
             /* =====================================================
-               OPTION CHANGES
+               EVENT LISTENERS
                ===================================================== */
+            micBtn.addEventListener('click', toggleListening);
+            copyAllBtn.addEventListener('click', handleCopyAll);
+            downloadAllBtn.addEventListener('click', handleDownloadAll);
+            copyPrimaryBtn.addEventListener('click', handleCopyPrimary);
+            copyAllBtnBottom.addEventListener('click', handleCopyAll);
+            clearBtn.addEventListener('click', handleClear);
+
             languageSelect.addEventListener('change', function () {
                 if (isListening && recognition) {
-                    // Restart with new language
                     stopListening();
                     setTimeout(startListening, 300);
                 }
@@ -1508,18 +1844,12 @@
             });
 
             /* =====================================================
-               EVENT LISTENERS
-               ===================================================== */
-            micBtn.addEventListener('click', toggleListening);
-            copyBtn.addEventListener('click', copyTranscript);
-            downloadBtn.addEventListener('click', downloadTranscript);
-            clearBtn.addEventListener('click', clearTranscript);
-
-            /* =====================================================
                INITIALIZATION
                ===================================================== */
             populateLanguages();
             checkBrowserSupport();
+            buildOutputCards();
+            renderAllOutputs();
             updateStats();
             updateButtonStates();
 
