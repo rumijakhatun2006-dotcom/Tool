@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>PDF to Text Converter · Free Online Tool | Extract Text from PDF Instantly</title>
+    <meta name="description" content="Free responsive PDF to text converter. Extract text from any PDF file instantly in your browser — no uploads, no sign-up. Supports multi-page PDFs and copy/download options.">
+    <meta name="keywords" content="pdf to text, extract text from pdf, pdf text extractor, pdf converter, pdf to txt, free pdf tool, online pdf reader, pdf text reader">
+    <meta name="author" content="Tool Master">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.example.com/pdf-to-text">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="PDF to Text Converter · Free Online Tool">
+    <meta property="og:description" content="Extract text from any PDF file instantly in your browser. No uploads, no sign-up, 100% private.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com/pdf-to-text">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- Performance -->
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+    <link rel="preconnect" href="//cdnjs.cloudflare.com">
+    
+    <style>
+        /* =====================================================
+           RESET & BASE
+           ===================================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            color: #0f172a;
+            line-height: 1.6;
+            padding: 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* =====================================================
+           ADSENSE PLACEHOLDERS
+           ===================================================== */
+        .ad-slot {
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 14px;
+            padding: 0.75rem;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            width: 100%;
+            margin: 1.25rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .ad-slot::before {
+            content: 'AD';
+            position: absolute;
+            top: 6px;
+            left: 8px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: 0.05em;
+        }
+        .ad-slot:hover {
+            border-color: #94a3b8;
+            background: #eef2f6;
+        }
+        .ad-slot ins {
+            display: block;
+            width: 100%;
+        }
+        .ad-slot--top {
+            margin-top: 0.25rem;
+            min-height: 90px;
+        }
+        .ad-slot--square {
+            min-height: 250px;
+        }
+        
+        /* =====================================================
+           HEADER
+           ===================================================== */
+        .header {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
+        }
+        .header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #0f172a 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            color: #475569;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            max-width: 720px;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .header-badge {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 0.3rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+        
+        /* =====================================================
+           TOOL CARD
+           ===================================================== */
+        .tool-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* =====================================================
+           UPLOAD AREA
+           ===================================================== */
+        .upload-area {
+            border: 3px dashed #cbd5e1;
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            background: #f8fafc;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            margin-bottom: 1.8rem;
+        }
+        .upload-area:hover, .upload-area.dragover {
+            border-color: #ef4444;
+            background: #fef2f2;
+            transform: translateY(-2px);
+        }
+        .upload-area input[type="file"] {
+            display: none;
+        }
+        .upload-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+        }
+        .upload-label svg {
+            width: 56px;
+            height: 56px;
+            stroke: #ef4444;
+            stroke-width: 1.6;
+            fill: none;
+            transition: transform 0.25s ease;
+        }
+        .upload-area:hover .upload-label svg {
+            transform: translateY(-4px);
+        }
+        .upload-label span {
+            font-size: 1.2rem;
+        }
+        .upload-hint {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 0.4rem;
+            font-weight: 400;
+        }
+        
+        /* =====================================================
+           INFO STRIP
+           ===================================================== */
+        .info-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.8rem;
+            justify-content: center;
+        }
+        .info-chip {
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+        }
+        .info-chip svg {
+            width: 16px;
+            height: 16px;
+            stroke: #ef4444;
+            fill: none;
+            stroke-width: 2.2;
+        }
+        
+        /* =====================================================
+           PDF INFO BAR
+           ===================================================== */
+        .pdf-info-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 1.5rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .pdf-info-bar.hidden {
+            display: none;
+        }
+        .pdf-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #334155;
+            font-weight: 600;
+        }
+        .pdf-info-item svg {
+            width: 18px;
+            height: 18px;
+            stroke: #ef4444;
+            fill: none;
+            stroke-width: 2.2;
+            flex-shrink: 0;
+        }
+        .pdf-info-item strong {
+            color: #0f172a;
+        }
+        
+        /* =====================================================
+           ACTION BUTTONS
+           ===================================================== */
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: #ffffff;
+            border: none;
+            padding: 0.95rem 2rem;
+            font-family: inherit;
+            font-weight: 700;
+            border-radius: 60px;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex: 1 1 auto;
+            min-width: 170px;
+            box-shadow: 0 8px 20px -6px rgba(239, 68, 68, 0.45);
+        }
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(239, 68, 68, 0.55);
+        }
+        .btn:active:not(:disabled) {
+            transform: translateY(0) scale(0.98);
+        }
+        .btn-secondary {
+            background: #ffffff;
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+            box-shadow: none;
+        }
+        .btn-secondary:hover:not(:disabled) {
+            background: #f8fafc;
+            border-color: #94a3b8;
+            box-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.1);
+        }
+        .btn-download {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow: 0 8px 20px -6px rgba(16, 185, 129, 0.45);
+        }
+        .btn-download:hover:not(:disabled) {
+            box-shadow: 0 12px 24px -8px rgba(16, 185, 129, 0.55);
+        }
+        .btn:disabled {
+            opacity: 0.45;
+            pointer-events: none;
+            box-shadow: none;
+        }
+        
+        /* =====================================================
+           MESSAGES
+           ===================================================== */
+        .hidden { display: none !important; }
+        .error-msg, .success-msg, .loading-msg {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .error-msg {
+            color: #991b1b;
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+        }
+        .success-msg {
+            color: #065f46;
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+        }
+        .loading-msg {
+            color: #991b1b;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2.5px solid rgba(153, 27, 27, 0.25);
+            border-top-color: #991b1b;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            flex-shrink: 0;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .progress-container {
+            background: #e2e8f0;
+            border-radius: 40px;
+            height: 10px;
+            overflow: hidden;
+            margin-top: 0.75rem;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ef4444, #f59e0b);
+            border-radius: 40px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        .progress-text {
+            font-size: 0.78rem;
+            color: #475569;
+            font-weight: 600;
+            margin-top: 0.35rem;
+            text-align: center;
+        }
+        
+        /* =====================================================
+           WORKSPACE
+           ===================================================== */
+        .workspace {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .workspace-panel {
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 1.25rem;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+        .workspace-panel h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .workspace-panel h3 span.panel-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .text-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        .stat-pill {
+            background: #ffffff;
+            color: #475569;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            border: 1px solid #e2e8f0;
+        }
+        .stat-pill.highlight {
+            background: #fef2f2;
+            color: #991b1b;
+            border-color: #fecaca;
+        }
+        
+        .text-output {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            padding: 1.25rem;
+            min-height: 380px;
+            max-height: 620px;
+            flex: 1;
+            font-family: 'SFMono-Regular', 'Consolas', 'Monaco', monospace;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: #1e293b;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            position: relative;
+        }
+        .text-output:empty::before {
+            content: 'Extracted text will appear here after processing your PDF...';
+            color: #94a3b8;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 500;
+            font-style: italic;
+            pointer-events: none;
+        }
+        .text-output.has-content {
+            background: #f0fdf4;
+            border-color: #86efac;
+        }
+        .text-output::-webkit-scrollbar { width: 8px; }
+        .text-output::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+        .text-output::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .text-output::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Page separator */
+        .page-separator {
+            display: block;
+            color: #94a3b8;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.5rem 0;
+            margin: 0.75rem 0;
+            border-top: 1px dashed #cbd5e1;
+            border-bottom: 1px dashed #cbd5e1;
+            text-align: center;
+            font-family: 'Inter', system-ui, sans-serif;
+            letter-spacing: 0.05em;
+        }
+        
+        /* =====================================================
+           CONTENT SECTIONS (SEO)
+           ===================================================== */
+        .content-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+        }
+        .content-section h2 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
+        }
+        .step {
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+        }
+        .step-num {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: #ffffff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px -4px rgba(239, 68, 68, 0.5);
+        }
+        .step p { font-size: 0.93rem; color: #475569; }
+        .step strong {
+            color: #0f172a;
+            display: block;
+            margin-bottom: 0.2rem;
+            font-size: 0.98rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
+        }
+        .feature-card {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.25rem;
+            transition: all 0.2s ease;
+        }
+        .feature-card:hover {
+            border-color: #fecaca;
+            background: #fef2f2;
+            transform: translateY(-3px);
+        }
+        .feature-icon {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .feature-card h4 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 0.35rem;
+        }
+        .feature-card p {
+            font-size: 0.88rem;
+            color: #475569;
+        }
+        
+        /* =====================================================
+           FAQ
+           ===================================================== */
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0.95rem 0;
+        }
+        .faq-item:first-of-type { padding-top: 0; }
+        .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .faq-item summary {
+            font-weight: 700;
+            cursor: pointer;
+            color: #1e293b;
+            font-size: 0.98rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.15rem 0;
+            transition: color 0.2s;
+        }
+        .faq-item summary:hover { color: #dc2626; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: #ef4444;
+            font-weight: 700;
+            transition: transform 0.25s ease;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .faq-item[open] summary::after { content: '−'; transform: rotate(180deg); }
+        .faq-item p {
+            margin-top: 0.6rem;
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            padding: 2rem 1rem 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .footer p + p { margin-top: 0.3rem; font-size: 0.8rem; color: #94a3b8; }
+        
+        /* =====================================================
+           TOAST
+           ===================================================== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #0f172a;
+            color: #ffffff;
+            padding: 0.85rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.4);
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            pointer-events: none;
+            max-width: 90vw;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast svg {
+            width: 18px;
+            height: 18px;
+            stroke: #10b981;
+            fill: none;
+            stroke-width: 3;
+            flex-shrink: 0;
+        }
+        
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+        @media (max-width: 768px) {
+            body { padding: 0.75rem; }
+            .header { padding: 1.5rem 1.25rem; }
+            .tool-card { padding: 1.5rem 1.15rem; }
+            .content-section { padding: 1.5rem 1.25rem; }
+            .btn { padding: 0.85rem 1.4rem; font-size: 0.92rem; }
+            .upload-area { padding: 1.75rem 1.1rem; }
+        }
+        @media (max-width: 520px) {
+            .header-badge { font-size: 0.72rem; padding: 0.25rem 0.7rem; }
+            .action-buttons { flex-direction: column; }
+            .btn { width: 100%; }
+            .pdf-info-bar { flex-direction: column; align-items: flex-start; }
+            .text-output { min-height: 280px; padding: 1rem; font-size: 0.82rem; }
+        }
+        
+        /* =====================================================
+           ACCESSIBILITY
+           ===================================================== */
+        :focus-visible {
+            outline: 3px solid #ef4444;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        .btn:focus-visible {
+            outline: 3px solid #0f172a;
+            outline-offset: 2px;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ==================== HEADER ==================== -->
+        <header class="header">
+            <h1>PDF to Text Converter</h1>
+            <p>Extract text from any PDF file instantly in your browser. Supports multi-page PDFs, encrypted-free documents, and offers copy/download options — completely private.</p>
+            <div class="badge-row">
+                <span class="header-badge">✓ No Uploads</span>
+                <span class="header-badge">✓ 100% Private</span>
+                <span class="header-badge">✓ Multi-Page</span>
+                <span class="header-badge">✓ Free Forever</span>
+            </div>
+        </header>
+
+        <!-- ==================== ADSENSE TOP ==================== -->
+        <div class="ad-slot ad-slot--top" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (Top Leaderboard)</span>
+        </div>
+
+        <!-- ==================== MAIN TOOL ==================== -->
+        <main class="tool-card">
+            <!-- Upload -->
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="application/pdf,.pdf" aria-label="Upload PDF file">
+                <label for="fileInput" class="upload-label">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    <span>Click or drag & drop a PDF file</span>
+                    <div class="upload-hint">Only PDF files · Max 50MB</div>
+                </label>
+            </div>
+            <div id="errorMsg" class="error-msg hidden" role="alert"></div>
+            <div id="successMsg" class="success-msg hidden" role="status">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span id="successText">Text extracted successfully!</span>
+            </div>
+            <div id="loadingMsg" class="loading-msg hidden" role="status">
+                <span class="spinner"></span>
+                <span id="loadingText">Loading PDF...</span>
+            </div>
+            <div id="progressContainer" class="progress-container hidden">
+                <div class="progress-bar-fill" id="progressBar"></div>
+                <div class="progress-text" id="progressText">0%</div>
+            </div>
+
+            <!-- Info Chips -->
+            <div class="info-strip">
+                <div class="info-chip">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    PDF.js powered
+                </div>
+                <div class="info-chip">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    Instant extraction
+                </div>
+                <div class="info-chip">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    100% private
+                </div>
+            </div>
+
+            <!-- PDF Info Bar -->
+            <div class="pdf-info-bar hidden" id="pdfInfoBar">
+                <div class="pdf-info-item">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <span>File: <strong id="pdfFileName">—</strong></span>
+                </div>
+                <div class="pdf-info-item">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16"/><path d="M9 4v16"/></svg>
+                    <span>Pages: <strong id="pdfPageCount">—</strong></span>
+                </div>
+                <div class="pdf-info-item">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+                    <span>Size: <strong id="pdfFileSize">—</strong></span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn" id="extractBtn" disabled type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Extract Text
+                </button>
+                <button class="btn btn-download" id="downloadBtn" disabled type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download .txt
+                </button>
+                <button class="btn btn-secondary" id="copyBtn" disabled type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy Text
+                </button>
+                <button class="btn btn-secondary" id="resetBtn" disabled type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    Reset
+                </button>
+            </div>
+
+            <!-- Workspace -->
+            <div class="workspace">
+                <div class="workspace-panel">
+                    <h3>
+                        <span class="panel-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                            Extracted Text
+                        </span>
+                        <span class="text-stats" id="textStats">
+                            <span class="stat-pill" id="wordStat">0 words</span>
+                            <span class="stat-pill" id="charStat">0 chars</span>
+                            <span class="stat-pill highlight" id="pageStat">0 pages</span>
+                        </span>
+                    </h3>
+                    <div class="text-output" id="textOutput" aria-live="polite"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ==================== ADSENSE MIDDLE ==================== -->
+        <div class="ad-slot" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="0987654321"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (In-Content)</span>
+        </div>
+
+        <!-- ==================== HOW TO ==================== -->
+        <section class="content-section">
+            <h2>How to Extract Text from a PDF</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <strong>Upload your PDF file</strong>
+                        <p>Click the upload area or drag & drop a PDF (max 50MB). Files stay entirely on your device.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <strong>Click "Extract Text"</strong>
+                        <p>The tool processes every page using PDF.js and displays all text with page separators.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <strong>Copy or download</strong>
+                        <p>Use "Copy Text" for the clipboard or "Download .txt" to save the extracted content to your device.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FEATURES ==================== -->
+        <section class="content-section">
+            <h2>Why Use Our PDF to Text Converter?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h4>100% Private</h4>
+                    <p>Your PDF never leaves your browser. No server, no uploads, no tracking — complete privacy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h4>Multi-Page Support</h4>
+                    <p>Extracts text from every page of the PDF, with clear page separators for easy navigation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Instant Processing</h4>
+                    <p>Fast extraction powered by PDF.js — Mozilla's advanced JavaScript PDF rendering library.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h4>Copy & Download</h4>
+                    <p>One-click copy to clipboard or download as a .txt file with a descriptive filename.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h4>Fully Responsive</h4>
+                    <p>Works beautifully on desktop, tablet, and mobile — no app installation required.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🆓</div>
+                    <h4>Free Forever</h4>
+                    <p>No sign-up, no watermarks, no limits. Use it as many times as you need.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== ADSENSE SQUARE ==================== -->
+        <div class="ad-slot ad-slot--square" aria-label="Advertisement">
+            <!--
+                ▼▼▼ INSERT YOUR GOOGLE ADSENSE CODE HERE ▼▼▼
+                
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1122334455"
+                     data-ad-format="rectangle"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            -->
+            <span>📢 Advertisement — Insert Google AdSense Unit ID here (Square/Responsive)</span>
+        </div>
+
+        <!-- ==================== FAQ ==================== -->
+        <section class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            <details class="faq-item" open>
+                <summary>How does PDF to Text conversion work?</summary>
+                <p>This tool uses <strong>PDF.js</strong>, a JavaScript library developed by Mozilla. It reads your PDF file locally, parses the text content from each page, and displays it in the output box. Everything runs in your browser — no file is ever uploaded.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Are my PDF files safe?</summary>
+                <p>Absolutely. Your PDF is never sent to any server. All processing happens locally using the HTML5 FileReader API and PDF.js. Once you close the browser tab, your file is gone from memory.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Does it work with scanned PDFs?</summary>
+                <p>No. Scanned PDFs are essentially images, so they have no embedded text. You'll need an <strong>OCR (Optical Character Recognition)</strong> tool to extract text from scanned documents. This tool works only with PDFs that contain actual text.</p>
+            </details>
+            <details class="faq-item">
+                <summary>What's the maximum file size?</summary>
+                <p>The tool supports PDF files up to <strong>50MB</strong>. Very large PDFs (over 200 pages) may take a few seconds longer to process depending on your device's performance.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can it handle password-protected PDFs?</summary>
+                <p>No. Password-protected PDFs cannot be opened without the password. Please remove the password protection first using the PDF's owner credentials.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Will the formatting be preserved?</summary>
+                <p>The tool extracts the raw text content. Basic line breaks and paragraphs are usually preserved, but complex formatting (columns, tables, images, custom fonts) may not appear exactly as in the original PDF.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is this PDF to Text converter free?</summary>
+                <p>Yes — completely free with no limits, no watermarks, and no sign-up required. Use it as many times as you like.</p>
+            </details>
+        </section>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer class="footer">
+            <p>© 2025 PDF to Text Converter by Tool Master. All processing happens locally in your browser — no uploads, no tracking.</p>
+            <p>Powered by PDF.js · Built with vanilla HTML, CSS, and JavaScript.</p>
+        </footer>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="toastText">Done!</span>
+    </div>
+
+    <!-- PDF.js library from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script>
+        (function () {
+            'use strict';
+
+            /* =====================================================
+               DOM ELEMENTS
+               ===================================================== */
+            const $ = (sel) => document.querySelector(sel);
+
+            const fileInput = $('#fileInput');
+            const uploadArea = $('#uploadArea');
+            const extractBtn = $('#extractBtn');
+            const downloadBtn = $('#downloadBtn');
+            const copyBtn = $('#copyBtn');
+            const resetBtn = $('#resetBtn');
+            const errorMsg = $('#errorMsg');
+            const successMsg = $('#successMsg');
+            const successText = $('#successText');
+            const loadingMsg = $('#loadingMsg');
+            const loadingText = $('#loadingText');
+            const progressContainer = $('#progressContainer');
+            const progressBar = $('#progressBar');
+            const progressText = $('#progressText');
+
+            const pdfInfoBar = $('#pdfInfoBar');
+            const pdfFileName = $('#pdfFileName');
+            const pdfPageCount = $('#pdfPageCount');
+            const pdfFileSize = $('#pdfFileSize');
+
+            const textOutput = $('#textOutput');
+            const wordStat = $('#wordStat');
+            const charStat = $('#charStat');
+            const pageStat = $('#pageStat');
+
+            const toast = $('#toast');
+            const toastText = $('#toastText');
+
+            /* =====================================================
+               STATE
+               ===================================================== */
+            let currentPdf = null;
+            let currentPdfName = '';
+            let currentPdfSize = 0;
+            let totalPages = 0;
+            let extractedText = '';
+            let isProcessing = false;
+
+            /* =====================================================
+               PDF.js WORKER SETUP
+               ===================================================== */
+            if (typeof pdfjsLib !== 'undefined') {
+                pdfjsLib.GlobalWorkerOptions.workerSrc =
+                    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            } else {
+                console.warn('PDF.js failed to load. Please check your internet connection.');
+            }
+
+            /* =====================================================
+               UTILITIES
+               ===================================================== */
+            function formatBytes(bytes) {
+                if (!bytes || bytes === 0) return '0 B';
+                const k = 1024;
+                const sizes = ['B', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            function showToast(message) {
+                toastText.textContent = message || 'Done!';
+                toast.classList.add('show');
+                clearTimeout(toast._timer);
+                toast._timer = setTimeout(() => toast.classList.remove('show'), 2400);
+            }
+
+            function showError(message) {
+                errorMsg.textContent = message;
+                errorMsg.classList.remove('hidden');
+                successMsg.classList.add('hidden');
+                loadingMsg.classList.add('hidden');
+                clearTimeout(errorMsg._timer);
+                errorMsg._timer = setTimeout(() => errorMsg.classList.add('hidden'), 7000);
+            }
+
+            function showSuccess(message) {
+                successText.textContent = message || 'Success!';
+                successMsg.classList.remove('hidden');
+                errorMsg.classList.add('hidden');
+                loadingMsg.classList.add('hidden');
+                clearTimeout(successMsg._timer);
+                successMsg._timer = setTimeout(() => successMsg.classList.add('hidden'), 5000);
+            }
+
+            function showLoading(text) {
+                loadingText.textContent = text || 'Processing...';
+                loadingMsg.classList.remove('hidden');
+                errorMsg.classList.add('hidden');
+                successMsg.classList.add('hidden');
+            }
+
+            function hideLoading() { loadingMsg.classList.add('hidden'); }
+
+            function clearMessages() {
+                errorMsg.classList.add('hidden');
+                successMsg.classList.add('hidden');
+                loadingMsg.classList.add('hidden');
+            }
+
+            function updateProgress(percent, text) {
+                progressContainer.classList.remove('hidden');
+                progressBar.style.width = Math.min(100, Math.max(0, percent)) + '%';
+                progressText.textContent = text || Math.round(percent) + '%';
+                if (percent >= 100) {
+                    setTimeout(() => progressContainer.classList.add('hidden'), 800);
+                }
+            }
+
+            /* =====================================================
+               DRAG & DROP + FILE INPUT
+               ===================================================== */
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+            uploadArea.addEventListener('dragenter', () => uploadArea.classList.add('dragover'));
+            uploadArea.addEventListener('dragover', () => uploadArea.classList.add('dragover'));
+            uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+            uploadArea.addEventListener('drop', e => {
+                uploadArea.classList.remove('dragover');
+                if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+            });
+
+            fileInput.addEventListener('change', e => {
+                if (e.target.files.length) {
+                    handleFile(e.target.files[0]);
+                    fileInput.value = '';
+                }
+            });
+
+            uploadArea.addEventListener('click', e => {
+                if (e.target.tagName === 'INPUT') return;
+                if (e.target.closest('label')) return;
+                fileInput.click();
+            });
+
+            /* =====================================================
+               FILE HANDLING
+               ===================================================== */
+            function handleFile(file) {
+                clearMessages();
+                resetResults(false);
+
+                const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+                if (!isPdf) {
+                    showError('Please select a PDF file. Other formats are not supported.');
+                    return;
+                }
+                if (file.size > 50 * 1024 * 1024) {
+                    showError('File too large. Maximum size is 50MB.');
+                    return;
+                }
+
+                currentPdfName = file.name;
+                currentPdfSize = file.size;
+
+                pdfFileName.textContent = file.name.length > 30
+                    ? file.name.substring(0, 27) + '...'
+                    : file.name;
+                pdfFileSize.textContent = formatBytes(file.size);
+                pdfInfoBar.classList.remove('hidden');
+
+                showLoading('Loading PDF...');
+                updateProgress(5, 'Reading file...');
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const typedArray = new Uint8Array(e.target.result);
+                    loadPdf(typedArray);
+                };
+                reader.onerror = function () {
+                    hideLoading();
+                    updateProgress(0);
+                    progressContainer.classList.add('hidden');
+                    showError('Error reading file. Please try again.');
+                };
+                reader.readAsArrayBuffer(file);
+            }
+
+            function loadPdf(data) {
+                if (typeof pdfjsLib === 'undefined') {
+                    hideLoading();
+                    showError('PDF.js library failed to load. Please refresh the page.');
+                    return;
+                }
+
+                updateProgress(15, 'Parsing PDF...');
+
+                pdfjsLib.getDocument({ data: data }).promise
+                    .then(function (pdf) {
+                        currentPdf = pdf;
+                        totalPages = pdf.numPages;
+                        pdfPageCount.textContent = totalPages;
+                        updateProgress(25, 'PDF loaded (' + totalPages + ' pages)');
+                        hideLoading();
+                        extractBtn.disabled = false;
+                        resetBtn.disabled = false;
+                        showSuccess('PDF loaded! ' + totalPages + ' page' + (totalPages !== 1 ? 's' : '') + ' found. Click "Extract Text".');
+                    })
+                    .catch(function (err) {
+                        console.error('PDF load error:', err);
+                        hideLoading();
+                        updateProgress(0);
+                        progressContainer.classList.add('hidden');
+                        if (err && err.name === 'PasswordException') {
+                            showError('This PDF is password-protected. Please remove the password first.');
+                        } else {
+                            showError('Failed to load PDF. The file may be corrupted.');
+                        }
+                    });
+            }
+
+            /* =====================================================
+               EXTRACT TEXT
+               ===================================================== */
+            function extractText() {
+                if (!currentPdf) {
+                    showError('Please upload a PDF file first.');
+                    return;
+                }
+                if (isProcessing) {
+                    showToast('Extraction already running...');
+                    return;
+                }
+
+                clearMessages();
+                isProcessing = true;
+                extractBtn.disabled = true;
+                resetBtn.disabled = true;
+                downloadBtn.disabled = true;
+                copyBtn.disabled = true;
+
+                textOutput.innerHTML = '';
+                textOutput.classList.remove('has-content');
+                extractedText = '';
+                updateStats(0, 0, 0);
+
+                showLoading('Extracting text from ' + totalPages + ' page' + (totalPages !== 1 ? 's' : '') + '...');
+                updateProgress(0, 'Starting extraction...');
+
+                let currentPageNum = 1;
+                const extractedPages = [];
+
+                function processNextPage() {
+                    if (currentPageNum > totalPages) {
+                        // All done
+                        extractedText = extractedPages.join('\n\n');
+                        renderExtractedText(extractedPages);
+                        hideLoading();
+                        updateProgress(100, 'Complete!');
+                        isProcessing = false;
+                        extractBtn.disabled = false;
+                        resetBtn.disabled = false;
+                        downloadBtn.disabled = false;
+                        copyBtn.disabled = false;
+
+                        const wordCount = extractedText.split(/\s+/).filter(w => w.length > 0).length;
+                        updateStats(wordCount, extractedText.length, totalPages);
+
+                        if (wordCount === 0) {
+                            showError('No text found in this PDF. It may be a scanned document requiring OCR.');
+                        } else {
+                            showSuccess('Extracted ' + wordCount.toLocaleString() + ' words from ' + totalPages + ' page' + (totalPages !== 1 ? 's' : '') + '.');
+                        }
+                        return;
+                    }
+
+                    updateProgress(
+                        Math.round(((currentPageNum - 1) / totalPages) * 100),
+                        'Processing page ' + currentPageNum + ' of ' + totalPages + '...'
+                    );
+
+                    currentPdf.getPage(currentPageNum).then(function (page) {
+                        return page.getTextContent();
+                    }).then(function (textContent) {
+                        let pageText = '';
+                        let lastY = null;
+
+                        textContent.items.forEach(function (item) {
+                            // Add line break when Y coordinate changes significantly
+                            if (lastY !== null && Math.abs(item.transform[5] - lastY) > 5) {
+                                pageText += '\n';
+                            }
+                            pageText += item.str;
+                            lastY = item.transform[5];
+                        });
+
+                        extractedPages.push(pageText.trim());
+                        currentPageNum++;
+                        setTimeout(processNextPage, 10);
+                    }).catch(function (err) {
+                        console.warn('Error on page ' + currentPageNum + ':', err);
+                        extractedPages.push('[Error extracting page ' + currentPageNum + ']');
+                        currentPageNum++;
+                        setTimeout(processNextPage, 10);
+                    });
+                }
+
+                processNextPage();
+            }
+
+            /* =====================================================
+               RENDER EXTRACTED TEXT WITH PAGE SEPARATORS
+               ===================================================== */
+            function renderExtractedText(pages) {
+                if (pages.length === 0) {
+                    textOutput.innerHTML = '';
+                    textOutput.classList.remove('has-content');
+                    return;
+                }
+
+                let html = '';
+                pages.forEach(function (pageText, index) {
+                    html += '<span class="page-separator">— Page ' + (index + 1) + ' —</span>\n';
+                    if (pageText) {
+                        html += escapeHtml(pageText);
+                    } else {
+                        html += '(No text on this page)';
+                    }
+                    if (index < pages.length - 1) {
+                        html += '\n\n';
+                    }
+                });
+
+                textOutput.innerHTML = html;
+                if (extractedText.trim().length > 0) {
+                    textOutput.classList.add('has-content');
+                }
+            }
+
+            /* =====================================================
+               UPDATE STATS
+               ===================================================== */
+            function updateStats(words, chars, pages) {
+                wordStat.textContent = words.toLocaleString() + ' word' + (words !== 1 ? 's' : '');
+                charStat.textContent = chars.toLocaleString() + ' char' + (chars !== 1 ? 's' : '');
+                pageStat.textContent = pages + ' page' + (pages !== 1 ? 's' : '');
+            }
+
+            /* =====================================================
+               COPY / DOWNLOAD / RESET
+               ===================================================== */
+            function copyText() {
+                if (!extractedText) {
+                    showToast('No text to copy');
+                    return;
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(extractedText).then(function () {
+                        showToast('Text copied to clipboard!');
+                        const originalHTML = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+                        setTimeout(function () { copyBtn.innerHTML = originalHTML; }, 1800);
+                    }).catch(function () {
+                        fallbackCopy();
+                    });
+                } else {
+                    fallbackCopy();
+                }
+            }
+
+            function fallbackCopy() {
+                try {
+                    const ta = document.createElement('textarea');
+                    ta.value = extractedText;
+                    ta.style.position = 'fixed';
+                    ta.style.opacity = '0';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(ta);
+                    showToast('Text copied to clipboard!');
+                } catch (e) {
+                    showToast('Copy failed — please select and copy manually');
+                }
+            }
+
+            function downloadText() {
+                if (!extractedText) {
+                    showToast('No text to download');
+                    return;
+                }
+                try {
+                    const blob = new Blob([extractedText], { type: 'text/plain;charset=utf-8' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    const baseName = currentPdfName.replace(/\.pdf$/i, '') || 'extracted';
+                    link.href = url;
+                    link.download = baseName + '-text.txt';
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+                    showToast('Download started!');
+                } catch (err) {
+                    console.error('Download error:', err);
+                    showToast('Download failed — please try again');
+                }
+            }
+
+            function resetResults(hideInfoBar) {
+                if (currentPdf) {
+                    try { currentPdf.destroy(); } catch (e) {}
+                    currentPdf = null;
+                }
+                currentPdfName = '';
+                currentPdfSize = 0;
+                totalPages = 0;
+                extractedText = '';
+                isProcessing = false;
+
+                fileInput.value = '';
+                textOutput.innerHTML = '';
+                textOutput.classList.remove('has-content');
+                updateStats(0, 0, 0);
+
+                extractBtn.disabled = true;
+                downloadBtn.disabled = true;
+                copyBtn.disabled = true;
+                resetBtn.disabled = true;
+
+                if (hideInfoBar !== false) {
+                    pdfInfoBar.classList.add('hidden');
+                    pdfFileName.textContent = '—';
+                    pdfPageCount.textContent = '—';
+                    pdfFileSize.textContent = '—';
+                }
+
+                progressContainer.classList.add('hidden');
+                progressBar.style.width = '0%';
+                progressText.textContent = '0%';
+
+                clearMessages();
+            }
+
+            function resetAll() {
+                resetResults(true);
+                showToast('Reset — you can upload a new PDF');
+            }
+
+            /* =====================================================
+               EVENT LISTENERS
+               ===================================================== */
+            extractBtn.addEventListener('click', extractText);
+            downloadBtn.addEventListener('click', downloadText);
+            copyBtn.addEventListener('click', copyText);
+            resetBtn.addEventListener('click', resetAll);
+
+            /* =====================================================
+               INITIALIZATION
+               ===================================================== */
+            extractBtn.disabled = true;
+            downloadBtn.disabled = true;
+            copyBtn.disabled = true;
+            resetBtn.disabled = true;
+
+            /* =====================================================
+               CLEANUP
+               ===================================================== */
+            window.addEventListener('beforeunload', function () {
+                if (currentPdf) {
+                    try { currentPdf.destroy(); } catch (e) {}
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
