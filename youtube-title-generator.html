@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+
+    <title>YouTube Title Generator - Free Viral Title Maker for High CTR</title>
+
+    <meta name="description" content="Free YouTube title generator. Create viral, high-CTR YouTube titles using proven templates. Boost views and click-through rate instantly. No sign-up required.">
+
+    <meta name="keywords" content="youtube title generator, youtube title maker, viral youtube titles, high ctr titles, youtube seo titles, youtube video title generator, free title generator, catchy youtube titles, best youtube titles">
+
+    <meta name="author" content="YT Downloader">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://youtubvideodownlod.site.je/youtube-title-generator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="YouTube Title Generator - Free Viral Title Maker">
+    <meta property="og:description" content="Create viral, high-CTR YouTube titles using proven templates. Free and no sign-up.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://youtubvideodownlod.site.je/youtube-title-generator.html">
+    <meta property="og:site_name" content="YT Downloader">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "YouTube Title Generator",
+        "url": "https://youtubvideodownlod.site.je/youtube-title-generator.html",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "description": "Free YouTube title generator that creates viral, high-CTR titles using proven templates.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Generate YouTube Titles",
+        "step": [
+            { "@type": "HowToStep", "name": "Enter topic", "text": "Type your video topic or keyword." },
+            { "@type": "HowToStep", "name": "Choose style", "text": "Pick a title style like Clickbait, How-To, or Listicle." },
+            { "@type": "HowToStep", "name": "Generate", "text": "Click generate and copy your favorite title." }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "How long should a YouTube title be?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube titles should be 60-70 characters to display fully on all devices." } },
+            { "@type": "Question", "name": "Do clickbait titles work?", "acceptedAnswer": { "@type": "Answer", "text": "Moderate clickbait works well, but extreme clickbait can hurt credibility and retention." } },
+            { "@type": "Question", "name": "Is this YouTube title generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free with no sign-up required." } }
+        ]
+    }
+    </script>
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        a { text-decoration: none; color: inherit; }
+        .container { width: 94%; max-width: 1300px; margin: 0 auto; }
+
+        /* HEADER */
+        header.site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e8ebf2;
+        }
+        .navbar {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ff0000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo i { color: #ff0000; font-size: 26px; }
+        .logo span { color: #111827; }
+        .nav-links { display: flex; align-items: center; gap: 22px; }
+        .nav-links a { font-size: 14px; font-weight: 600; color: #4b5563; transition: color 0.2s; }
+        .nav-links a:hover { color: #ff0000; }
+
+        /* HERO */
+        .hero {
+            padding: 55px 0 40px;
+            background:
+                radial-gradient(circle at top left, #fee2e2 0, transparent 40%),
+                radial-gradient(circle at bottom right, #e8e7ff 0, transparent 40%),
+                #ffffff;
+            text-align: center;
+            border-bottom: 1px solid #e8ebf2;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: #fee2e2;
+            color: #991b1b;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 48px);
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: -1.2px;
+            max-width: 950px;
+            margin: 0 auto 16px;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #ff0000 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            max-width: 720px;
+            margin: 0 auto 22px;
+            color: #64748b;
+            font-size: clamp(15px, 2vw, 17px);
+        }
+        .hero-badges-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        .hero-badge-sm {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            color: #334155;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 12.5px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hero-badge-sm i { color: #10b981; font-size: 11px; }
+
+        /* AD SLOTS */
+        .ad-slot {
+            min-height: 90px;
+            margin: 1.25rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .ad-slot--side {
+            min-height: 600px;
+            margin: 0;
+            position: sticky;
+            top: 90px;
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 14px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ad-slot--side .side-content { text-align: center; padding: 1rem; }
+        .ad-slot--side .side-content i { font-size: 1.5rem; color: #94a3b8; margin-bottom: 0.5rem; display: block; }
+        .ad-slot--side .side-content span { font-size: 0.78rem; font-weight: 700; color: #475569; display: block; }
+
+        /* MAIN GRID */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 180px 1fr 180px;
+            gap: 1.25rem;
+            padding: 1.5rem 0;
+            align-items: start;
+        }
+        .main-content {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* TOOL CARD */
+        .tool-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.1);
+            border: 1px solid #e8ebf2;
+        }
+
+        .input-area {
+            border: 3px dashed #cbd5e1;
+            border-radius: 20px;
+            padding: 1.5rem;
+            background: #f8fafc;
+            margin-bottom: 1.5rem;
+            transition: all 0.25s ease;
+        }
+        .input-area:focus-within { border-color: #ff0000; background: #fef2f2; }
+        .input-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #334155;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.75rem;
+        }
+        .input-area input[type="text"],
+        .input-area textarea {
+            width: 100%;
+            padding: 0.95rem 1.1rem;
+            border-radius: 14px;
+            border: 1.5px solid #e2e8f0;
+            background: #ffffff;
+            font-family: inherit;
+            font-size: 1rem;
+            color: #1e293b;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .input-area textarea {
+            min-height: 80px;
+            resize: vertical;
+            margin-top: 0.75rem;
+        }
+        .input-area input:focus,
+        .input-area textarea:focus {
+            border-color: #ff0000;
+            box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.12);
+        }
+        .input-area input::placeholder,
+        .input-area textarea::placeholder { color: #94a3b8; }
+
+        /* NICHE SELECTOR */
+        .niche-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .niche-btn {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            color: #334155;
+            padding: 0.7rem 0.5rem;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            line-height: 1.3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .niche-btn:hover {
+            border-color: #ff0000;
+            color: #dc2626;
+            background: #fef2f2;
+            transform: translateY(-2px);
+        }
+        .niche-btn.active {
+            background: linear-gradient(135deg, #ff0000, #dc2626);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 6px 16px -6px rgba(255, 0, 0, 0.5);
+        }
+        .niche-btn i { font-size: 1.1rem; }
+
+        /* STYLE GRID */
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .style-btn {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            color: #334155;
+            padding: 0.85rem 0.75rem;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            line-height: 1.35;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .style-btn:hover {
+            border-color: #ff0000;
+            color: #dc2626;
+            background: #fef2f2;
+            transform: translateY(-2px);
+        }
+        .style-btn.active {
+            background: linear-gradient(135deg, #ff0000, #dc2626);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 6px 16px -6px rgba(255, 0, 0, 0.5);
+        }
+        .style-btn .style-emoji { font-size: 1.15rem; flex-shrink: 0; }
+        .style-btn .style-info { flex: 1; min-width: 0; }
+        .style-btn .style-name { display: block; font-weight: 800; font-size: 0.83rem; }
+        .style-btn .style-desc { display: block; font-size: 0.7rem; opacity: 0.75; font-weight: 600; margin-top: 2px; }
+
+        /* CONTROLS */
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            background: #f8fafc;
+            border-radius: 18px;
+            border: 1.5px solid #e2e8f0;
+        }
+        .control-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .control-group label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .control-group label .value-badge {
+            background: #ffffff;
+            color: #ff0000;
+            font-size: 0.78rem;
+            padding: 0.15rem 0.6rem;
+            border-radius: 20px;
+            border: 1.5px solid #fecaca;
+            font-variant-numeric: tabular-nums;
+            text-transform: none;
+        }
+        .control-group input[type="range"] {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(90deg, #ff0000 var(--percent, 50%), #e2e8f0 var(--percent, 50%));
+            border-radius: 30px;
+            outline: none;
+            cursor: pointer;
+        }
+        .control-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #fff;
+            border: 3px solid #ff0000;
+            cursor: pointer;
+            box-shadow: 0 2px 8px -2px rgba(255, 0, 0, 0.5);
+        }
+        .control-group input[type="range"]::-moz-range-thumb {
+            width: 22px; height: 22px; border-radius: 50%;
+            background: #fff; border: 3px solid #ff0000; cursor: pointer;
+        }
+        .range-minmax {
+            display: flex; justify-content: space-between;
+            font-size: 0.72rem; color: #94a3b8; font-weight: 600;
+        }
+
+        /* ACTION BUTTONS */
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #ff0000, #dc2626);
+            color: #ffffff;
+            border: none;
+            padding: 0.95rem 2rem;
+            font-family: inherit;
+            font-weight: 700;
+            border-radius: 60px;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex: 1 1 auto;
+            min-width: 170px;
+            box-shadow: 0 8px 20px -6px rgba(255, 0, 0, 0.45);
+        }
+        .btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 24px -8px rgba(255, 0, 0, 0.55); }
+        .btn-secondary {
+            background: #ffffff;
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+            box-shadow: none;
+        }
+        .btn-secondary:hover:not(:disabled) { background: #f8fafc; border-color: #94a3b8; }
+        .btn-green {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow: 0 8px 20px -6px rgba(16, 185, 129, 0.45);
+        }
+        .btn:disabled { opacity: 0.45; pointer-events: none; }
+
+        /* MESSAGES */
+        .hidden { display: none !important; }
+        .error-msg, .success-msg {
+            padding: 0.9rem 1.1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .error-msg { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+        .success-msg { color: #065f46; background: #d1fae5; border: 1px solid #a7f3d0; }
+
+        /* OUTPUT */
+        .output-section {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .output-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .output-header h3 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #334155;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .output-header h3 i { color: #ff0000; }
+        .count-badge {
+            background: #ff0000;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        /* TITLE CARDS */
+        .titles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .title-card {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 1rem 1.1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .title-card:hover {
+            border-color: #fecaca;
+            background: #fef2f2;
+            transform: translateX(4px);
+            box-shadow: 0 6px 16px -8px rgba(255, 0, 0, 0.2);
+        }
+        .title-num {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #ff0000, #dc2626);
+            color: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.82rem;
+        }
+        .title-body { flex: 1; min-width: 0; }
+        .title-text {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.5;
+            margin-bottom: 0.4rem;
+            word-break: break-word;
+        }
+        .title-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            align-items: center;
+        }
+        .meta-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.68rem;
+            font-weight: 700;
+        }
+        .meta-tag.good { background: #d1fae5; color: #065f46; }
+        .meta-tag.warn { background: #fef3c7; color: #92400e; }
+        .meta-tag.bad { background: #fee2e2; color: #991b1b; }
+
+        .title-actions {
+            display: flex;
+            gap: 0.35rem;
+            flex-shrink: 0;
+            flex-direction: column;
+        }
+        .icon-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            color: #475569;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 13px;
+        }
+        .icon-btn:hover { border-color: #ff0000; color: #dc2626; background: #fef2f2; }
+        .icon-btn.copied { background: #10b981; color: #ffffff; border-color: #10b981; }
+        .icon-btn.favorited { background: #ff0000; color: #ffffff; border-color: #ff0000; }
+
+        /* CHARACTER COUNT */
+        .char-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        /* STATS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+        .stat-mini {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .stat-mini i { color: #ff0000; font-size: 1.1rem; }
+        .stat-mini .label { font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase; }
+        .stat-mini .value { font-size: 0.98rem; font-weight: 800; color: #0f172a; }
+
+        /* CONTENT SECTIONS */
+        .content-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+            border: 1px solid #e8ebf2;
+        }
+        .content-section h2 {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+        }
+        .section-eyebrow {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #fee2e2;
+            color: #991b1b;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
+        .step { display: flex; gap: 0.85rem; align-items: flex-start; }
+        .step-num {
+            background: linear-gradient(135deg, #ff0000, #dc2626);
+            color: #ffffff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .step p { font-size: 0.93rem; color: #475569; }
+        .step strong { color: #0f172a; display: block; margin-bottom: 0.2rem; font-size: 0.98rem; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
+        .feature-card {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.25rem;
+            transition: all 0.2s ease;
+        }
+        .feature-card:hover { border-color: #fecaca; background: #fef2f2; transform: translateY(-3px); }
+        .feature-icon { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .feature-card h4 { font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 0.35rem; }
+        .feature-card p { font-size: 0.88rem; color: #475569; }
+
+        /* FAQ */
+        .faq-item { border-bottom: 1px solid #e2e8f0; padding: 0.95rem 0; }
+        .faq-item:first-of-type { padding-top: 0; }
+        .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .faq-item summary {
+            font-weight: 700;
+            cursor: pointer;
+            color: #1e293b;
+            font-size: 0.98rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .faq-item summary:hover { color: #ff0000; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: #ff0000;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .faq-item[open] summary::after { content: '−'; }
+        .faq-item p { margin-top: 0.6rem; font-size: 0.92rem; color: #475569; line-height: 1.6; }
+
+        /* FOOTER */
+        footer.site-footer {
+            background: #111827;
+            color: #ffffff;
+            padding: 50px 0 25px;
+            margin-top: 3rem;
+        }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+        .footer-logo { font-size: 24px; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .footer-logo i { color: #ff0000; }
+        .footer-about { color: #9ca3af; font-size: 14px; max-width: 450px; line-height: 1.7; }
+        .footer-col h4 { margin-bottom: 15px; font-size: 15px; }
+        .footer-col a { display: block; color: #9ca3af; margin-bottom: 9px; font-size: 14px; transition: color 0.2s; }
+        .footer-col a:hover { color: white; }
+        .copyright {
+            border-top: 1px solid #263244;
+            margin-top: 35px;
+            padding-top: 20px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 13px;
+        }
+        .copyright p + p { margin-top: 6px; font-size: 12px; }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #0f172a;
+            color: #ffffff;
+            padding: 0.85rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 2000;
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            pointer-events: none;
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .toast svg { width: 18px; height: 18px; stroke: #10b981; fill: none; stroke-width: 3; }
+
+        /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .main-grid { grid-template-columns: 160px 1fr 160px; gap: 1rem; }
+        }
+        @media (max-width: 1024px) {
+            .main-grid { grid-template-columns: 1fr; }
+            .ad-slot--side { display: none; }
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 13px; }
+        }
+        @media (max-width: 768px) {
+            .hero { padding: 40px 0 30px; }
+            .tool-card { padding: 1.5rem 1.15rem; }
+            .content-section { padding: 1.5rem 1.25rem; }
+            .nav-links { display: none; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+        }
+        @media (max-width: 520px) {
+            .action-buttons { flex-direction: column; }
+            .btn { width: 100%; }
+            .niche-grid { grid-template-columns: repeat(2, 1fr); }
+            .style-grid { grid-template-columns: 1fr; }
+            .title-card { flex-wrap: wrap; }
+            .title-actions { flex-direction: row; width: 100%; justify-content: flex-end; margin-top: 0.5rem; }
+            .hero h1 { font-size: 26px; }
+        }
+
+        :focus-visible { outline: 3px solid #ff0000; outline-offset: 2px; border-radius: 4px; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <div class="container navbar">
+        <a href="index.html" class="logo">
+            <i class="fab fa-youtube"></i>
+            YT<span>Title Generator</span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="image-resizer.html">Image Resizer</a>
+            <a href="hashtag-generator.html">Hashtag Generator</a>
+            <a href="#how-to">How To</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge">
+            <i class="fas fa-fire"></i>
+            100% Free YouTube Title Generator
+        </div>
+        <h1>
+            YouTube Title Generator <span>- Create Viral, High-CTR Titles</span>
+        </h1>
+        <p>
+            Generate click-worthy YouTube titles using proven templates. Choose from 
+            clickbait, how-to, listicle, review, and story styles. Boost your CTR and 
+            grow your channel faster.
+        </p>
+        <div class="hero-badges-row">
+            <span class="hero-badge-sm"><i class="fas fa-check"></i> 12+ Styles</span>
+            <span class="hero-badge-sm"><i class="fas fa-check"></i> CTR Optimized</span>
+            <span class="hero-badge-sm"><i class="fas fa-check"></i> Instant Copy</span>
+            <span class="hero-badge-sm"><i class="fas fa-check"></i> 100% Free</span>
+        </div>
+    </div>
+</section>
+
+<!-- TOP ADSTERRA BANNER -->
+<div class="container">
+    <div class="ad-slot">
+        <script>
+          atOptions = {
+            'key' : 'c89d6c957207995da4fb59756af47468',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highrevenueformat.com/c89d6c957207995da4fb59756af47468/invoke.js"></script>
+    </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="container">
+    <div class="main-grid">
+
+        <!-- LEFT SIDE AD -->
+        <aside class="ad-slot ad-slot--side">
+            <div class="side-content">
+                <i class="fas fa-rectangle-ad"></i>
+                <span>Left Side Ad</span>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+
+            <main class="tool-card">
+
+                <!-- INPUT -->
+                <div class="input-area">
+                    <label class="input-label" for="topicInput">
+                        <i class="fas fa-lightbulb" style="color:#ff0000;"></i>
+                        Enter Your Video Topic or Keyword
+                    </label>
+                    <input
+                        type="text"
+                        id="topicInput"
+                        placeholder="Example: iPhone 16 review, morning yoga routine, how to lose weight fast..."
+                        autocomplete="off"
+                        spellcheck="false">
+                    <textarea
+                        id="keywordsInput"
+                        placeholder="Optional: Add extra keywords, separated by commas (e.g., 2026, beginners, no equipment)"></textarea>
+                </div>
+
+                <!-- NICHE SELECTOR -->
+                <label class="input-label" style="margin-bottom:0.6rem;">
+                    <i class="fas fa-tag" style="color:#ff0000;"></i>
+                    Choose Your Niche (Optional)
+                </label>
+                <div class="niche-grid" id="nicheGrid">
+                    <button class="niche-btn active" data-niche="general" type="button">
+                        <i class="fas fa-star"></i> General
+                    </button>
+                    <button class="niche-btn" data-niche="tech" type="button">
+                        <i class="fas fa-mobile-screen"></i> Tech
+                    </button>
+                    <button class="niche-btn" data-niche="gaming" type="button">
+                        <i class="fas fa-gamepad"></i> Gaming
+                    </button>
+                    <button class="niche-btn" data-niche="fitness" type="button">
+                        <i class="fas fa-dumbbell"></i> Fitness
+                    </button>
+                    <button class="niche-btn" data-niche="vlog" type="button">
+                        <i class="fas fa-video"></i> Vlog
+                    </button>
+                    <button class="niche-btn" data-niche="education" type="button">
+                        <i class="fas fa-graduation-cap"></i> Education
+                    </button>
+                    <button class="niche-btn" data-niche="food" type="button">
+                        <i class="fas fa-utensils"></i> Food
+                    </button>
+                    <button class="niche-btn" data-niche="finance" type="button">
+                        <i class="fas fa-coins"></i> Finance
+                    </button>
+                </div>
+
+                <!-- STYLE SELECTOR -->
+                <label class="input-label" style="margin-bottom:0.6rem;">
+                    <i class="fas fa-palette" style="color:#ff0000;"></i>
+                    Choose Title Style
+                </label>
+                <div class="style-grid" id="styleGrid">
+                    <button class="style-btn active" data-style="all" type="button">
+                        <span class="style-emoji">🎯</span>
+                        <span class="style-info">
+                            <span class="style-name">All Styles</span>
+                            <span class="style-desc">Best of every category</span>
+                        </span>
+                    </button>
+                    <button class="style-btn" data-style="clickbait" type="button">
+                        <span class="style-emoji">🔥</span>
+                        <span class="style-info">
+                            <span class="style-name">Clickbait</span>
+                            <span class="style-desc">High curiosity</span>
+                        </span>
+                    </button>
+                    <button class="style-btn" data-style="howto" type="button">
+                        <span class="style-emoji">📚</span>
+                        <span class="style-info">
+                            <span class="style-name">How-To</span>
+                            <span class="style-desc">Tutorial format</span>
+                        </span>
+                    </button>
+                    <button class="style-btn" data-style="listicle" type="button">
+                        <span class="style-emoji">📋</span>
+                        <span class="style-info">
+                            <span class="style-name">Listicle</span>
+                            <span class="style-desc">Numbered lists</span>
+                        </span>
+                    </button>
+                    <button class="style-btn" data-style="review" type="button">
+                        <span class="style-emoji">⭐</span>
+                        <span class="style-info">
+                            <span class="style-name">Review</span>
+                            <span class="style-desc">Product reviews</span>
+                        </span>
+                    </button>
+                    <button class="style-btn" data-style="story" type="button">
+                        <span class="style-emoji">📖</span>
+                        <span class="style-info">
+                            <span class="style-name">Story</span>
+                            <span class="style-desc">Personal stories</span>
+                        </span>
+                    </button>
+                    <button class="style-btn" data-style="comparison" type="button">
+                        <span class="style-emoji">⚖️</span>
+                        <span class="style-info">
+                            <span class="style-name">Comparison</span>
+                            <span class="style-desc">A vs B</span>
+                        </span>
+                    </button>
+                    <button class="style-btn" data-style="question" type="button">
+                        <span class="style-emoji">❓</span>
+                        <span class="style-info">
+                            <span class="style-name">Question</span>
+                            <span class="style-desc">Curiosity hooks</span>
+                        </span>
+                    </button>
+                    <button class="style-btn" data-style="shocking" type="button">
+                        <span class="style-emoji">😱</span>
+                        <span class="style-info">
+                            <span class="style-name">Shocking</span>
+                            <span class="style-desc">Surprise angle</span>
+                        </span>
+                    </button>
+                    <button class="style-btn" data-style="beginner" type="button">
+                        <span class="style-emoji">🌱</span>
+                        <span class="style-info">
+                            <span class="style-name">Beginner</span>
+                            <span class="style-desc">For newcomers</span>
+                        </span>
+                    </button>
+                    <button class="style-btn" data-style="tips" type="button">
+                        <span class="style-emoji">💡</span>
+                        <span class="style-info">
+                            <span class="style-name">Tips &amp; Tricks</span>
+                            <span class="style-desc">Pro tips</span>
+                        </span>
+                    </button>
+                    <button class="style-btn" data-style="ultimate" type="button">
+                        <span class="style-emoji">🏆</span>
+                        <span class="style-info">
+                            <span class="style-name">Ultimate Guide</span>
+                            <span class="style-desc">Complete</span>
+                        </span>
+                    </button>
+                </div>
+
+                <!-- CONTROLS -->
+                <div class="controls-grid">
+                    <div class="control-group">
+                        <label for="countRange">
+                            Number of Titles
+                            <span class="value-badge" id="countBadge">10</span>
+                        </label>
+                        <input type="range" id="countRange" min="5" max="20" step="1" value="10">
+                        <div class="range-minmax"><span>5</span><span>20</span></div>
+                    </div>
+                    <div class="control-group">
+                        <label for="lengthRange">
+                            Max Title Length
+                            <span class="value-badge" id="lengthBadge">70 chars</span>
+                        </label>
+                        <input type="range" id="lengthRange" min="40" max="100" step="5" value="70">
+                        <div class="range-minmax"><span>40</span><span>100</span></div>
+                    </div>
+                </div>
+
+                <!-- ACTION BUTTONS -->
+                <div class="action-buttons">
+                    <button class="btn" id="generateBtn" type="button">
+                        <i class="fas fa-magic"></i>
+                        Generate Titles
+                    </button>
+                    <button class="btn btn-green" id="copyAllBtn" type="button" disabled>
+                        <i class="fas fa-copy"></i>
+                        Copy All
+                    </button>
+                    <button class="btn btn-secondary" id="resetBtn" type="button">
+                        <i class="fas fa-rotate-left"></i>
+                        Reset
+                    </button>
+                </div>
+
+                <div id="errorMsg" class="error-msg hidden"></div>
+                <div id="successMsg" class="success-msg hidden">
+                    <span id="successText">Success!</span>
+                </div>
+
+                <!-- OUTPUT -->
+                <div class="output-section" id="outputSection" style="display:none;">
+                    <div class="output-header">
+                        <h3><i class="fas fa-heading"></i> Generated Titles</h3>
+                        <span class="count-badge" id="outputCount">0</span>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-mini">
+                            <i class="fas fa-fire"></i>
+                            <div>
+                                <div class="label">High CTR</div>
+                                <div class="value" id="statHigh">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-mini">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <div class="label">Optimal Length</div>
+                                <div class="value" id="statOptimal">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-mini">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <div class="label">Favorites</div>
+                                <div class="value" id="statFav">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="titles-list" id="titlesList"></div>
+                </div>
+
+            </main>
+
+            <!-- IN-CONTENT BANNER -->
+            <div class="ad-slot" style="min-height:60px;">
+                <script>
+                  atOptions = {
+                    'key' : '8b03e3bb7f85ee422026ac825010f57b',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highrevenueformat.com/8b03e3bb7f85ee422026ac825010f57b/invoke.js"></script>
+            </div>
+
+            <!-- HOW TO -->
+            <section class="content-section" id="how-to">
+                <span class="section-eyebrow">Simple Steps</span>
+                <h2>How to Generate YouTube Titles</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <strong>Enter your topic</strong>
+                            <p>Type your video topic, product name, or keyword into the input box.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div>
+                            <strong>Choose niche & style</strong>
+                            <p>Select your niche (Tech, Gaming, Fitness) and title style (Clickbait, How-To).</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div>
+                            <strong>Generate & copy</strong>
+                            <p>Click "Generate Titles" and copy your favorites with one click.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NATIVE BANNER -->
+            <div class="content-section" style="padding:1.5rem;text-align:center;">
+                <script async="async" data-cfasync="false" src="https://pl31519000.profitableratecpmnetwork.com/bf3db257a6f6655b45f14016e3992e79/invoke.js"></script>
+                <div id="container-bf3db257a6f6655b45f14016e3992e79"></div>
+            </div>
+
+            <!-- FEATURES -->
+            <section class="content-section">
+                <span class="section-eyebrow">Why Choose Us</span>
+                <h2>YouTube Title Generator Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔥</div>
+                        <h4>12+ Title Styles</h4>
+                        <p>Clickbait, How-To, Listicle, Review, Story, Comparison, and more.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h4>CTR Optimized</h4>
+                        <p>Every title template is built from real viral YouTube titles.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📏</div>
+                        <h4>Character Counter</h4>
+                        <p>See title length in real-time. Keep titles under 60 chars for best display.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⭐</div>
+                        <h4>Save Favorites</h4>
+                        <p>Mark your favorite titles to compare them side by side.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📋</div>
+                        <h4>One-Click Copy</h4>
+                        <p>Copy individual titles or all at once with a single click.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h4>100% Private</h4>
+                        <p>No sign-up, no data collection. Everything works in your browser.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SQUARE BANNER -->
+            <div class="ad-slot" style="min-height:250px;">
+                <script>
+                  atOptions = {
+                    'key' : '8dadce322d7b6ba025d98e27081d6979',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highrevenueformat.com/8dadce322d7b6ba025d98e27081d6979/invoke.js"></script>
+            </div>
+
+            <!-- FAQ -->
+            <section class="content-section" id="faq">
+                <span class="section-eyebrow">Common Questions</span>
+                <h2>Frequently Asked Questions</h2>
+
+                <details class="faq-item" open>
+                    <summary>How long should a YouTube title be?</summary>
+                    <p>
+                        YouTube titles should be <strong>60-70 characters maximum</strong>. 
+                        Titles longer than 70 chars get truncated on mobile and search results. 
+                        Keep the most important words at the beginning.
+                    </p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Do clickbait titles actually work?</summary>
+                    <p>
+                        Moderate clickbait (curiosity + value) works very well. But <strong>extreme 
+                        clickbait hurts credibility</strong>. If the title promises something the 
+                        video doesn't deliver, viewers leave quickly, hurting your ranking.
+                    </p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>What makes a YouTube title go viral?</summary>
+                    <p>
+                        The best viral titles combine: <strong>curiosity gap, emotional trigger, 
+                        specific numbers, and clear value</strong>. E.g., "I Tried X For 30 Days — 
+                        Here's What Happened" combines all four.
+                    </p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Should I use ALL CAPS in YouTube titles?</summary>
+                    <p>
+                        Use <strong>1-2 capitalized words</strong> for emphasis — not the whole title. 
+                        Example: "This iPhone Trick CHANGED Everything" works. But "THIS IPHONE TRICK 
+                        CHANGED EVERYTHING" looks spammy and hurts CTR.
+                    </p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>How many titles should I test?</summary>
+                    <p>
+                        Generate 10-20 titles, pick your top 3, then test them using YouTube's 
+                        built-in A/B testing feature (available to channels with 1,000+ subscribers). 
+                        Even without A/B, changing titles after 24-48 hours can boost CTR.
+                    </p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Is this YouTube title generator free?</summary>
+                    <p>Yes — completely free with no sign-up, no daily limits, and no premium paywall.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Can I use the same title for multiple videos?</summary>
+                    <p>
+                        Not recommended. Duplicate titles hurt SEO and confuse viewers. Always 
+                        customize your title for each video's unique angle.
+                    </p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Does this work for YouTube Shorts?</summary>
+                    <p>
+                        Yes. The same title strategies work for Shorts. For Shorts, shorter titles 
+                        (under 50 chars) tend to perform better.
+                    </p>
+                </details>
+            </section>
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+        <!-- RIGHT SIDE AD -->
+        <aside class="ad-slot ad-slot--side">
+            <div class="side-content">
+                <i class="fas fa-rectangle-ad"></i>
+                <span>Right Side Ad</span>
+            </div>
+        </aside>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <i class="fab fa-youtube"></i>
+                    YT<span style="color:#ff0000;">Title Generator</span>
+                </div>
+                <p class="footer-about">
+                    Free YouTube title generator that creates viral, high-CTR titles 
+                    using proven templates from successful creators.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <a href="index.html">YouTube Downloader</a>
+                <a href="image-resizer.html">Image Resizer</a>
+                <a href="hashtag-generator.html">Hashtag Generator</a>
+                <a href="youtube-title-generator.html">YouTube Title Generator</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© <span id="year"></span> YTDownloader · All Rights Reserved.</p>
+            <p>Not affiliated with YouTube or Google.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toastText">Done!</span>
+</div>
+
+<script>
+(function () {
+    'use strict';
+
+    const $ = (sel) => document.querySelector(sel);
+
+    const topicInput = $('#topicInput');
+    const keywordsInput = $('#keywordsInput');
+    const nicheGrid = $('#nicheGrid');
+    const styleGrid = $('#styleGrid');
+    const countRange = $('#countRange');
+    const countBadge = $('#countBadge');
+    const lengthRange = $('#lengthRange');
+    const lengthBadge = $('#lengthBadge');
+
+    const generateBtn = $('#generateBtn');
+    const copyAllBtn = $('#copyAllBtn');
+    const resetBtn = $('#resetBtn');
+
+    const errorMsg = $('#errorMsg');
+    const successMsg = $('#successMsg');
+    const successText = $('#successText');
+
+    const outputSection = $('#outputSection');
+    const outputCount = $('#outputCount');
+    const titlesList = $('#titlesList');
+
+    const statHigh = $('#statHigh');
+    const statOptimal = $('#statOptimal');
+    const statFav = $('#statFav');
+
+    const toast = $('#toast');
+    const toastText = $('#toastText');
+
+    let currentNiche = 'general';
+    let currentStyle = 'all';
+    let currentTitles = [];
+    let favorites = new Set();
+
+    /* =====================================================
+       TITLE TEMPLATES BY STYLE
+       ===================================================== */
+    const TITLE_TEMPLATES = {
+        clickbait: [
+            'You Won\'t Believe What Happened With {topic}',
+            'This {topic} Trick Changed Everything',
+            'The Truth About {topic} Nobody Talks About',
+            'Why Everyone Is Wrong About {topic}',
+            'I Tried {topic} And Here\'s What Happened',
+            '{topic} Gone Wrong — Watch Till The End',
+            'Nobody Expected This From {topic}',
+            'The Dark Side Of {topic} Explained',
+            'I Can\'t Believe This {topic} Actually Works',
+            'This {topic} Hack Is Going Viral'
+        ],
+        howto: [
+            'How To {topic} (Step-By-Step Guide)',
+            'How To {topic} In 5 Minutes',
+            'How To {topic} Like A Pro',
+            'The Easiest Way To {topic}',
+            'How To {topic} Without Wasting Time',
+            'How I {topic} — Full Tutorial',
+            'Learn {topic} In Just 10 Minutes',
+            'The Beginner\'s Guide To {topic}',
+            'How To Master {topic} Fast',
+            'How To {topic} Even If You\'re A Beginner'
+        ],
+        listicle: [
+            '10 {topic} Tips You Need To Know',
+            '7 {topic} Mistakes Everyone Makes',
+            '5 Reasons Why {topic} Is A Game Changer',
+            '15 {topic} Hacks That Actually Work',
+            'Top 10 {topic} Tips For Beginners',
+            '8 Things I Wish I Knew About {topic}',
+            '6 {topic} Secrets Experts Don\'t Share',
+            '12 {topic} Ideas That Changed My Life',
+            '9 Ways To Improve Your {topic}',
+            'Top 5 {topic} Trends For 2026'
+        ],
+        review: [
+            '{topic} Honest Review — Is It Worth It?',
+            '{topic} Review: 30 Days Later',
+            'I Used {topic} For A Week — Here\'s My Review',
+            '{topic} Review — Better Than Expected?',
+            '{topic} Full Review & Test',
+            'Is {topic} Worth The Hype? Full Review',
+            '{topic} Review: Pros, Cons & Verdict',
+            'My Honest {topic} Review After 6 Months',
+            '{topic} Review — 5 Things You Should Know',
+            'Testing {topic}: Real Results Revealed'
+        ],
+        story: [
+            'How {topic} Changed My Life Forever',
+            'My {topic} Journey: From Beginner To Pro',
+            'The Day I Discovered {topic}',
+            'What {topic} Taught Me About Life',
+            'My Biggest {topic} Mistake (And How I Fixed It)',
+            'A Story About {topic} You\'ll Never Forget',
+            'How I Turned {topic} Into Success',
+            'The {topic} Story Nobody Knew',
+            'From Zero To Pro: My {topic} Story',
+            'What Happened When I Quit {topic}'
+        ],
+        comparison: [
+            '{topic} vs The Competition — Which Wins?',
+            '{topic} Showdown: Full Comparison',
+            'Is {topic} Better Than Alternatives?',
+            '{topic} vs Old Way — Which Is Better?',
+            'Comparing {topic}: Everything You Need To Know',
+            '{topic} vs {topic} — Ultimate Battle',
+            'The Truth About {topic} vs Alternatives',
+            'Which {topic} Is Best? Honest Comparison',
+            '{topic} Comparison: Pros & Cons',
+            'Why {topic} Beats Everything Else'
+        ],
+        question: [
+            'Is {topic} Worth It In 2026?',
+            'Why Is {topic} So Popular?',
+            'What Nobody Tells You About {topic}',
+            'Should You Try {topic}? Honest Answer',
+            'Is {topic} Actually Good?',
+            'What Makes {topic} So Effective?',
+            'Why Do People Love {topic} So Much?',
+            'Is {topic} Really Worth The Hype?',
+            'What Happens When You {topic}?',
+            'Are You Doing {topic} Wrong?'
+        ],
+        shocking: [
+            'This {topic} Secret Will Shock You',
+            'The Untold Truth About {topic}',
+            'Why {topic} Is A Massive Scam (Or Is It?)',
+            'The Real Reason {topic} Is Failing',
+            '{topic} — Exposed! What They Don\'t Want You To Know',
+            'You\'ve Been Doing {topic} Wrong All Along',
+            'The Hidden Danger Of {topic}',
+            'Why Nobody Talks About {topic}',
+            'The Secret Behind {topic} Revealed',
+            '{topic} — The Shocking Truth'
+        ],
+        beginner: [
+            '{topic} For Complete Beginners',
+            'How To Start {topic} In 2026',
+            '{topic} Basics — Learn From Scratch',
+            'Beginner\'s Guide To {topic}',
+            '{topic} Explained For Beginners',
+            'Getting Started With {topic}',
+            'The Ultimate Beginner Guide To {topic}',
+            'Learn {topic} From Zero',
+            '{topic} 101: Everything A Beginner Needs',
+            'Start {topic} Today — Beginner Friendly'
+        ],
+        tips: [
+            '10 {topic} Tips You Probably Don\'t Know',
+            'Pro Tips For {topic} That Actually Work',
+            '{topic} Tips From A 10-Year Veteran',
+            '5 {topic} Tips That Changed My Life',
+            'The Best {topic} Advice I Ever Got',
+            '{topic} Tips Nobody Talks About',
+            'Insane {topic} Tips That Actually Work',
+            '{topic} Tips — Save Hours Of Time',
+            'Top {topic} Tips For Faster Results',
+            'Expert {topic} Tips For Beginners'
+        ],
+        ultimate: [
+            'The Ultimate Guide To {topic}',
+            'Everything You Need To Know About {topic}',
+            '{topic} — The Complete Guide',
+            'Master {topic}: The Ultimate Tutorial',
+            '{topic} Explained: The Complete Guide',
+            'The Only {topic} Guide You\'ll Ever Need',
+            '{topic} Ultimate Guide For 2026',
+            'Complete {topic} Guide — From A To Z',
+            '{topic} Mastery: The Definitive Guide',
+            'The Complete {topic} Playbook'
+        ]
+    };
+
+    /* =====================================================
+       NICHE MODIFIERS
+       ===================================================== */
+    const NICHE_MODIFIERS = {
+        general: { prefix: [], suffix: [] },
+        tech: { prefix: ['2026', 'Updated', 'New'], suffix: ['Tech Review', 'Gadgets', 'Devices'] },
+        gaming: { prefix: ['Epic', 'Insane', 'Pro'], suffix: ['Gameplay', 'Gaming', 'Walkthrough'] },
+        fitness: { prefix: ['Best', 'Effective', 'Quick'], suffix: ['Workout', 'Fitness', 'Training'] },
+        vlog: { prefix: ['Daily', 'Real', 'Honest'], suffix: ['Vlog', 'Day In Life', 'Behind Scenes'] },
+        education: { prefix: ['Easy', 'Simple', 'Clear'], suffix: ['Explained', 'Tutorial', 'Lesson'] },
+        food: { prefix: ['Delicious', 'Easy', 'Quick'], suffix: ['Recipe', 'Cooking', 'Kitchen'] },
+        finance: { prefix: ['Proven', 'Smart', 'Easy'], suffix: ['Money', 'Finance', 'Investment'] }
+    };
+
+    /* =====================================================
+       UTILITIES
+       ===================================================== */
+    function showToast(msg) {
+        toastText.textContent = msg || 'Done!';
+        toast.classList.add('show');
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function showError(msg) {
+        errorMsg.textContent = msg;
+        errorMsg.classList.remove('hidden');
+        successMsg.classList.add('hidden');
+        clearTimeout(errorMsg._timer);
+        errorMsg._timer = setTimeout(() => errorMsg.classList.add('hidden'), 6000);
+    }
+
+    function showSuccess(msg) {
+        successText.textContent = msg;
+        successMsg.classList.remove('hidden');
+        errorMsg.classList.add('hidden');
+        clearTimeout(successMsg._timer);
+        successMsg._timer = setTimeout(() => successMsg.classList.add('hidden'), 3000);
+    }
+
+    function updateRangeFill(input) {
+        const min = parseFloat(input.min) || 0;
+        const max = parseFloat(input.max) || 100;
+        const val = parseFloat(input.value) || 0;
+        const percent = ((val - min) / (max - min)) * 100;
+        input.style.setProperty('--percent', percent + '%');
+    }
+
+    function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+
+    function titleCase(str) {
+        return str.replace(/\w\S*/g, function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1);
+        });
+    }
+
+    /* =====================================================
+       GENERATE TITLES
+       ===================================================== */
+    function generateTitles() {
+        const topic = topicInput.value.trim();
+        const extraKeywords = keywordsInput.value.trim();
+
+        if (!topic) {
+            showError('Please enter a topic or keyword first.');
+            topicInput.focus();
+            return;
+        }
+
+        const count = parseInt(countRange.value, 10);
+        const maxLength = parseInt(lengthRange.value, 10);
+
+        // Build list of styles to use
+        let styles = [];
+        if (currentStyle === 'all') {
+            styles = Object.keys(TITLE_TEMPLATES);
+        } else {
+            styles = [currentStyle];
+        }
+
+        // Build topic variations
+        const topicVariations = [topic];
+        if (extraKeywords) {
+            const extras = extraKeywords.split(',').map(k => k.trim()).filter(k => k);
+            extras.forEach(k => {
+                topicVariations.push(topic + ' ' + k);
+                topicVariations.push(k);
+            });
+        }
+
+        // Niche modifiers
+        const nicheMod = NICHE_MODIFIERS[currentNiche] || { prefix: [], suffix: [] };
+
+        // Generate titles
+        const generated = new Set();
+        let attempts = 0;
+        const maxAttempts = count * 20;
+
+        while (generated.size < count && attempts < maxAttempts) {
+            attempts++;
+            const style = styles[Math.floor(Math.random() * styles.length)];
+            const templates = TITLE_TEMPLATES[style];
+            const template = templates[Math.floor(Math.random() * templates.length)];
+            const topicVar = topicVariations[Math.floor(Math.random() * topicVariations.length)];
+
+            let title = template.replace(/\{topic\}/g, titleCase(topicVar));
+
+            // Occasionally add niche suffix
+            if (Math.random() < 0.3 && nicheMod.suffix.length > 0) {
+                const suffix = nicheMod.suffix[Math.floor(Math.random() * nicheMod.suffix.length)];
+                if (!title.toLowerCase().includes(suffix.toLowerCase())) {
+                    title = title + ' — ' + suffix;
+                }
+            }
+
+            // Occasionally add year
+            if (Math.random() < 0.2 && !title.includes('2026')) {
+                title = title.replace(/\)$/, ' 2026)').replace(/([^0-9])$/, '$1 2026');
+            }
+
+            // Enforce length
+            if (title.length > maxLength) {
+                title = title.slice(0, maxLength - 3).trim() + '...';
+            }
+
+            generated.add(title);
+        }
+
+        currentTitles = Array.from(generated);
+        renderTitles(currentTitles);
+        showSuccess('Generated ' + currentTitles.length + ' titles!');
+    }
+
+    /* =====================================================
+       RENDER TITLES
+       ===================================================== */
+    function renderTitles(titles) {
+        outputSection.style.display = 'block';
+        outputCount.textContent = titles.length + ' titles';
+        copyAllBtn.disabled = titles.length === 0;
+
+        // Stats
+        const highCTR = titles.filter(t =>
+            /secret|truth|nobody|shocking|wrong|actually|really|why|what/i.test(t)
+        ).length;
+        const optimal = titles.filter(t => t.length >= 40 && t.length <= 70).length;
+
+        statHigh.textContent = highCTR;
+        statOptimal.textContent = optimal;
+        statFav.textContent = favorites.size;
+
+        // Render
+        titlesList.innerHTML = '';
+
+        titles.forEach((title, index) => {
+            const len = title.length;
+            let lengthClass = 'good';
+            let lengthNote = 'optimal';
+            if (len > 70) { lengthClass = 'bad'; lengthNote = 'too long'; }
+            else if (len > 60) { lengthClass = 'warn'; lengthNote = 'may truncate'; }
+            else if (len < 30) { lengthClass = 'warn'; lengthNote = 'could be longer'; }
+
+            const card = document.createElement('div');
+            card.className = 'title-card';
+
+            const ctrScore = /secret|truth|nobody|shocking|wrong|actually|really|why|what|hack|never/i.test(title);
+            const ctrTag = ctrScore
+                ? '<span class="meta-tag good">🔥 High CTR</span>'
+                : '<span class="meta-tag">Standard</span>';
+
+            const isFav = favorites.has(title);
+
+            card.innerHTML =
+                '<div class="title-num">' + (index + 1) + '</div>' +
+                '<div class="title-body">' +
+                    '<div class="title-text">' + escapeHtml(title) + '</div>' +
+                    '<div class="title-meta">' +
+                        ctrTag +
+                        '<span class="meta-tag ' + lengthClass + '"><i class="fas fa-ruler"></i> ' + len + ' chars · ' + lengthNote + '</span>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="title-actions">' +
+                    '<button class="icon-btn" data-action="copy" data-idx="' + index + '" title="Copy"><i class="fas fa-copy"></i></button>' +
+                    '<button class="icon-btn ' + (isFav ? 'favorited' : '') + '" data-action="fav" data-idx="' + index + '" title="Favorite"><i class="fas fa-star"></i></button>' +
+                '</div>';
+
+            titlesList.appendChild(card);
+        });
+
+        if (window.innerWidth < 768) {
+            setTimeout(() => {
+                outputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    /* =====================================================
+       COPY
+       ===================================================== */
+    function copyToClipboard(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+        } else {
+            fallbackCopy(text);
+        }
+    }
+
+    function fallbackCopy(text) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+    }
+
+    function copyAll() {
+        if (currentTitles.length === 0) return;
+        const text = currentTitles.map((t, i) => (i + 1) + '. ' + t).join('\n');
+        copyToClipboard(text);
+        showToast('✅ Copied ' + currentTitles.length + ' titles!');
+    }
+
+    /* =====================================================
+       RESET
+       ===================================================== */
+    function resetAll() {
+        topicInput.value = '';
+        keywordsInput.value = '';
+        outputSection.style.display = 'none';
+        titlesList.innerHTML = '';
+        currentTitles = [];
+        favorites.clear();
+        copyAllBtn.disabled = true;
+        clearTimeout(errorMsg._timer);
+        clearTimeout(successMsg._timer);
+        errorMsg.classList.add('hidden');
+        successMsg.classList.add('hidden');
+        topicInput.focus();
+        showToast('Reset — ready for new topic');
+    }
+
+    /* =====================================================
+       EVENTS
+       ===================================================== */
+    nicheGrid.addEventListener('click', function (e) {
+        const btn = e.target.closest('.niche-btn');
+        if (!btn) return;
+        nicheGrid.querySelectorAll('.niche-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentNiche = btn.getAttribute('data-niche');
+    });
+
+    styleGrid.addEventListener('click', function (e) {
+        const btn = e.target.closest('.style-btn');
+        if (!btn) return;
+        styleGrid.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentStyle = btn.getAttribute('data-style');
+    });
+
+    countRange.addEventListener('input', function () {
+        countBadge.textContent = this.value;
+        updateRangeFill(this);
+    });
+
+    lengthRange.addEventListener('input', function () {
+        lengthBadge.textContent = this.value + ' chars';
+        updateRangeFill(this);
+    });
+
+    titlesList.addEventListener('click', function (e) {
+        const btn = e.target.closest('[data-action]');
+        if (!btn) return;
+        const action = btn.getAttribute('data-action');
+        const idx = parseInt(btn.getAttribute('data-idx'), 10);
+        const title = currentTitles[idx];
+        if (!title) return;
+
+        if (action === 'copy') {
+            copyToClipboard(title);
+            btn.classList.add('copied');
+            btn.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => {
+                btn.classList.remove('copied');
+                btn.innerHTML = '<i class="fas fa-copy"></i>';
+            }, 1500);
+            showToast('Title copied!');
+        } else if (action === 'fav') {
+            if (favorites.has(title)) {
+                favorites.delete(title);
+                btn.classList.remove('favorited');
+                showToast('Removed from favorites');
+            } else {
+                favorites.add(title);
+                btn.classList.add('favorited');
+                showToast('Added to favorites ⭐');
+            }
+            statFav.textContent = favorites.size;
+        }
+    });
+
+    generateBtn.addEventListener('click', generateTitles);
+    copyAllBtn.addEventListener('click', copyAll);
+    resetBtn.addEventListener('click', resetAll);
+
+    topicInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            generateTitles();
+        }
+    });
+
+    /* =====================================================
+       INIT
+       ===================================================== */
+    updateRangeFill(countRange);
+    updateRangeFill(lengthRange);
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+})();
+</script>
+
+<!-- ADSTERRA SOCIAL BAR -->
+<script src="https://pl31518992.profitableratecpmnetwork.com/88/a2/c8/88a2c818e62df32e026ae6c73106dda.js"></script>
+
+</body>
+</html>
